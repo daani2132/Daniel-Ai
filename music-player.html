@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DANIEL Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: rgba(10, 25, 47, 0.95);
+            color: white;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        
+        .music-player {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .music-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .music-title {
+            color: #00ffff;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-player {
+            background: transparent;
+            border: none;
+            color: #00ffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .close-player:hover {
+            color: white;
+        }
+        
+        .player-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .cover-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            border: 3px solid #00ffff;
+            object-fit: cover;
+        }
+        
+        .song-info {
+            flex: 1;
+        }
+        
+        .song-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .song-artist {
+            color: #a0f0ff;
+            font-size: 0.9rem;
+        }
+        
+        .controls-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .control-btn {
+            background: rgba(0, 255, 255, 0.1);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .control-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        
+        .control-btn.play-pause {
+            background: linear-gradient(135deg, #0080ff, #00a0ff);
+            width: 60px;
+            height: 60px;
+            font-size: 1.8rem;
+        }
+        
+        .progress-container {
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #0080ff);
+            border-radius: 4px;
+            transition: width 0.1s linear;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            color: #a0f0ff;
+            font-size: 0.9rem;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .volume-slider {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .playlist {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        .playlist-item:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        .playlist-item.active {
+            background: rgba(0, 255, 255, 0.2);
+            border-right: 3px solid #00ffff;
+        }
+        
+        .playlist-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+        }
+        
+        .back-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0080ff, #00a0ff);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #00a0ff, #00c0ff);
+        }
+    </style>
+</head>
+<body>
+    <div class="music-player">
+        <div class="music-header">
+            <div class="music-title">
+                <i class="fas fa-music"></i> DANIEL RADIO
+            </div>
+            <button class="close-player" onclick="window.close()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="player-info">
+            <img src="https://via.placeholder.com/80/0080ff/ffffff?text=DANIEL" alt="غلاف الأغنية" class="cover-img" id="songCover">
+            <div class="song-info">
+                <div class="song-title" id="currentSongTitle">إذاعة DANIEL</div>
+                <div class="song-artist" id="currentSongArtist">مباشر 24/7</div>
+            </div>
+        </div>
+        
+        <div class="controls-main">
+            <button class="control-btn prev-btn" onclick="playPrevious()">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="control-btn play-pause" onclick="togglePlay()" id="playPauseBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="control-btn next-btn" onclick="playNext()">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" onclick="seekSong(event)">
+                <div class="progress" id="progressBar"></div>
+            </div>
+            <div class="time-info">
+                <span id="currentTime">0:00</span>
+                <span id="totalTime">0:00</span>
+            </div>
+        </div>
+        
+        <div class="volume-control">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" oninput="changeVolume(this.value)">
+        </div>
+        
+        <div class="playlist" id="playlist">
+            <!-- سيتم ملؤه بالجافاسكريبت -->
+        </div>
+        
+        <a href="index.html" class="back-button">
+            <i class="fas fa-home"></i> العودة للرئيسية
+        </a>
+    </div>
+
+    <script>
+        // بيانات الأغاني
+const songs = [
+    {
+        title: "إذاعة DANIEL الرسمية",
+        artist: "بث مباشر 24/7",
+        url: "https://stream-154.zeno.fm/zx3c55cgwy8uv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ6eDNjNTVjZ3d5OHV2IiwiaG9zdCI6InN0cmVhbS0xNTQuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6InlmcVJoNWpCUkJ1RmVLcmtEanZxdVEiLCJpYXQiOjE3NjY2NzkzNzQsImV4cCI6MTc2NjY3OTQzNH0.2yFYqkCXFgxzCPqxyLHrQv0fAiW5KTLcjk7RlLO4bpE&rj-ttl=5&aw_0_req_lsid=68eec787d41eac33de20e3c7542f7714&acu-uid=467263928898&bsw-uid=063bc5be-0cff-4e90-a3f0-ac48597a4e81&cto-uid=c51153a2-32c8-490f-a143-dba3651cd8e6-5ceed21a-4252&adt-uid=cuid_4f0b2063-d81a-11ea-b801",
+        cover: "https://via.placeholder.com/400x400/0080ff/ffffff?text=DANIEL+RADIO",
+        type: "radio"
+    },
+    {
+        title: "Say It Right (Switch Disco Edit)",
+        artist: "Daniel AI Music",
+        url: "https://g.top4top.io/m_3653eldg91.mp3",
+        cover: "https://via.placeholder.com/400x400/8000ff/ffffff?text=DISCO+MUSIC",
+        type: "music"
+    },
+    {
+        title: "Non-Copyright Gym Music - 45 Minute Mix",
+        artist: "Daniel Ads",
+        url: "https://h.top4top.io/m_3653yfvli2.mp3",
+        cover: "https://via.placeholder.com/400x400/00ff80/ffffff?text=GYM+MUSIC",
+        type: "ads"
+    }
+];
+        // متغيرات مشغل الموسيقى
+        let audioPlayer = null;
+        let currentSongIndex = 0;
+        let isPlaying = false;
+
+        // تهيئة مشغل الموسيقى
+        function initMusicPlayer() {
+            audioPlayer = new Audio();
+            audioPlayer.crossOrigin = "anonymous";
+            
+            // إعدادات الصوت
+            audioPlayer.volume = 0.7;
+            document.getElementById('volumeSlider').value = 70;
+            
+            // تحميل الأغنية الأولى
+            loadSong(currentSongIndex);
+            
+            // إعداد الأحداث
+            audioPlayer.addEventListener('timeupdate', updateProgress);
+            audioPlayer.addEventListener('ended', playNext);
+            audioPlayer.addEventListener('loadedmetadata', updateTotalTime);
+            
+            // إنشاء قائمة التشغيل
+            createPlaylist();
+        }
+
+        // تحميل أغنية
+        function loadSong(index) {
+            if (index >= 0 && index < songs.length) {
+                currentSongIndex = index;
+                const song = songs[index];
+                
+                audioPlayer.src = song.url;
+                document.getElementById('currentSongTitle').textContent = song.title;
+                document.getElementById('currentSongArtist').textContent = song.artist;
+                document.getElementById('songCover').src = song.cover;
+                
+                // تحديث قائمة التشغيل النشطة
+                updateActivePlaylistItem();
+                
+                // إذا كانت الموسيقى تعمل، استمر
+                if (isPlaying) {
+                    playSong();
+                }
+            }
+        }
+
+        // تشغيل/إيقاف الموسيقى
+        function togglePlay() {
+            if (isPlaying) {
+                pauseSong();
+            } else {
+                playSong();
+            }
+        }
+
+        function playSong() {
+            if (audioPlayer.src) {
+                audioPlayer.play()
+                    .then(() => {
+                        isPlaying = true;
+                        updatePlayButton();
+                    })
+                    .catch(e => {
+                        console.log("Playback error:", e);
+                        isPlaying = false;
+                        updatePlayButton();
+                    });
+            }
+        }
+
+        function pauseSong() {
+            audioPlayer.pause();
+            isPlaying = false;
+            updatePlayButton();
+        }
+
+        // الأغنية التالية
+        function playNext() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            if (isPlaying) {
+                playSong();
+            }
+        }
+
+        // الأغنية السابقة
+        function playPrevious() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+            if (isPlaying) {
+                playSong();
+            }
+        }
+
+        // تحديث زر التشغيل/الإيقاف
+        function updatePlayButton() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            
+            if (isPlaying) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        // تحديث شريط التقدم
+        function updateProgress() {
+            if (audioPlayer.duration) {
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                document.getElementById('progressBar').style.width = `${progressPercent}%`;
+                
+                // تحديث الوقت الحالي
+                document.getElementById('currentTime').textContent = formatTime(audioPlayer.currentTime);
+            }
+        }
+
+        // البحث في الأغنية
+        function seekSong(event) {
+            const progressBar = event.currentTarget;
+            const clickPosition = event.offsetX;
+            const progressBarWidth = progressBar.offsetWidth;
+            const percentage = clickPosition / progressBarWidth;
+            
+            if (audioPlayer.duration) {
+                audioPlayer.currentTime = percentage * audioPlayer.duration;
+            }
+        }
+
+        // تحديث الوقت الكلي
+        function updateTotalTime() {
+            if (audioPlayer.duration) {
+                document.getElementById('totalTime').textContent = formatTime(audioPlayer.duration);
+            } else {
+                document.getElementById('totalTime').textContent = "مباشر";
+            }
+        }
+
+        // تنسيق الوقت
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // تغيير مستوى الصوت
+        function changeVolume(value) {
+            audioPlayer.volume = value / 100;
+        }
+
+        // إنشاء قائمة التشغيل
+        function createPlaylist() {
+            const playlist = document.getElementById('playlist');
+            playlist.innerHTML = '';
+            
+            songs.forEach((song, index) => {
+                const item = document.createElement('div');
+                item.className = `playlist-item ${index === currentSongIndex ? 'active' : ''}`;
+                item.onclick = () => {
+                    loadSong(index);
+                    if (isPlaying) {
+                        playSong();
+                    }
+                };
+                
+                item.innerHTML = `
+                    <img src="${song.cover}" alt="${song.title}">
+                    <div>
+                        <div class="song-title">${song.title}</div>
+                        <div class="song-artist">${song.artist}</div>
+                    </div>
+                `;
+                
+                playlist.appendChild(item);
+            });
+        }
+
+        // تحديث العنصر النشط في قائمة التشغيل
+        function updateActivePlaylistItem() {
+            document.querySelectorAll('.playlist-item').forEach((item, index) => {
+                if (index === currentSongIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // بدء التشغيل عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            initMusicPlayer();
+            // تشغيل الموسيقى تلقائياً
+            setTimeout(() => {
+                playSong();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

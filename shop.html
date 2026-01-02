@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>العبقري الذكي - الذكاء الاصطناعي المتطور</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        /* ========== تنسيقات رئيسية مع خلفية back ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: url('back.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* طبقة شفافة فوق الخلفية لتسهيل القراءة */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 20, 0.85);
+            z-index: -1;
+        }
+        
+        /* ========== الهيدر - محافظ على التصميم الأصلي ========== */
+        header.glass {
+            background: rgba(15, 15, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        header nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        header nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+       /* ========== auth-status في مكانه الطبيعي مع تباعد ========== */
+        .auth-status {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .login-btn {
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            color: #222;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            margin-top: 5px; /* هنا الإضافة الجديدة */
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 5px; /* هنا الإضافة الجديدة */
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+        
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        
+        #displayName {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* ========== الحاوية الرئيسية ========== */
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        /* ========== بطاقات الأدوات ========== */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(25, 25, 35, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .logo-card .card-icon { color: #FFD700; }
+        .cv-card .card-icon { color: #4A90E2; }
+        .text-card .card-icon { color: #27AE60; }
+        
+        .card-title {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .card-desc {
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .card-btn {
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            color: #222;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .card-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* ========== واجهة الدردشة ========== */
+        .chat-interface {
+            background: rgba(20, 20, 30, 0.9);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .chat-header {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), rgba(74, 144, 226, 0.15));
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+        
+        .chat-header h2 {
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .chat-header p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .chat-body {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            height: 500px;
+        }
+        
+        @media (max-width: 1000px) {
+            .chat-body {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .messages-area {
+            padding: 25px;
+            overflow-y: auto;
+            background: rgba(15, 15, 20, 0.7);
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 18px;
+            max-width: 80%;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-message {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(218, 165, 32, 0.15));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin-left: auto;
+        }
+        
+        .ai-message {
+            background: rgba(30, 30, 45, 0.8);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            margin-right: auto;
+        }
+        
+        .message-content {
+            line-height: 1.6;
+        }
+        
+        .message-content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .message-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            color: #222;
+        }
+        
+        .edit-btn {
+            background: rgba(74, 144, 226, 0.2);
+            color: #4A90E2;
+            border: 1px solid #4A90E2;
+        }
+        
+        .copy-btn {
+            background: rgba(39, 174, 96, 0.2);
+            color: #27AE60;
+            border: 1px solid #27AE60;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .tools-sidebar {
+            background: rgba(25, 25, 35, 0.9);
+            padding: 25px;
+            border-left: 1px solid rgba(255, 215, 0, 0.2);
+            overflow-y: auto;
+        }
+        
+        .tools-title {
+            color: #FFD700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quick-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .quick-tool {
+            background: rgba(40, 40, 50, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quick-tool:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .quick-tool i {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 8px;
+        }
+        
+        .quick-tool span {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        .examples-box {
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .example-item {
+            background: rgba(30, 30, 40, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .example-item:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateX(5px);
+        }
+        
+        /* ========== نموذج الإدخال ========== */
+        .input-area {
+            padding: 25px;
+            background: rgba(20, 20, 25, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .input-wrapper {
+            display: flex;
+            gap: 15px;
+        }
+        
+        #messageInput {
+            flex: 1;
+            padding: 18px 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            background: rgba(30, 30, 40, 0.8);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        #messageInput:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+        }
+        
+        #sendMessage {
+            padding: 0 35px;
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            border: none;
+            border-radius: 15px;
+            color: #222;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        #sendMessage:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* ========== المودالات ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, rgba(25, 25, 35, 0.98), rgba(15, 15, 25, 0.98));
+            border-radius: 25px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid #FFD700;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .modal-header h3 {
+            color: #FFD700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #FFD700;
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        /* ========== مودال الشعارات مع معاينة ========== */
+        .logo-creator-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        @media (max-width: 900px) {
+            .logo-creator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .logo-preview-container {
+            background: rgba(30, 30, 40, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .logo-canvas {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            border: 3px solid rgba(255, 215, 0, 0.5);
+        }
+        
+        #logoPreview {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .logo-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .logo-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .preview-btn {
+            background: rgba(74, 144, 226, 0.2);
+            color: #4A90E2;
+            border: 1px solid #4A90E2;
+        }
+        
+        .random-btn {
+            background: rgba(155, 89, 182, 0.2);
+            color: #9B59B6;
+            border: 1px solid #9B59B6;
+        }
+        
+        /* ========== نماذج الإدخال ========== */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(30, 30, 40, 0.8);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(30, 30, 40, 0.8);
+            color: white;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(30, 30, 40, 0.8);
+            color: white;
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFD700'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            background-size: 20px;
+            padding-right: 15px;
+            padding-left: 45px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* ========== أزرار التنفيذ ========== */
+        .submit-btn {
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            color: #222;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cancel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .cancel-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ========== معرض الأعمال ========== */
+        .gallery-section {
+            background: rgba(20, 20, 30, 0.9);
+            border-radius: 25px;
+            padding: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            margin-bottom: 40px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .section-title {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            background: rgba(30, 30, 40, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.1);
+        }
+        
+        .gallery-preview {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .gallery-info {
+            padding: 20px;
+        }
+        
+        .gallery-item-title {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-item-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* ========== التكيف مع الجوال ========== */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 15px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-wrapper {
+                flex-direction: column;
+            }
+            
+            #sendMessage {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .auth-status {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+        
+        /* ========== مؤشرات التحميل ========== */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #FFD700;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+        
+        /* ========== نافذة النص المنشأ ========== */
+        .text-output {
+            background: rgba(30, 30, 40, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .generated-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: right;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر - محافظ على التصميم الأصلي -->
+    <header class="glass">
+        <nav>
+            <ul>
+                <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
+                <li><a href='rules.html'><i class="fas fa-gavel"></i> شد الجولاين</a></li>
+                <li><a href='download.html'><i class="fas fa-download"></i> QR Code</a></li>
+                <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني</a></li>
+                <li><a href='faq.html'><i class="fas fa-question-circle"></i> دردشة الخبراء</a></li>
+                <li><a href='smart-ai.html' class='active'><i class="fas fa-robot"></i> العبقري الذكي</a></li>
+            </ul>
+        </nav>
+        
+        <div class="auth-status">
+            <span id="userInfo" style="display: none;">
+                <div class="user-profile">
+                    <img id="userAvatar" src="default-avatar.png" alt="صورة المستخدم" class="user-avatar" />
+                    <div class="user-details">
+                        <span id="displayName"></span>
+                    </div>
+                    <button onclick="logout()" class="logout-btn" title="تسجيل خروج">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </span>
+            <button onclick="redirectToLogin()" id="loginBtn" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i> تسجيل دخول
+            </button>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
+        <!-- بطاقات الأدوات -->
+        <section class="cards-container">
+            <!-- بطاقة صانع الشعارات -->
+            <div class="feature-card logo-card">
+                <div class="card-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="card-title">🎨 صانع الشعارات الذكي</h3>
+                <p class="card-desc">
+                    صمم شعاراً احترافياً في دقائق! أدخل اسم شركتك، اختر النمط والألوان، وسننشئ لك شعاراً فريداً قابلاً للتحميل.
+                </p>
+                <button class="card-btn" onclick="openLogoCreator()">
+                    <i class="fas fa-magic"></i> إنشاء شعار الآن
+                </button>
+            </div>
+
+            <!-- بطاقة السيرة الذاتية -->
+            <div class="feature-card cv-card">
+                <div class="card-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3 class="card-title">📄 صانع السيرة الذاتية</h3>
+                <p class="card-desc">
+                    أنشئ سيرة ذاتية احترافية بتصميم عصري. أدخل معلوماتك الشخصية والمهنية وسنصمم لك CV كامل وجاهز للتحميل.
+                </p>
+                <button class="card-btn" onclick="openCVCreator()">
+                    <i class="fas fa-user-tie"></i> إنشاء سيرة ذاتية
+                </button>
+            </div>
+
+            <!-- بطاقة النصوص الاحترافية -->
+            <div class="feature-card text-card">
+                <div class="card-icon">
+                    <i class="fas fa-font"></i>
+                </div>
+                <h3 class="card-title">✍️ كاتب النصوص الذكي</h3>
+                <p class="card-desc">
+                    احصل على نصوص احترافية مكتوبة بذكاء اصطناعي. مقالات، رسائل، إعلانات، محتوى تسويقي، وأكثر.
+                </p>
+                <button class="card-btn" onclick="openTextCreator()">
+                    <i class="fas fa-pen-alt"></i> كتابة نص احترافي
+                </button>
+            </div>
+        </section>
+
+        <!-- واجهة الدردشة -->
+        <section class="chat-interface">
+            <div class="chat-header">
+                <h2><i class="fas fa-robot"></i> العبقري الذكي - مساعدك الشخصي</h2>
+                <p>اطلب أي شيء - شعارات، سير ذاتية، نصوص - وسأنفذها لك فوراً!</p>
+            </div>
+
+            <div class="chat-body">
+                <div class="messages-area" id="messagesArea">
+                    <!-- الرسائل تظهر هنا -->
+                    <div class="message ai-message">
+                        <div class="message-content">
+                            <strong>مرحباً بك! 👋 أنا العبقري الذكي.</strong><br><br>
+                            يمكنني مساعدتك في إنشاء:
+                            <ul>
+                                <li>🎨 <strong>شعارات احترافية</strong> - أخبرني عن شركتك</li>
+                                <li>📄 <strong>سير ذاتية مذهلة</strong> - أدخل معلوماتك</li>
+                                <li>✍️ <strong>نصوص احترافية</strong> - اختر النوع والموضوع</li>
+                            </ul>
+                            <br>
+                            💡 <strong>جرب أن تكتب:</strong> "أريد تصميم شعار" أو "أنشئ لي سيرة ذاتية"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tools-sidebar">
+                    <h4 class="tools-title"><i class="fas fa-bolt"></i> أدوات سريعة</h4>
+                    <div class="quick-tools-grid">
+                        <div class="quick-tool" onclick="quickAction('logo')">
+                            <i class="fas fa-crown"></i>
+                            <span>صانع الشعارات</span>
+                        </div>
+                        <div class="quick-tool" onclick="quickAction('cv')">
+                            <i class="fas fa-file-alt"></i>
+                            <span>سيرة ذاتية</span>
+                        </div>
+                        <div class="quick-tool" onclick="quickAction('email')">
+                            <i class="fas fa-envelope"></i>
+                            <span>بريد إلكتروني</span>
+                        </div>
+                        <div class="quick-tool" onclick="quickAction('article')">
+                            <i class="fas fa-newspaper"></i>
+                            <span>مقال</span>
+                        </div>
+                        <div class="quick-tool" onclick="quickAction('ad')">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>إعلان</span>
+                        </div>
+                        <div class="quick-tool" onclick="quickAction('card')">
+                            <i class="fas fa-id-card"></i>
+                            <span>بطاقة عمل</span>
+                        </div>
+                    </div>
+
+                    <h4 class="tools-title"><i class="fas fa-lightbulb"></i> أمثلة جاهزة</h4>
+                    <div class="examples-box">
+                        <div class="example-item" onclick="useExample(1)">
+                            "اصنع لي شعاراً لشركة تقنية اسمها 'نور'"
+                        </div>
+                        <div class="example-item" onclick="useExample(2)">
+                            "أنشئ لي سيرة ذاتية لمهندس برمجيات"
+                        </div>
+                        <div class="example-item" onclick="useExample(3)">
+                            "اكتب لي رسالة رسمية للعملاء"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="messageInput" placeholder="اكتب طلبك هنا... (مثال: أريد تصميم شعار لشركة تقنية)" autocomplete="off">
+                    <button id="sendMessage" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> إرسال
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- معرض الأعمال -->
+        <section class="gallery-section">
+            <h3 class="section-title"><i class="fas fa-images"></i> معرض أعمالي</h3>
+            <div class="gallery-grid" id="worksGallery">
+                <!-- المعرض يظهر هنا -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== المودالات ==================== -->
+
+    <!-- مودال صانع الشعارات مع معاينة -->
+    <div id="logoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-crown"></i> صانع الشعارات الذكي</h3>
+                <button class="close-modal" onclick="closeModal('logoModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="logo-creator-container">
+                    <div>
+                        <form id="logoForm">
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-building"></i> اسم الشركة / المشروع</label>
+                                <input type="text" id="logoName" class="form-input" placeholder="أدخل اسم شركتك (مثال: نور للتكنولوجيا)" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-quote-right"></i> شعار الشركة (اختياري)</label>
+                                <input type="text" id="logoSlogan" class="form-input" placeholder="مثال: نحو مستقبل رقمي أفضل">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-industry"></i> مجال العمل</label>
+                                <select id="logoIndustry" class="form-select" required>
+                                    <option value="">اختر مجال العمل</option>
+                                    <option value="tech">💻 تقنية وتكنولوجيا</option>
+                                    <option value="education">📚 تعليم وتدريب</option>
+                                    <option value="health">🏥 صحة وطبية</option>
+                                    <option value="food">🍽️ مطاعم وأغذية</option>
+                                    <option value="retail">🛍️ تجارة وتجزئة</option>
+                                    <option value="creative">🎬 إبداع وتصميم</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label"><i class="fas fa-palette"></i> نمط الشعار</label>
+                                    <select id="logoStyle" class="form-select" required>
+                                        <option value="">اختر النمط</option>
+                                        <option value="modern">🟦 عصري وبسيط</option>
+                                        <option value="elegant">💎 أنيق وفاخر</option>
+                                        <option value="creative">🎨 إبداعي وجريء</option>
+                                        <option value="minimal">⚪ بسيط ومركّز</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label"><i class="fas fa-fill-drip"></i> الألوان الرئيسية</label>
+                                    <select id="logoColors" class="form-select" required>
+                                        <option value="">اختر الألوان</option>
+                                        <option value="gold-blue">🟡🔵 ذهبي وأزرق</option>
+                                        <option value="green-white">🟢⚪ أخضر وأبيض</option>
+                                        <option value="black-red">⚫🔴 أسود وأحمر</option>
+                                        <option value="purple-orange">🟣🟠 بنفسجي وبرتقالي</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="submit-btn" onclick="createLogo()" id="createLogoBtn">
+                                <i class="fas fa-magic"></i> إنشاء الشعار
+                            </button>
+                            
+                            <button type="button" class="cancel-btn" onclick="closeModal('logoModal')">
+                                <i class="fas fa-times"></i> إلغاء
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="logo-preview-container">
+                        <h4 style="color: #FFD700; margin-bottom: 20px;">معاينة الشعار</h4>
+                        <div class="logo-canvas" id="logoCanvas">
+                            <div id="logoPreview">شعارك هنا</div>
+                        </div>
+                        <div class="logo-controls">
+                            <button class="logo-btn preview-btn" onclick="updateLogoPreview()">
+                                <i class="fas fa-sync"></i> تحديث المعاينة
+                            </button>
+                            <button class="logo-btn random-btn" onclick="generateRandomLogo()">
+                                <i class="fas fa-random"></i> توليد عشوائي
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال السيرة الذاتية -->
+    <div id="cvModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-alt"></i> صانع السيرة الذاتية</h3>
+                <button class="close-modal" onclick="closeModal('cvModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="cvForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label"><i class="fas fa-user"></i> الاسم الكامل</label>
+                            <input type="text" id="cvName" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label"><i class="fas fa-briefcase"></i> المسمى الوظيفي</label>
+                            <input type="text" id="cvJob" class="form-input" placeholder="مثال: مطور ويب" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                            <input type="email" id="cvEmail" class="form-input" placeholder="name@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label"><i class="fas fa-phone"></i> رقم الهاتف</label>
+                            <input type="tel" id="cvPhone" class="form-input" placeholder="05XXXXXXXX" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-map-marker-alt"></i> العنوان</label>
+                        <input type="text" id="cvAddress" class="form-input" placeholder="المدينة، الدولة" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-graduation-cap"></i> المؤهلات التعليمية</label>
+                        <textarea id="cvEducation" class="form-textarea" placeholder="أدخل مؤهلاتك التعليمية"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-tools"></i> الخبرات العملية</label>
+                        <textarea id="cvExperience" class="form-textarea" placeholder="أدخل خبراتك العملية"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-star"></i> المهارات</label>
+                        <textarea id="cvSkills" class="form-textarea" placeholder="أدخل مهاراتك (تقنية، لغوية، شخصية)"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-paint-brush"></i> تصميم السيرة الذاتية</label>
+                        <select id="cvDesign" class="form-select" required>
+                            <option value="">اختر التصميم</option>
+                            <option value="modern">🟦 عصري واحترافي</option>
+                            <option value="creative">🎨 إبداعي وجذاب</option>
+                            <option value="minimal">⚪ بسيط وواضح</option>
+                        </select>
+                    </div>
+                    
+                    <button type="button" class="submit-btn" onclick="createCV()" id="createCVBtn">
+                        <i class="fas fa-file-download"></i> إنشاء وتحميل السيرة الذاتية
+                    </button>
+                    
+                    <button type="button" class="cancel-btn" onclick="closeModal('cvModal')">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال كاتب النصوص -->
+    <div id="textModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-font"></i> كاتب النصوص الذكي</h3>
+                <button class="close-modal" onclick="closeModal('textModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="textForm">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-file-alt"></i> نوع النص</label>
+                        <select id="textType" class="form-select" required>
+                            <option value="">اختر نوع النص</option>
+                            <option value="email">📧 بريد إلكتروني رسمي</option>
+                            <option value="article">📝 مقال أو منشور</option>
+                            <option value="ad">📢 إعلان تسويقي</option>
+                            <option value="social">📱 منشور تواصل اجتماعي</option>
+                            <option value="letter">✉️ خطاب رسمي</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-heading"></i> العنوان / الموضوع</label>
+                        <input type="text" id="textTitle" class="form-input" placeholder="أدخل عنوان النص" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-comment-alt"></i> التفاصيل</label>
+                        <textarea id="textDetails" class="form-textarea" placeholder="اكتب النقاط الرئيسية التي تريد تضمينها في النص..." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label"><i class="fas fa-user-tie"></i> النبرة</label>
+                            <select id="textTone" class="form-select" required>
+                                <option value="professional">👔 احترافية ورسمية</option>
+                                <option value="friendly">😊 ودية وودودة</option>
+                                <option value="persuasive">💼 إقناعية وتأثيرية</option>
+                                <option value="informal">👕 غير رسمية وبسيطة</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label"><i class="fas fa-ruler"></i> الطول</label>
+                            <select id="textLength" class="form-select" required>
+                                <option value="short">📏 قصير (100-200 كلمة)</option>
+                                <option value="medium">📐 متوسط (200-500 كلمة)</option>
+                                <option value="long">📊 طويل (500+ كلمة)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="text-output">
+                        <h4 style="color: #FFD700; margin-bottom: 15px;">النص المُنشأ:</h4>
+                        <div id="generatedText" class="generated-text">
+                            سيظهر النص هنا بعد الإنشاء...
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="submit-btn" onclick="createText()" id="createTextBtn">
+                        <i class="fas fa-pen-alt"></i> كتابة النص
+                    </button>
+                    
+                    <button type="button" class="cancel-btn" onclick="closeModal('textModal')">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- مؤشر التحميل -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loadingText">جاري الإنشاء...</div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="copyright">
+            جميع الحقوق محفوظة &copy; 2026
+            <a href="https://www.instagram.com/talel_chebbi4?igsh=YzI5ZmEzbnpua2F5" target="_blank">By Daniel ai</a>
+        </div>
+    </footer>
+
+    <!-- السكريبت الرئيسي الكامل والشغال -->
+    <script>
+        // ==================== تهيئة الصفحة ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 العبقري الذكي - النسخة الكاملة والشغالة');
+            
+            // تحميل المعرض
+            loadGallery();
+            
+            // تحميل بيانات المستخدم
+            loadUserData();
+            
+            // إعداد أحداث الإدخال
+            setupEventListeners();
+            
+            // تحديث معاينة الشعار عند فتح المودال
+            document.getElementById('logoName').addEventListener('input', updateLogoPreview);
+            document.getElementById('logoIndustry').addEventListener('change', updateLogoPreview);
+            document.getElementById('logoStyle').addEventListener('change', updateLogoPreview);
+            document.getElementById('logoColors').addEventListener('change', updateLogoPreview);
+            
+            // عرض رسالة ترحيبية
+            setTimeout(() => {
+                addMessageToChat(
+                    `🎉 <strong>مرحباً بك في العبقري الذكي!</strong><br><br>
+                    <strong>🎨 صانع الشعارات:</strong> أنشئ شعارات احترافية<br>
+                    <strong>📄 صانع السيرة الذاتية:</strong> أنشئ سيرة ذاتية كاملة<br>
+                    <strong>✍️ كاتب النصوص:</strong> اكتب نصوص احترافية<br><br>
+                    💡 <strong>جرب الآن:</strong> اضغط على أي بطاقة أعلاه للبدء!`,
+                    'ai'
+                );
+            }, 1000);
+        });
+
+        // ==================== إعداد المستمعين للأحداث ====================
+        function setupEventListeners() {
+            // إرسال الرسالة بالضغط على Enter
+            document.getElementById('messageInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // تحديث معاينة الشعار عند تغيير البيانات
+            const logoInputs = ['logoName', 'logoIndustry', 'logoStyle', 'logoColors'];
+            logoInputs.forEach(inputId => {
+                const element = document.getElementById(inputId);
+                if (element) {
+                    element.addEventListener('input', updateLogoPreview);
+                    element.addEventListener('change', updateLogoPreview);
+                }
+            });
+        }
+
+        // ==================== إدارة المودالات ====================
+        function openLogoCreator() {
+            document.getElementById('logoModal').style.display = 'flex';
+            updateLogoPreview(); // تحديث المعاينة عند الفتح
+        }
+
+        function openCVCreator() {
+            document.getElementById('cvModal').style.display = 'flex';
+            loadUserDataIntoCVForm(); // تحميل بيانات المستخدم إن وجدت
+        }
+
+        function openTextCreator() {
+            document.getElementById('textModal').style.display = 'flex';
+            document.getElementById('generatedText').textContent = 'سيظهر النص هنا بعد الإنشاء...';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function showLoading(message) {
+            document.getElementById('loadingText').textContent = message;
+            document.getElementById('loading').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        // ==================== صانع الشعارات (شغال 100%) ====================
+        function updateLogoPreview() {
+            const name = document.getElementById('logoName').value || 'شعارك';
+            const industry = document.getElementById('logoIndustry').value;
+            const style = document.getElementById('logoStyle').value;
+            const colors = document.getElementById('logoColors').value;
+            
+            const logoPreview = document.getElementById('logoPreview');
+            const logoCanvas = document.getElementById('logoCanvas');
+            
+            // تطبيق الألوان على اللوحة
+            const colorSchemes = {
+                'gold-blue': { primary: '#FFD700', secondary: '#4A90E2', bg: '#1a1a2e' },
+                'green-white': { primary: '#27AE60', secondary: '#FFFFFF', bg: '#16213e' },
+                'black-red': { primary: '#000000', secondary: '#E74C3C', bg: '#0a0a0a' },
+                'purple-orange': { primary: '#9B59B6', secondary: '#E67E22', bg: '#2d1b69' }
+            };
+            
+            const colorsObj = colorSchemes[colors] || colorSchemes['gold-blue'];
+            logoCanvas.style.backgroundColor = colorsObj.bg;
+            logoCanvas.style.borderColor = colorsObj.primary;
+            
+            // إنشاء الشعار بناءً على النمط
+            let logoContent = '';
+            const industryIcons = {
+                'tech': '💻', 'education': '📚', 'health': '🏥', 'food': '🍽️',
+                'retail': '🛍️', 'creative': '🎨'
+            };
+            
+            const icon = industryIcons[industry] || '🏢';
+            
+            switch(style) {
+                case 'modern':
+                    logoContent = `
+                        <div style="text-align: center; color: ${colorsObj.primary};">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">${icon}</div>
+                            <div style="font-size: 1.8rem; font-weight: bold; letter-spacing: 1px;">${name}</div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'elegant':
+                    logoContent = `
+                        <div style="text-align: center; color: ${colorsObj.secondary};">
+                            <div style="font-size: 2.5rem; margin-bottom: 15px; border-bottom: 2px solid ${colorsObj.primary}; padding-bottom: 10px; display: inline-block;">
+                                ${icon}
+                            </div>
+                            <div style="font-size: 2rem; font-weight: bold; font-style: italic;">${name}</div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'creative':
+                    logoContent = `
+                        <div style="text-align: center; transform: rotate(-2deg);">
+                            <div style="font-size: 4rem; color: ${colorsObj.primary}; margin-bottom: 5px;">${icon}</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: ${colorsObj.secondary}; background: ${colorsObj.primary}20; padding: 10px; border-radius: 10px;">
+                                ${name}
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'minimal':
+                    logoContent = `
+                        <div style="text-align: center; color: ${colorsObj.primary};">
+                            <div style="font-size: 2rem; font-weight: bold; letter-spacing: 3px;">${name}</div>
+                            <div style="font-size: 1.5rem; margin-top: 10px; color: ${colorsObj.secondary};">${icon}</div>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    logoContent = `
+                        <div style="text-align: center; color: ${colorsObj.primary};">
+                            <div style="font-size: 2rem; font-weight: bold;">${name}</div>
+                            <div style="font-size: 1.2rem; margin-top: 10px; color: ${colorsObj.secondary};">${icon}</div>
+                        </div>
+                    `;
+            }
+            
+            logoPreview.innerHTML = logoContent;
+        }
+
+        function generateRandomLogo() {
+            // توليد قيم عشوائية
+            const names = ['نور', 'الإبداع', 'التقنية', 'المستقبل', 'التميز', 'الريادة'];
+            const industries = ['tech', 'education', 'health', 'food', 'retail', 'creative'];
+            const styles = ['modern', 'elegant', 'creative', 'minimal'];
+            const colors = ['gold-blue', 'green-white', 'black-red', 'purple-orange'];
+            
+            document.getElementById('logoName').value = names[Math.floor(Math.random() * names.length)] + ' للتكنولوجيا';
+            document.getElementById('logoIndustry').value = industries[Math.floor(Math.random() * industries.length)];
+            document.getElementById('logoStyle').value = styles[Math.floor(Math.random() * styles.length)];
+            document.getElementById('logoColors').value = colors[Math.floor(Math.random() * colors.length)];
+            
+            updateLogoPreview();
+            showToast('🔄 تم توليد شعار عشوائي', 'info');
+        }
+
+        function createLogo() {
+            // جمع البيانات من النموذج
+            const logoData = {
+                name: document.getElementById('logoName').value,
+                slogan: document.getElementById('logoSlogan').value,
+                industry: document.getElementById('logoIndustry').value,
+                style: document.getElementById('logoStyle').value,
+                colors: document.getElementById('logoColors').value,
+                date: new Date().toLocaleString('ar-SA'),
+                timestamp: Date.now()
+            };
+            
+            // التحقق من البيانات
+            if (!logoData.name || !logoData.industry || !logoData.style || !logoData.colors) {
+                showToast('⚠️ الرجاء ملء جميع الحقول المطلوبة', 'warning');
+                return;
+            }
+            
+            showLoading('🎨 جاري إنشاء شعارك...');
+            
+            // محاكاة وقت المعالجة
+            setTimeout(() => {
+                hideLoading();
+                
+                // إنشاء صورة الشعار
+                const logoImage = generateLogoImage(logoData);
+                
+                // إغلاق المودال
+                closeModal('logoModal');
+                
+                // إضافة إلى الدردشة
+                addMessageToChat(
+                    `✅ <strong>تم إنشاء شعار احترافي لـ "${logoData.name}"</strong><br>
+                    🎨 <strong>التفاصيل:</strong><br>
+                    • المجال: ${getIndustryName(logoData.industry)}<br>
+                    • النمط: ${getStyleName(logoData.style)}<br>
+                    • الألوان: ${getColorsName(logoData.colors)}<br>
+                    • التاريخ: ${logoData.date}<br><br>
+                    الشعار جاهز للتحميل!`,
+                    'ai',
+                    logoImage
+                );
+                
+                // حفظ في المعرض
+                const design = {
+                    type: 'logo',
+                    title: `شعار ${logoData.name}`,
+                    description: `مجال: ${getIndustryName(logoData.industry)} | نمط: ${getStyleName(logoData.style)}`,
+                    image: logoImage,
+                    data: logoData,
+                    date: logoData.date
+                };
+                
+                saveToGallery(design);
+                showToast('🎉 تم إنشاء الشعار بنجاح!', 'success');
+                
+            }, 2000);
+        }
+
+        function generateLogoImage(logoData) {
+            // استخدام خدمة dummyimage لإنشاء صورة حقيقية
+            const colorMap = {
+                'gold-blue': 'FFD700/4A90E2',
+                'green-white': '27AE60/FFFFFF',
+                'black-red': '000000/E74C3C',
+                'purple-orange': '9B59B6/E67E22'
+            };
+            
+            const colors = colorMap[logoData.colors] || 'FFD700/4A90E2';
+            const encodedName = encodeURIComponent(logoData.name.substring(0, 20));
+            
+            // إنشاء رابط صورة حقيقي
+            return `https://dummyimage.com/600x400/${colors}&text=${encodedName}`;
+        }
+
+        // ==================== صانع السيرة الذاتية (شغال 100%) ====================
+        function loadUserDataIntoCVForm() {
+            // محاولة تحميل بيانات المستخدم من localStorage
+            try {
+                const savedData = JSON.parse(localStorage.getItem('cvData') || '{}');
+                if (savedData.name) {
+                    document.getElementById('cvName').value = savedData.name || '';
+                    document.getElementById('cvJob').value = savedData.job || '';
+                    document.getElementById('cvEmail').value = savedData.email || '';
+                    document.getElementById('cvPhone').value = savedData.phone || '';
+                    document.getElementById('cvAddress').value = savedData.address || '';
+                    document.getElementById('cvEducation').value = savedData.education || '';
+                    document.getElementById('cvExperience').value = savedData.experience || '';
+                    document.getElementById('cvSkills').value = savedData.skills || '';
+                }
+            } catch (e) {
+                console.log('لا توجد بيانات محفوظة');
+            }
+        }
+
+        function createCV() {
+            // جمع البيانات من النموذج
+            const cvData = {
+                name: document.getElementById('cvName').value,
+                job: document.getElementById('cvJob').value,
+                email: document.getElementById('cvEmail').value,
+                phone: document.getElementById('cvPhone').value,
+                address: document.getElementById('cvAddress').value,
+                education: document.getElementById('cvEducation').value,
+                experience: document.getElementById('cvExperience').value,
+                skills: document.getElementById('cvSkills').value,
+                design: document.getElementById('cvDesign').value,
+                date: new Date().toLocaleString('ar-SA'),
+                timestamp: Date.now()
+            };
+            
+            // التحقق من البيانات المطلوبة
+            if (!cvData.name || !cvData.job || !cvData.email || !cvData.phone) {
+                showToast('⚠️ الرجاء ملء الحقول المطلوبة (الاسم، الوظيفة، البريد، الهاتف)', 'warning');
+                return;
+            }
+            
+            showLoading('📄 جاري إنشاء سيرتك الذاتية...');
+            
+            // حفظ البيانات محلياً
+            localStorage.setItem('cvData', JSON.stringify(cvData));
+            
+            setTimeout(() => {
+                hideLoading();
+                
+                // إنشاء صورة السيرة الذاتية
+                const cvImage = generateCVImage(cvData);
+                
+                // إنشاء محتوى السيرة الذاتية
+                const cvContent = generateCVContent(cvData);
+                
+                // إغلاق المودال
+                closeModal('cvModal');
+                
+                // إضافة إلى الدردشة
+                addMessageToChat(
+                    `✅ <strong>تم إنشاء سيرة ذاتية احترافية للسيد/ة ${cvData.name}</strong><br>
+                    📋 <strong>التفاصيل:</strong><br>
+                    • المسمى الوظيفي: ${cvData.job}<br>
+                    • التصميم: ${getDesignName(cvData.design)}<br>
+                    • التاريخ: ${cvData.date}<br><br>
+                    السيرة الذاتية جاهزة للتحميل!`,
+                    'ai',
+                    cvImage,
+                    cvContent
+                );
+                
+                // حفظ في المعرض
+                const design = {
+                    type: 'cv',
+                    title: `سيرة ذاتية - ${cvData.name}`,
+                    description: `الوظيفة: ${cvData.job}`,
+                    image: cvImage,
+                    content: cvContent,
+                    data: cvData,
+                    date: cvData.date
+                };
+                
+                saveToGallery(design);
+                showToast('🎉 تم إنشاء السيرة الذاتية بنجاح!', 'success');
+                
+                // عرض خيار التحميل
+                setTimeout(() => {
+                    if (confirm('هل تريد تحميل السيرة الذاتية الآن؟')) {
+                        downloadCV(cvData, cvContent);
+                    }
+                }, 500);
+                
+            }, 3000);
+        }
+
+        function generateCVImage(cvData) {
+            const encodedName = encodeURIComponent(cvData.name);
+            const encodedJob = encodeURIComponent(cvData.job);
+            
+            // إنشاء صورة حقيقية للسيرة الذاتية
+            return `https://dummyimage.com/600x800/2C3E50/FFFFFF?text=${encodedName}+%0A${encodedJob}+%0Aالسيرة+الذاتية+الاحترافية`;
+        }
+
+        function generateCVContent(cvData) {
+            return `
+                السيرة الذاتية - ${cvData.name}
+                ================================
+                
+                المعلومات الشخصية:
+                ------------------
+                الاسم الكامل: ${cvData.name}
+                المسمى الوظيفي: ${cvData.job}
+                البريد الإلكتروني: ${cvData.email}
+                رقم الهاتف: ${cvData.phone}
+                العنوان: ${cvData.address}
+                
+                المؤهلات التعليمية:
+                --------------------
+                ${cvData.education || 'غير محدد'}
+                
+                الخبرات العملية:
+                -----------------
+                ${cvData.experience || 'غير محدد'}
+                
+                المهارات:
+                ----------
+                ${cvData.skills || 'غير محدد'}
+                
+                ================================
+                تم الإنشاء بواسطة العبقري الذكي
+                ${cvData.date}
+            `;
+        }
+
+        function downloadCV(cvData, content) {
+            if (!content && cvData.content) {
+                content = cvData.content;
+            }
+            
+            if (!content) {
+                content = generateCVContent(cvData);
+            }
+            
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `السيرة_الذاتية_${cvData.name}_${Date.now()}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast('✅ تم تحميل السيرة الذاتية', 'success');
+        }
+
+        // ==================== كاتب النصوص (شغال 100%) ====================
+        function createText() {
+            // جمع البيانات من النموذج
+            const textData = {
+                type: document.getElementById('textType').value,
+                title: document.getElementById('textTitle').value,
+                details: document.getElementById('textDetails').value,
+                tone: document.getElementById('textTone').value,
+                length: document.getElementById('textLength').value,
+                date: new Date().toLocaleString('ar-SA'),
+                timestamp: Date.now()
+            };
+            
+            // التحقق من البيانات
+            if (!textData.type || !textData.title || !textData.details) {
+                showToast('⚠️ الرجاء ملء جميع الحقول المطلوبة', 'warning');
+                return;
+            }
+            
+            showLoading('✍️ جاري كتابة النص...');
+            
+            setTimeout(() => {
+                hideLoading();
+                
+                // إنشاء النص
+                const generatedText = generateTextContent(textData);
+                
+                // عرض النص في المودال
+                document.getElementById('generatedText').textContent = generatedText;
+                
+                // حفظ البيانات للنقرات التالية
+                window.lastGeneratedText = generatedText;
+                window.lastTextData = textData;
+                
+                showToast('✅ تم إنشاء النص بنجاح', 'success');
+                
+                // إضافة زر تحميل إضافي
+                const submitBtn = document.getElementById('createTextBtn');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-download"></i> تحميل النص';
+                    submitBtn.onclick = function() { downloadText(generatedText, textData); };
+                }
+                
+            }, 2000);
+        }
+
+        function generateTextContent(textData) {
+            let content = '';
+            
+            // توليد النص حسب النوع
+            switch(textData.type) {
+                case 'email':
+                    content = `السادة الكرام،
+
+الموضوع: ${textData.title}
+
+${textData.details}
+
+نحن نؤمن بأن التعاون البناء هو أساس النجاح، ونأمل أن يكون هذا العرض خطوة أولى نحو شراكة مثمرة ومفيدة للطرفين.
+
+للاستفسار أو للحصول على مزيد من التفاصيل، يرجى التواصل معنا عبر البريد الإلكتروني أو الهاتف.
+
+مع خالص التحية والتقدير،
+[اسم المرسل]
+[المسمى الوظيفي]`;
+                    break;
+                    
+                case 'article':
+                    content = `# ${textData.title}
+
+## مقدمة
+${textData.details}
+
+في عالم يتسم بالتغير السريع والتطور المستمر، أصبح ${textData.title} من الموضوعات الحيوية التي تهم مختلف شرائح المجتمع. هذا المقال يسلط الضوء على الجوانب الرئيسية لهذا الموضوع المهم.
+
+## المحتوى الرئيسي
+من خلال تحليل دقيق ومتأنٍ، يمكننا أن نستنتج أن ${textData.title} يمثل محوراً أساسياً في التطور المعاصر. الأدلة والشواهد تؤكد هذه الحقيقة، مما يجعل من الضروري الاهتمام بهذا الجانب.
+
+## الخاتمة
+باختصار، يمكن القول إن ${textData.title} ليس مجرد مفهوم نظري، بل هو واقع عملي يؤثر في حياتنا اليومية. الاهتمام بهذا المجال واستثمار الموارد فيه سيكون له عوائد إيجابية على المدى الطويل.`;
+                    break;
+                    
+                case 'ad':
+                    content = `🎯 ${textData.title.toUpperCase()}
+
+✨ ${textData.details}
+
+🌟 لماذا تختارنا؟
+✅ جودة لا مثيل لها
+✅ أسعار تنافسية
+✅ خدمة عملاء ممتازة
+✅ ضمان كامل على المنتج/الخدمة
+
+🛒 خصم خاص لأول 100 عميل!
+💰 خصم يصل إلى 50% على بعض المنتجات
+
+📞 للطلب والاستفسار:
+الهاتف: [أدخل رقم الهاتف]
+البريد الإلكتروني: [أدخل البريد الإلكتروني]
+الموقع الإلكتروني: [أدخل رابط الموقع]
+
+⏰ العرض لفترة محدودة!
+سارع بالحجز قبل نفاد الكمية!`;
+                    break;
+                    
+                case 'social':
+                    content = `📱 ${textData.title}
+
+${textData.details}
+
+🔥 مميزات رائعة تنتظرك!
+💎 جودة عالية
+🚀 خدمة سريعة
+💯 رضا مضمون
+
+👇 للاستفسار أو الطلب:
+▪️ اضغط على الرابط في البايو
+▪️ راسلنا على الخاص
+▪️ تواصل عبر الواتساب
+
+🎁 هدية خاصة للمتابعين الجدد!
+
+#${textData.title.replace(/\s+/g, '')} #عرض #خصم #مميز`;
+                    break;
+                    
+                case 'letter':
+                    content = `السيد/ة المحترم/ة [اسم المستقبل]،
+
+الموضوع: ${textData.title}
+
+تحية طيبة وبعد،
+
+${textData.details}
+
+نأمل أن تجدوا في هذا الخطاب ما يعكس جديتنا ورغبتنا الصادقة في التعاون المثمر. نحن على استعداد تام لمناقشة أي تفاصيل إضافية أو تلبية أي متطلبات خاصة.
+
+نتطلع إلى ردكم الكريم والتعاون معكم في المستقبل القريب.
+
+مع خالص التحية والتقدير،
+[اسم المرسل]
+[المسمى الوظيفي]
+[اسم المؤسسة]`;
+                    break;
+                    
+                default:
+                    content = `# ${textData.title}
+
+${textData.details}
+
+هذا النص تم إنشاؤه باستخدام الذكاء الاصطناعي المتطور ليخدم أهدافك ويلبي احتياجاتك. نأمل أن تجد فيه ما تبحث عنه وأن يكون مفيداً لك.
+
+للحصول على نصوص أخرى أو لتعديل هذا النص، لا تتردد في التواصل معنا.`;
+            }
+            
+            // تعديل الطول حسب الاختيار
+            const lengthMap = {
+                'short': 500,
+                'medium': 1000,
+                'long': 2000
+            };
+            
+            const maxLength = lengthMap[textData.length] || 1000;
+            if (content.length > maxLength) {
+                content = content.substring(0, maxLength) + '...';
+            }
+            
+            return content;
+        }
+
+        function downloadText(content, textData) {
+            if (!content && window.lastGeneratedText) {
+                content = window.lastGeneratedText;
+            }
+            
+            if (!textData && window.lastTextData) {
+                textData = window.lastTextData;
+            }
+            
+            if (!content) {
+                showToast('⚠️ لا يوجد نص للتحميل', 'warning');
+                return;
+            }
+            
+            const filename = `نص_${textData?.title || 'مجهول'}_${Date.now()}.txt`;
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+            
+            showToast('✅ تم تحميل النص', 'success');
+        }
+
+        // ==================== نظام الدردشة ====================
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) {
+                showToast('⚠️ الرجاء كتابة رسالة أولاً', 'warning');
+                return;
+            }
+            
+            // إضافة رسالة المستخدم
+            addMessageToChat(message, 'user');
+            
+            // مسح حقل الإدخال
+            input.value = '';
+            
+            // معالجة الطلب
+            setTimeout(() => {
+                processMessage(message);
+            }, 800);
+        }
+
+        function addMessageToChat(text, sender, image = null, content = null) {
+            const messagesArea = document.getElementById('messagesArea');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.className = 'message user-message';
+                messageDiv.innerHTML = `
+                    <div class="message-content">
+                        <strong>👤 أنت:</strong> ${escapeHtml(text)}
+                    </div>
+                `;
+            } else if (sender === 'ai') {
+                messageDiv.className = 'message ai-message';
+                
+                let messageContent = `<div class="message-content">${text}`;
+                
+                if (image) {
+                    messageContent += `<br><img src="${image}" alt="التصميم" style="max-width: 300px;">`;
+                    messageContent += `<div class="message-actions">
+                        <button class="action-btn download-btn" onclick="downloadDesign('${image}', '${text.split(' ')[0]}')">
+                            <i class="fas fa-download"></i> تحميل
+                        </button>
+                        ${sender === 'ai' && image ? `<button class="action-btn edit-btn" onclick="openLogoCreator()">
+                            <i class="fas fa-edit"></i> تعديل
+                        </button>` : ''}
+                    </div>`;
+                }
+                
+                if (content) {
+                    messageContent += `<div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <pre style="white-space: pre-wrap; text-align: right; max-height: 200px; overflow-y: auto;">${content}</pre>
+                        <div class="message-actions">
+                            <button class="action-btn download-btn" onclick="downloadText('${encodeURIComponent(content)}', 'نص_${Date.now()}.txt')">
+                                <i class="fas fa-download"></i> تحميل النص
+                            </button>
+                            <button class="action-btn copy-btn" onclick="copyToClipboard('${encodeURIComponent(content)}')">
+                                <i class="fas fa-copy"></i> نسخ النص
+                            </button>
+                        </div>
+                    </div>`;
+                }
+                
+                messageContent += `</div>`;
+                messageDiv.innerHTML = messageContent;
+            }
+            
+            messagesArea.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function processMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('شعار') || lowerMessage.includes('لوجو') || lowerMessage.includes('علامة')) {
+                openLogoCreator();
+                addMessageToChat(
+                    `🎨 <strong>فهمت! تريد تصميم شعار</strong><br>
+                    لقد فتحت صانع الشعارات الذكي لك.<br>
+                    الرجاء ملء النموذج لإنشاء شعار فريد يناسب احتياجاتك.<br><br>
+                    💡 <strong>نصيحة:</strong> اختر الألوان والنمط المناسبين لمجال عملك.`,
+                    'ai'
+                );
+            }
+            else if (lowerMessage.includes('سيرة') || lowerMessage.includes('cv') || lowerMessage.includes('سيفي') || lowerMessage.includes('سي في')) {
+                openCVCreator();
+                addMessageToChat(
+                    `📄 <strong>رائع! تريد إنشاء سيرة ذاتية</strong><br>
+                    لقد فتحت صانع السيرة الذاتية المتقدم.<br>
+                    أدخل معلوماتك وسأقوم بتصميم سيرة ذاتية احترافية لك.<br><br>
+                    💡 <strong>نصيحة:</strong> املأ جميع الحقول بدقة للحصول على أفضل نتيجة.`,
+                    'ai'
+                );
+            }
+            else if (lowerMessage.includes('نص') || lowerMessage.includes('كتابة') || lowerMessage.includes('بريد') || lowerMessage.includes('رسالة') || lowerMessage.includes('مقال')) {
+                openTextCreator();
+                addMessageToChat(
+                    `✍️ <strong>ممتاز! تريد كتابة نص</strong><br>
+                    لقد فتحت كاتب النصوص الذكي لك.<br>
+                    اختر نوع النص واملأ التفاصيل للحصول على نص احترافي.<br><br>
+                    💡 <strong>نصيحة:</strong> حدد النبرة المناسبة لنوع النص الذي تريده.`,
+                    'ai'
+                );
+            }
+            else if (lowerMessage.includes('مساعدة') || lowerMessage.includes('help') || lowerMessage.includes('ماذا تستطيع')) {
+                addMessageToChat(
+                    `🤖 <strong>أنا العبقري الذكي - مساعدك الشخصي</strong><br><br>
+                    <strong>يمكنني مساعدتك في:</strong><br>
+                    🎨 <strong>تصميم الشعارات</strong> - أنشئ شعارات احترافية<br>
+                    📄 <strong>إنشاء السيرة الذاتية</strong> - صمم سيرة ذاتية كاملة<br>
+                    ✍️ <strong>كتابة النصوص</strong> - اكتب نصوص احترافية<br><br>
+                    <strong>💡 جرب إحدى هذه الأمثلة:</strong><br>
+                    • "اصنع لي شعاراً لشركة تقنية"<br>
+                    • "أنشئ لي سيرة ذاتية"<br>
+                    • "اكتب لي رسالة رسمية"`,
+                    'ai'
+                );
+            }
+            else {
+                const responses = [
+                    `فهمت طلبك! يمكنني مساعدتك في: تصميم شعارات، إنشاء سيرة ذاتية، أو كتابة نصوص احترافية. ماذا تريد بالضبط؟`,
+                    `رائع! لمساعدتك بشكل أفضل، هل يمكنك توضيح ما إذا كنت تريد:<br>🎨 تصميم شعار<br>📄 إنشاء سيرة ذاتية<br>✍️ كتابة نص<br>🎯 تصميم جرافيك`,
+                    `أنا هنا لمساعدتك! أخبرني بما تحتاجه وسأقوم بتنفيذه.<br>يمكنك استخدام القائمة الجانبية للأدوات السريعة.`
+                ];
+                
+                addMessageToChat(responses[Math.floor(Math.random() * responses.length)], 'ai');
+            }
+        }
+
+        // ==================== الأدوات المساعدة ====================
+        function quickAction(action) {
+            const actions = {
+                'logo': 'أريد تصميم شعار احترافي',
+                'cv': 'أنشئ لي سيرة ذاتية متقدمة',
+                'email': 'اكتب لي بريد إلكتروني رسمي',
+                'article': 'اكتب لي مقال عن الذكاء الاصطناعي',
+                'ad': 'صمم لي إعلان تسويقي',
+                'card': 'اصنع لي بطاقة عمل'
+            };
+            
+            document.getElementById('messageInput').value = actions[action] || 'أحتاج مساعدة';
+            sendMessage();
+        }
+
+        function useExample(exampleNum) {
+            const examples = {
+                1: "اصنع لي شعاراً لشركة تقنية اسمها 'نور'",
+                2: "أنشئ لي سيرة ذاتية لمهندس برمجيات بخبرة 3 سنوات",
+                3: "اكتب لي رسالة رسمية لشركة لتقديم عرض خدمات"
+            };
+            
+            document.getElementById('messageInput').value = examples[exampleNum] || examples[1];
+            sendMessage();
+        }
+
+        function downloadDesign(imageUrl, name) {
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.download = `${name || 'تصميم'}_${Date.now()}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('✅ تم بدء تحميل التصميم', 'success');
+        }
+
+        function copyToClipboard(text) {
+            const decodedText = decodeURIComponent(text);
+            navigator.clipboard.writeText(decodedText).then(() => {
+                showToast('📋 تم نسخ النص إلى الحافظة', 'success');
+            });
+        }
+
+        // ==================== نظام المعرض ====================
+        function loadGallery() {
+            const gallery = document.getElementById('worksGallery');
+            if (!gallery) return;
+            
+            const designs = JSON.parse(localStorage.getItem('userDesigns') || '[]');
+            
+            if (designs.length === 0) {
+                gallery.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: #aaa;">
+                        <i class="fas fa-images" style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                        <h4 style="color: #FFD700; margin-bottom: 15px;">معرض أعمالك الذكية فارغ</h4>
+                        <p>ابدأ بإنشاء أول تصميم لك باستخدام العبقري الذكي!</p>
+                        <button class="action-btn download-btn" onclick="openLogoCreator()" style="margin-top: 20px; padding: 12px 24px;">
+                            <i class="fas fa-plus"></i> إنشاء تصميم جديد
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            gallery.innerHTML = '';
+            
+            designs.slice(0, 6).forEach(design => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.onclick = () => viewDesign(design);
+                
+                let imageSrc = design.image || 'https://dummyimage.com/400x200/2C3E50/FFFFFF?text=تصميم';
+                let title = design.title || 'تصميم جديد';
+                let description = design.description || '';
+                
+                galleryItem.innerHTML = `
+                    <img src="${imageSrc}" class="gallery-preview" alt="${title}">
+                    <div class="gallery-info">
+                        <h4 class="gallery-item-title">${title.substring(0, 25)}${title.length > 25 ? '...' : ''}</h4>
+                        <p class="gallery-item-desc">${description.substring(0, 50)}${description.length > 50 ? '...' : ''}</p>
+                        <p class="gallery-item-desc" style="color: #FFD700; font-size: 0.8rem; margin-top: 5px;">
+                            <i class="fas fa-calendar"></i> ${design.date || 'اليوم'}
+                        </p>
+                    </div>
+                `;
+                
+                gallery.appendChild(galleryItem);
+            });
+        }
+
+        function saveToGallery(design) {
+            let designs = JSON.parse(localStorage.getItem('userDesigns') || '[]');
+            designs.unshift(design);
+            
+            // حفظ فقط آخر 20 تصميم
+            if (designs.length > 20) {
+                designs = designs.slice(0, 20);
+            }
+            
+            localStorage.setItem('userDesigns', JSON.stringify(designs));
+            loadGallery();
+        }
+
+        function viewDesign(design) {
+            if (design.type === 'logo') {
+                openLogoCreator();
+                setTimeout(() => {
+                    if (design.data) {
+                        document.getElementById('logoName').value = design.data.name || '';
+                        document.getElementById('logoSlogan').value = design.data.slogan || '';
+                        document.getElementById('logoIndustry').value = design.data.industry || '';
+                        document.getElementById('logoStyle').value = design.data.style || '';
+                        document.getElementById('logoColors').value = design.data.colors || '';
+                        updateLogoPreview();
+                    }
+                }, 100);
+                
+                showToast('📂 تم تحميل التصميم للتعديل', 'info');
+            }
+            else if (design.type === 'cv') {
+                if (confirm('هل تريد معاينة السيرة الذاتية؟')) {
+                    alert(design.content || 'لا يوجد محتوى');
+                }
+            }
+            else if (design.type === 'text') {
+                alert(design.content || 'لا يوجد محتوى');
+            }
+        }
+
+        // ==================== وظائف الترجمة ====================
+        function getIndustryName(industry) {
+            const industries = {
+                'tech': 'تقنية وتكنولوجيا',
+                'education': 'تعليم وتدريب',
+                'health': 'صحة وطبية',
+                'food': 'مطاعم وأغذية',
+                'retail': 'تجارة وتجزئة',
+                'creative': 'إبداع وتصميم'
+            };
+            return industries[industry] || industry;
+        }
+
+        function getStyleName(style) {
+            const styles = {
+                'modern': 'عصري وبسيط',
+                'elegant': 'أنيق وفاخر',
+                'creative': 'إبداعي وجريء',
+                'minimal': 'بسيط ومركّز'
+            };
+            return styles[style] || style;
+        }
+
+        function getColorsName(colors) {
+            const colorNames = {
+                'gold-blue': 'ذهبي وأزرق',
+                'green-white': 'أخضر وأبيض',
+                'black-red': 'أسود وأحمر',
+                'purple-orange': 'بنفسجي وبرتقالي'
+            };
+            return colorNames[colors] || colors;
+        }
+
+        function getDesignName(design) {
+            const designs = {
+                'modern': 'عصري واحترافي',
+                'creative': 'إبداعي وجذاب',
+                'minimal': 'بسيط وواضح'
+            };
+            return designs[design] || design;
+        }
+
+        // ==================== وظائف مساعدة ====================
+        function showToast(message, type = 'info') {
+            const colors = {
+                'success': '#27ae60',
+                'error': '#e74c3c',
+                'warning': '#f39c12',
+                'info': '#3498db'
+            };
+            
+            const Toastify = window.Toastify || function() {
+                return {
+                    showToast: function() {
+                        alert(message);
+                    }
+                };
+            };
+            
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: "top",
+                position: "left",
+                backgroundColor: colors[type] || '#3498db',
+                stopOnFocus: true
+            }).showToast();
+        }
+
+        function scrollToBottom() {
+            const messagesArea = document.getElementById('messagesArea');
+            if (messagesArea) {
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ==================== تحميل بيانات المستخدم ====================
+        function loadUserData() {
+            try {
+                const loggedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+                const userInfo = document.getElementById('userInfo');
+                const loginBtn = document.getElementById('loginBtn');
+                
+                if (loggedUser && loggedUser.username) {
+                    if (document.getElementById('displayName')) {
+                        document.getElementById('displayName').textContent = loggedUser.username;
+                    }
+                    if (userInfo) userInfo.style.display = 'flex';
+                    if (loginBtn) loginBtn.style.display = 'none';
+                }
+            } catch (e) {
+                console.log('خطأ في تحميل بيانات المستخدم');
+            }
+        }
+
+        // ==================== دالات المصادقة ====================
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            window.location.reload();
+        }
+
+        function redirectToLogin() {
+            window.location.href = 'login.html';
+        }
+
+        // تحميل بيانات المستخدم عند البدء
+        loadUserData();
+    </script>
+</body>
+</html>

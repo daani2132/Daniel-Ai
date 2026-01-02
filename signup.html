@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تسجيل حساب جديد - مقاطعة الرمال</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* إضافة بعض التنسيق للform فقط */
+        .glass-card {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+        }
+        form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        form input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        form button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #2ecc71;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #27ae60;
+        }
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .login-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="glass">
+        <nav>
+            <ul>
+                <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
+                <li><a href='rules.html'><i class="fas fa-gavel"></i> شد الجولاين</a></li>
+                <li><a class='active' href='download.html'><i class="fas fa-download"></i> qr code </a></li>
+                <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني </a></li>
+                <li><a href='faq.html'><i class="fas fa-question-circle"></i> دردشة الخبراء</a></li>
+                <li><a href='shop.html'><i class="fas fa-store"></i> العبقري الذكي </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="glass-card">
+            <h1>تسجيل حساب جديد</h1>
+            <form id="signupForm" onsubmit="return handleSignup(event)">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" name="username" required minlength="3" maxlength="20" placeholder="أدخل اسم المستخدم" />
+
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" required placeholder="example@email.com" />
+
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" name="password" required minlength="6" placeholder="أدخل كلمة المرور" />
+
+                <label for="confirmPassword">تأكيد كلمة المرور</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="أعد كتابة كلمة المرور" />
+
+                <button type="submit">إنشاء الحساب</button>
+            </form>
+
+            <div class="login-link">
+                <p>هل لديك حساب؟ <a href='login.html'>تسجيل دخول</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass">
+        <div class="footer-content">
+            <p>جميع الحقوق محفوظة &copy; 2026 - <a href="https://www.instagram.com/talel_chebbi4?igsh=YzI5ZmEzbnpua2F5" target="_blank">RIMALI COUNTRY</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSignup(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('كلمة المرور وتأكيدها غير متطابقين');
+                return false;
+            }
+
+            // هنا ممكن تضيف عملية إرسال البيانات للسيرفر عبر fetch/ajax
+            // أو تخزن البيانات في localStorage للتجربة (غير آمن!)
+
+            // مثال تخزين مؤقت (غير آمن، فقط للتجربة)
+            const user = { username, email, password };
+            localStorage.setItem('user', JSON.stringify(user));
+            alert('تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.');
+
+            // بعد التسجيل توجه لصفحة تسجيل الدخول
+            window.location.href = 'login.html';
+            return false;
+        }
+    </script>
+</body>
+</html>
