@@ -2,8 +2,8 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>qr code  - مدينة سكاي للحياة الواقعية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <title>QR Code - مدينة سكاي للحياة الواقعية</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -40,6 +40,176 @@
             100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
         }
         
+        /* ========== الهيدر والقائمة ========== */
+        .glass {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00be9f;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 70px;
+            box-sizing: border-box;
+        }
+        
+        /* زر القائمة للهواتف */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(0, 190, 159, 0.2);
+            border: 1px solid rgba(0, 190, 159, 0.4);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 8px;
+            z-index: 1002;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(0, 190, 159, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* القوائم في المنتصف ومكبرة */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 110px;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(0, 190, 159, 0.3);
+            border-color: #00be9f;
+            color: #00be9f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.2);
+        }
+        
+        nav ul li a.active {
+            background: #00be9f;
+            color: white;
+            border-color: #00be9f;
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
+        }
+        
+        /* أنماط المستخدم */
+        .auth-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #00be9f;
+            flex-shrink: 0;
+        }
+        
+        .logout-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            padding: 8px;
+            border-radius: 4px;
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logout-btn:hover {
+            color: #00be9f;
+            background: rgba(0, 190, 159, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .login-btn {
+            background: #00be9f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            border: 1px solid #00be9f;
+            min-height: 44px;
+            min-width: 120px;
+            justify-content: center;
+        }
+        
+        .login-btn:hover {
+            background: #00a98c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
+        }
+        
         /* تحسينات الأزرار */
         .qr-btn {
             background: linear-gradient(135deg, #00be9f 0%, #00997d 100%);
@@ -59,6 +229,9 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
+            min-height: 50px;
+            min-width: 140px;
+            box-sizing: border-box;
         }
         
         .qr-btn:hover {
@@ -72,6 +245,33 @@
         
         .qr-btn.clear {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
+        
+        main {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+        
+        .qr-section {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #00be9f;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .qr-section h2 {
+            color: #00be9f;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
         }
         
         /* حاوية الـ QR - لتوسيط الصورة */
@@ -97,6 +297,7 @@
             max-width: 100% !important;
             max-height: 100% !important;
             object-fit: contain !important;
+            border-radius: 10px;
         }
         
         /* إذا كانت الحاوية فارغة */
@@ -112,13 +313,6 @@
             transform: translate(-50%, -50%);
         }
         
-        /* تحسينات القسم */
-        .qr-section {
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
         /* تحسينات حقل النص */
         textarea#qrText {
             transition: all 0.3s ease;
@@ -127,48 +321,372 @@
             max-width: 600px;
             margin: 0 auto 20px;
             display: block;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            resize: vertical;
+            min-height: 120px;
+            box-sizing: border-box;
         }
         
         textarea#qrText:focus {
             outline: none;
             border-color: #00be9f;
             box-shadow: 0 0 15px rgba(0, 190, 159, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
         
-        /* تأثيرات بسيطة للقوائم */
-        nav ul li a {
-            transition: all 0.3s ease;
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 2px solid #00be9f;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
         }
         
-        nav ul li a:hover,
-        nav ul li a.active {
+        .copyright {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .copyright a {
             color: #00be9f;
+            text-decoration: none;
+            font-weight: bold;
         }
         
-        /* زر تسجيل الدخول */
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.4);
+        /* ========== MEDIA QUERIES للتجاوب ========== */
+        
+        /* للأجهزة اللوحية */
+        @media (max-width: 1024px) {
+            header {
+                padding: 15px 20px;
+                min-height: 65px;
+            }
+            
+            nav ul {
+                gap: 6px;
+            }
+            
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+                min-width: 100px;
+                gap: 8px;
+            }
+            
+            .qr-section {
+                padding: 25px;
+            }
+            
+            .qr-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            #qrcode {
+                min-height: 350px;
+                min-width: 350px;
+                margin: 20px auto;
+            }
+            
+            .qr-btn {
+                padding: 14px 25px;
+                font-size: 15px;
+                min-width: 130px;
+            }
+            
+            textarea#qrText {
+                max-width: 500px;
+                min-height: 100px;
+            }
         }
         
-        /* التأثيرات تختفي على الشاشات الصغيرة */
+        /* للهواتف (شاشات صغيرة) */
         @media (max-width: 768px) {
-            .ai-particles {
+            /* تحسينات عامة */
+            body {
+                font-size: 15px;
+            }
+            
+            header {
+                padding: 10px 15px;
+                min-height: 60px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            /* زر القائمة للهواتف */
+            .mobile-menu-toggle {
+                display: flex;
+                order: 1;
+            }
+            
+            /* إعادة ترتيب الهيدر */
+            .auth-status {
+                order: 2;
+                margin-left: 0;
+            }
+            
+            /* القائمة الأصلية مخفية على الهاتف */
+            nav {
                 display: none;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+                border-top: 2px solid #00be9f;
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+            
+            nav.active {
+                display: block;
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from { transform: translateY(-20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                min-width: auto;
+                padding: 16px 20px;
+                font-size: 16px;
+                justify-content: flex-start;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.08);
+            }
+            
+            nav ul li a i {
+                font-size: 18px;
+                width: 25px;
+                text-align: center;
+            }
+            
+            main {
+                padding: 0 15px;
+                margin: 1.5rem auto;
+            }
+            
+            .qr-section {
+                padding: 20px 15px;
+                margin: 20px 0;
+                border-radius: 12px;
+            }
+            
+            .qr-section h2 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
             }
             
             #qrcode {
                 min-height: 300px;
                 min-width: 300px;
                 padding: 15px;
+                margin: 20px auto;
+            }
+            
+            .qr-btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 8px auto;
+                padding: 14px 20px;
+                font-size: 15px;
+                display: flex;
+                justify-content: center;
+            }
+            
+            textarea#qrText {
+                min-height: 90px;
+                padding: 12px;
+                font-size: 15px;
+                margin: 0 auto 15px;
+            }
+            
+            .user-avatar {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .login-btn {
+                padding: 10px 16px;
+                font-size: 14px;
+                min-width: 100px;
+                min-height: 42px;
+            }
+            
+            .logout-btn {
+                font-size: 1.1rem;
+                padding: 6px;
             }
         }
         
+        /* للهواتف الصغيرة جداً */
         @media (max-width: 480px) {
+            header {
+                padding: 8px 12px;
+                min-height: 55px;
+            }
+            
+            .mobile-menu-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+                padding: 10px;
+            }
+            
+            nav {
+                top: 55px;
+                padding: 15px;
+            }
+            
+            nav ul li a {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            
+            main {
+                padding: 0 10px;
+                margin: 1rem auto;
+            }
+            
+            .qr-section {
+                padding: 18px 12px;
+                border-radius: 10px;
+            }
+            
+            .qr-section h2 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
             #qrcode {
                 min-height: 250px;
                 min-width: 250px;
+                padding: 12px;
+                margin: 15px auto;
+            }
+            
+            #qrcode:empty::before {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+            
+            .qr-btn {
+                padding: 12px 18px;
+                font-size: 14px;
+                min-width: 120px;
+                margin: 6px auto;
+            }
+            
+            textarea#qrText {
+                min-height: 80px;
                 padding: 10px;
+                font-size: 14px;
+                margin: 0 auto 12px;
+            }
+            
+            .copyright {
+                font-size: 13px;
+                padding: 0 10px;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الطويلة */
+        @media (max-height: 700px) and (orientation: landscape) {
+            header {
+                min-height: 50px;
+                padding: 8px 15px;
+            }
+            
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            #qrcode {
+                min-height: 250px;
+                min-width: 250px;
+                margin: 15px auto;
+            }
+            
+            .qr-btn {
+                padding: 12px 20px;
+                min-height: 45px;
+            }
+            
+            textarea#qrText {
+                min-height: 70px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الكبيرة جداً */
+        @media (min-width: 1600px) {
+            header, main {
+                max-width: 1600px;
+            }
+            
+            .qr-section {
+                padding: 40px;
+            }
+            
+            #qrcode {
+                min-height: 450px;
+                min-width: 450px;
+            }
+            
+            textarea#qrText {
+                max-width: 700px;
+                min-height: 150px;
+                font-size: 17px;
+            }
+        }
+        
+        /* دعم اللمس */
+        @media (hover: none) and (pointer: coarse) {
+            .qr-btn:hover,
+            .login-btn:hover,
+            .logout-btn:hover,
+            nav ul li a:hover {
+                transform: none;
+            }
+            
+            .qr-btn:active,
+            .login-btn:active,
+            nav ul li a:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+            
+            .qr-btn, .login-btn, .logout-btn {
+                min-height: 48px;
+            }
+            
+            input, textarea, button, select {
+                font-size: 16px; /* منع التكبير التلقائي في iOS */
             }
         }
     </style>
@@ -179,15 +697,20 @@
     <div class="ai-particles" id="aiParticles"></div>
 
     <header class="glass">
-        <nav>
+        <!-- زر القائمة للهواتف -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="mainNav">
             <ul>
                 <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
                 <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
                 <li><a href='rules.html'><i class="fas fa-gavel"></i> شد الجولاين</a></li>
-                <li><a class='active' href='download.html'><i class="fas fa-download"></i> qr code </a></li>
-                <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني </a></li>
+                <li><a class='active' href='download.html'><i class="fas fa-download"></i> QR Code</a></li>
+                <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني</a></li>
                 <li><a href='faq.html'><i class="fas fa-question-circle"></i> دردشة الخبراء</a></li>
-                <li><a href='shop.html'><i class="fas fa-store"></i> العبقري الذكي </a></li>
+                <li><a href='shop.html'><i class="fas fa-store"></i> العبقري الذكي</a></li>
             </ul>
         </nav>
 
@@ -244,10 +767,213 @@
     </footer>
 
     <script>
-        // إنشاء جسيمات خلفية بسيطة
+        // ============ إدارة القائمة للجوال ============
+        function initializeMobileMenu() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+            
+            // إغلاق القائمة عند تغيير حجم النافذة
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        }
+        
+        function toggleMobileMenu() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+        
+        // ============ إنشاء QR ============
+        function generateQR() {
+            const text = document.getElementById("qrText").value;
+            const qrDiv = document.getElementById("qrcode");
+            
+            // تنظيف الحاوية
+            qrDiv.innerHTML = "";
+
+            if (!text.trim()) {
+                alert("يرجى كتابة نص أو رابط");
+                return;
+            }
+
+            // إنشاء QR Code
+            try {
+                const qrCode = new QRCode(qrDiv, {
+                    text: text,
+                    width: window.innerWidth < 768 ? 250 : 350,
+                    height: window.innerWidth < 768 ? 250 : 350,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+                
+                // تأكد من تحميل الصورة أولاً
+                setTimeout(() => {
+                    const qrImg = qrDiv.querySelector('img');
+                    if (qrImg) {
+                        // إضافة كلاسات للتوسيط
+                        qrImg.style.display = 'block';
+                        qrImg.style.margin = '0 auto';
+                        qrImg.style.maxWidth = '100%';
+                        qrImg.style.maxHeight = '100%';
+                        qrImg.style.borderRadius = '10px';
+                        
+                        // تأثير ظهور
+                        qrImg.style.opacity = '0';
+                        qrImg.style.transform = 'scale(0.8)';
+                        
+                        setTimeout(() => {
+                            qrImg.style.transition = 'all 0.5s ease';
+                            qrImg.style.opacity = '1';
+                            qrImg.style.transform = 'scale(1)';
+                        }, 100);
+                    }
+                }, 500);
+            } catch (error) {
+                console.error("خطأ في إنشاء QR Code:", error);
+                alert("حدث خطأ في إنشاء QR Code. تأكد من صحة النص المدخل.");
+            }
+        }
+        
+        // ============ تحميل QR ============
+        function downloadQR() {
+            const qrImg = document.querySelector('#qrcode img');
+            if (!qrImg) {
+                alert("لم يتم إنشاء QR بعد. الرجاء إنشاء QR أولاً.");
+                return;
+            }
+
+            try {
+                const link = document.createElement('a');
+                link.href = qrImg.src;
+                link.download = 'QRCode_' + new Date().getTime() + '.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // إشعار النجاح
+                showNotification("تم تحميل QR Code بنجاح!", "success");
+            } catch (error) {
+                console.error("خطأ في تحميل QR Code:", error);
+                alert("حدث خطأ أثناء تحميل QR Code.");
+            }
+        }
+        
+        // ============ مسح الكل ============
+        function clearAll() {
+            const textarea = document.getElementById("qrText");
+            const qrDiv = document.getElementById("qrcode");
+            
+            if (!textarea.value && !qrDiv.querySelector('img')) {
+                showNotification("لا يوجد شيء للمسح!", "info");
+                return;
+            }
+            
+            // تأثير اختفاء
+            if (qrDiv.querySelector('img')) {
+                qrDiv.style.opacity = '0.5';
+                qrDiv.style.transform = 'scale(0.95)';
+                qrDiv.style.transition = 'all 0.3s ease';
+            }
+            
+            setTimeout(() => {
+                textarea.value = "";
+                qrDiv.innerHTML = "";
+                qrDiv.style.opacity = '1';
+                qrDiv.style.transform = 'scale(1)';
+                showNotification("تم مسح كل شيء بنجاح!", "success");
+            }, 300);
+        }
+        
+        // ============ نظام الإشعارات ============
+        function showNotification(message, type) {
+            // ألوان الإشعارات
+            const colors = {
+                success: '#28a745',
+                error: '#dc3545',
+                warning: '#ffc107',
+                info: '#17a2b8'
+            };
+            
+            // إزالة الإشعارات القديمة
+            const oldNotifications = document.querySelectorAll('.notification');
+            oldNotifications.forEach(notification => notification.remove());
+            
+            // إنشاء إشعار جديد
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                left: 20px;
+                background: ${colors[type] || '#333'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                z-index: 9999;
+                animation: slideIn 0.5s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                text-align: center;
+                font-weight: 500;
+                max-width: 400px;
+                margin: 0 auto;
+                backdrop-filter: blur(10px);
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // إزالة الإشعار بعد 4 ثواني
+            setTimeout(() => {
+                notification.style.animation = 'slideIn 0.5s ease reverse';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }, 4000);
+        }
+        
+        // ============ إدارة المستخدم ============
+        function redirectToLogin() {
+            window.location.href = "login.html";
+        }
+        
+        function logout() {
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                localStorage.removeItem("loggedInUser");
+                window.location.reload();
+            }
+        }
+        
+        // ============ إنشاء الجسيمات ============
         function createParticles() {
             const particlesContainer = document.getElementById('aiParticles');
-            const particleCount = 30;
+            const particleCount = window.innerWidth < 768 ? 20 : 30;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -266,96 +992,13 @@
             }
         }
         
-        // إنشاء QR - النسخة المحسنة
-        function generateQR() {
-            const text = document.getElementById("qrText").value;
-            const qrDiv = document.getElementById("qrcode");
-            
-            // تنظيف الحاوية
-            qrDiv.innerHTML = "";
-
-            if (!text.trim()) {
-                alert("يرجى كتابة نص أو رابط");
-                return;
-            }
-
-            // إنشاء عنصر للصورة فقط
-            const qrCode = new QRCode(qrDiv, {
-                text: text,
-                width: 350,
-                height: 350,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-            
-            // تأكد من تحميل الصورة أولاً
-            setTimeout(() => {
-                const qrImg = qrDiv.querySelector('img');
-                if (qrImg) {
-                    // إضافة كلاسات للتوسيط
-                    qrImg.style.display = 'block';
-                    qrImg.style.margin = '0 auto';
-                    qrImg.style.maxWidth = '100%';
-                    qrImg.style.maxHeight = '100%';
-                    
-                    // تأثير ظهور
-                    qrImg.style.opacity = '0';
-                    qrImg.style.transform = 'scale(0.8)';
-                    
-                    setTimeout(() => {
-                        qrImg.style.transition = 'all 0.5s ease';
-                        qrImg.style.opacity = '1';
-                        qrImg.style.transform = 'scale(1)';
-                    }, 100);
-                }
-            }, 500);
-        }
-        
-        // تحميل QR
-        function downloadQR() {
-            const qrImg = document.querySelector('#qrcode img');
-            if (!qrImg) {
-                alert("لم يتم إنشاء QR بعد");
-                return;
-            }
-
-            const link = document.createElement('a');
-            link.href = qrImg.src;
-            link.download = 'QRCode_' + new Date().getTime() + '.png';
-            link.click();
-        }
-        
-        // مسح الكل
-        function clearAll() {
-            document.getElementById("qrText").value = "";
-            const qrDiv = document.getElementById("qrcode");
-            
-            // تأثير اختفاء
-            qrDiv.style.opacity = '0.5';
-            qrDiv.style.transform = 'scale(0.95)';
-            
-            setTimeout(() => {
-                qrDiv.innerHTML = "";
-                qrDiv.style.opacity = '1';
-                qrDiv.style.transform = 'scale(1)';
-            }, 300);
-        }
-        
-        // إدارة المستخدم
-        function redirectToLogin() {
-            window.location.href = "login.html";
-        }
-        
-        function logout() {
-            localStorage.removeItem("loggedInUser");
-            window.location.reload();
-        }
-        
-        // تهيئة الصفحة
+        // ============ تهيئة الصفحة ============
         document.addEventListener('DOMContentLoaded', () => {
             // إنشاء الجسيمات
             createParticles();
+            
+            // تهيئة القائمة للجوال
+            initializeMobileMenu();
             
             // تحميل بيانات المستخدم
             const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -366,13 +1009,47 @@
 
             if (loggedUser) {
                 displayName.textContent = loggedUser.username || "مستخدم";
-                userAvatar.src = "default-avatar.png";
+                userAvatar.src = loggedUser.avatar || "default-avatar.png";
                 userInfo.style.display = "flex";
                 loginBtn.style.display = "none";
             } else {
                 userInfo.style.display = "none";
                 loginBtn.style.display = "inline-flex";
             }
+            
+            // إضافة أنيميشن للإدخال عند التركيز
+            const qrTextarea = document.getElementById("qrText");
+            qrTextarea.addEventListener('focus', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            qrTextarea.addEventListener('blur', function() {
+                this.style.transform = 'translateY(0)';
+            });
+            
+            // السماح بإرسال النص بـ Enter
+            qrTextarea.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && e.ctrlKey) {
+                    e.preventDefault();
+                    generateQR();
+                }
+            });
+            
+            // إضافة ستايل لأنيميشن الإشعار
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from {
+                        transform: translateY(-100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
