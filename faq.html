@@ -2,7 +2,7 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <title>الدردشة مع الخبراء - مقاطعة الرمال</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -23,6 +23,10 @@
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
         }
         
         .glass {
@@ -31,16 +35,187 @@
             border: 1px solid var(--border-color);
         }
         
+        /* ========== الهيدر والقائمة ========== */
+        header.glass {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 70px;
+            box-sizing: border-box;
+        }
+        
+        /* زر القائمة للهواتف */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(0, 190, 159, 0.2);
+            border: 1px solid rgba(0, 190, 159, 0.4);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 8px;
+            z-index: 1002;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(0, 190, 159, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* القوائم في المنتصف ومكبرة */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 110px;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(0, 190, 159, 0.3);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.2);
+        }
+        
+        nav ul li a.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
+        }
+        
         main {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 2rem auto;
             padding: 0 1rem;
+            box-sizing: border-box;
+        }
+        
+        /* أنماط المستخدم */
+        .auth-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+            flex-shrink: 0;
+        }
+        
+        .logout-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            padding: 8px;
+            border-radius: 4px;
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logout-btn:hover {
+            color: var(--primary-color);
+            background: rgba(0, 190, 159, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .login-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            border: 1px solid var(--primary-color);
+            min-height: 44px;
+            min-width: 120px;
+            justify-content: center;
+        }
+        
+        .login-btn:hover {
+            background: #00a98c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
         }
         
         /* قسم الخبراء */
         .experts-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
@@ -48,10 +223,12 @@
         .expert-card {
             background: var(--bg-card);
             border-radius: 15px;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             transition: transform 0.3s ease;
             border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            box-sizing: border-box;
         }
         
         .expert-card:hover {
@@ -60,21 +237,24 @@
         }
         
         .expert-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 3px solid var(--primary-color);
             margin: 0 auto 15px;
             object-fit: cover;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px;
         }
         
         .expert-badge {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 6px 15px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            margin: 5px 0;
+            margin: 8px 0;
+            color: white;
         }
         
         .coach-badge {
@@ -98,13 +278,7 @@
             background: var(--bg-card);
             border-radius: 15px;
             overflow: hidden;
-        }
-        
-        @media (max-width: 768px) {
-            .chat-container {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
+            backdrop-filter: blur(10px);
         }
         
         /* أعضاء الدردشة */
@@ -112,49 +286,61 @@
             background: rgba(0, 0, 0, 0.3);
             padding: 20px;
             overflow-y: auto;
+            border-right: 1px solid var(--border-color);
         }
         
         .member-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px;
+            gap: 12px;
+            padding: 12px 15px;
             margin-bottom: 10px;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid transparent;
         }
         
         .member-item:hover {
             background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
         }
         
         .member-item.active {
-            background: rgba(0, 190, 159, 0.2);
-            border-right: 3px solid var(--primary-color);
+            background: rgba(0, 190, 159, 0.15);
+            border: 1px solid var(--primary-color);
         }
         
         .member-avatar {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             object-fit: cover;
+            border: 2px solid var(--border-color);
         }
         
         .member-info {
             flex: 1;
+            min-width: 0;
         }
         
         .member-name {
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            font-size: 1rem;
+            line-height: 1.3;
         }
         
         .member-status {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 3px;
         }
         
         .status-online {
@@ -167,11 +353,12 @@
         
         /* بادجات المستخدمين */
         .user-badge {
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: bold;
             margin-right: 5px;
+            white-space: nowrap;
         }
         
         .owner-badge {
@@ -203,12 +390,14 @@
         }
         
         .chat-header {
-            padding: 15px 20px;
+            padding: 18px 25px;
             background: rgba(0, 0, 0, 0.3);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         
         .chat-messages {
@@ -221,11 +410,13 @@
         }
         
         .message {
-            max-width: 70%;
-            padding: 12px 15px;
-            border-radius: 15px;
+            max-width: 75%;
+            padding: 15px 18px;
+            border-radius: 18px;
             position: relative;
             animation: fadeIn 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            line-height: 1.4;
         }
         
         @keyframes fadeIn {
@@ -237,162 +428,202 @@
             align-self: flex-start;
             background: rgba(255, 255, 255, 0.1);
             border-bottom-right-radius: 5px;
+            border-left: 4px solid var(--primary-color);
         }
         
         .message.sent {
             align-self: flex-end;
-            background: rgba(0, 190, 159, 0.3);
+            background: linear-gradient(135deg, rgba(0, 190, 159, 0.3), rgba(0, 190, 159, 0.15));
             border-bottom-left-radius: 5px;
+            border-right: 4px solid var(--primary-color);
         }
         
         .message-header {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 5px;
+            gap: 10px;
+            margin-bottom: 8px;
         }
         
         .message-avatar {
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
+            border: 2px solid var(--border-color);
         }
         
         .message-time {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: #aaa;
-            margin-top: 5px;
+            margin-top: 8px;
             text-align: right;
         }
         
         /* منطقة الكتابة */
         .chat-input-area {
-            padding: 15px 20px;
+            padding: 20px 25px;
             background: rgba(0, 0, 0, 0.3);
             border-top: 1px solid var(--border-color);
         }
         
         .message-inputs {
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            align-items: center;
         }
         
         #messageInput {
             flex: 1;
-            padding: 12px 15px;
+            padding: 15px 20px;
             border: none;
             border-radius: 25px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 1rem;
+            min-height: 50px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
         
         #messageInput:focus {
             outline: none;
-            box-shadow: 0 0 0 2px var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-color);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .send-btn {
             background: var(--primary-color);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .send-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .upload-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.4);
+        }
+        
+        .upload-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
         
         .upload-btn:hover {
             background: var(--primary-color);
+            transform: scale(1.05);
         }
         
         /* صور المرفوعة */
         .uploaded-image {
-            max-width: 200px;
-            max-height: 200px;
-            border-radius: 10px;
+            max-width: 250px;
+            max-height: 250px;
+            border-radius: 12px;
             margin-top: 10px;
             cursor: pointer;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .uploaded-image:hover {
+            transform: scale(1.02);
         }
         
         /* أدوات الإدارة */
         .admin-controls {
             display: none;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
         
         .mute-btn {
-            background: #ff9800;
+            background: linear-gradient(45deg, #ff9800, #f57c00);
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 8px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
         }
         
         .kick-btn {
-            background: #f44336;
+            background: linear-gradient(45deg, #f44336, #d32f2f);
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 8px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
         }
         
         /* إعلانات */
         .bot-message {
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(255, 215, 0, 0.15);
             border-left: 4px solid gold;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 12px 18px;
+            border-radius: 10px;
             margin: 10px 0;
             text-align: center;
+            font-style: italic;
         }
         
         /* إحصائيات */
         .stats-bar {
-            display: flex;
-            justify-content: space-around;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            margin-top: 25px;
         }
         
         .stat-item {
             text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
         }
         
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(0, 190, 159, 0.5);
         }
         
         .stat-label {
             font-size: 0.9rem;
             color: #ccc;
+            margin-top: 5px;
         }
         
         /* الملفات الشخصية */
@@ -403,29 +634,47 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
         }
         
         .profile-content {
-            background: var(--bg-card);
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(48, 43, 99, 0.9));
             padding: 30px;
             border-radius: 20px;
             max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
+            width: 100%;
+            max-height: 85vh;
             overflow-y: auto;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
         
         .close-modal {
-            float: left;
-            background: none;
+            background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            float: left;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
         }
         
         /* إشعارات */
@@ -433,43 +682,547 @@
             position: fixed;
             top: 20px;
             right: 20px;
+            left: 20px;
             background: var(--primary-color);
             color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
+            padding: 18px 25px;
+            border-radius: 12px;
             z-index: 999;
             animation: slideIn 0.5s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
         }
         
         @keyframes slideIn {
             from {
-                transform: translateX(100%);
+                transform: translateY(-100%);
                 opacity: 0;
             }
             to {
-                transform: translateX(0);
+                transform: translateY(0);
                 opacity: 1;
             }
         }
         
         /* التمرير */
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
+        .chat-messages::-webkit-scrollbar,
+        .chat-members::-webkit-scrollbar {
+            width: 8px;
         }
         
-        .chat-messages::-webkit-scrollbar-track {
+        .chat-messages::-webkit-scrollbar-track,
+        .chat-members::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
         }
         
-        .chat-messages::-webkit-scrollbar-thumb {
+        .chat-messages::-webkit-scrollbar-thumb,
+        .chat-members::-webkit-scrollbar-thumb {
             background: var(--primary-color);
-            border-radius: 3px;
+            border-radius: 4px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb:hover,
+        .chat-members::-webkit-scrollbar-thumb:hover {
+            background: #00a98c;
+        }
+        
+        /* ========== MEDIA QUERIES للتجاوب ========== */
+        
+        /* للأجهزة اللوحية */
+        @media (max-width: 1024px) {
+            header {
+                padding: 15px 20px;
+                min-height: 65px;
+            }
+            
+            nav ul {
+                gap: 6px;
+            }
+            
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+                min-width: 100px;
+                gap: 8px;
+            }
+            
+            .experts-section {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+            
+            .expert-card {
+                padding: 20px 15px;
+            }
+            
+            .expert-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .chat-container {
+                height: 550px;
+                grid-template-columns: 280px 1fr;
+            }
+            
+            .chat-members {
+                padding: 15px;
+            }
+            
+            .member-item {
+                padding: 10px 12px;
+            }
+            
+            .chat-header {
+                padding: 15px 20px;
+            }
+            
+            .chat-input-area {
+                padding: 15px 20px;
+            }
+            
+            .send-btn, .upload-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        /* للهواتف (شاشات صغيرة) */
+        @media (max-width: 768px) {
+            /* تحسينات عامة */
+            body {
+                font-size: 15px;
+            }
+            
+            header {
+                padding: 10px 15px;
+                min-height: 60px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            /* زر القائمة للهواتف */
+            .mobile-menu-toggle {
+                display: flex;
+                order: 1;
+            }
+            
+            /* إعادة ترتيب الهيدر */
+            .auth-status {
+                order: 2;
+                margin-left: 0;
+            }
+            
+            /* القائمة الأصلية مخفية على الهاتف */
+            nav {
+                display: none;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+                border-top: 2px solid var(--primary-color);
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+            
+            nav.active {
+                display: block;
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from { transform: translateY(-20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                min-width: auto;
+                padding: 16px 20px;
+                font-size: 16px;
+                justify-content: flex-start;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.08);
+            }
+            
+            nav ul li a i {
+                font-size: 18px;
+                width: 25px;
+                text-align: center;
+            }
+            
+            /* قسم الخبراء */
+            .experts-section {
+                grid-template-columns: 1fr;
+                margin-bottom: 20px;
+            }
+            
+            .expert-card {
+                padding: 20px;
+            }
+            
+            /* منطقة الدردشة */
+            .chat-container {
+                grid-template-columns: 1fr;
+                height: auto;
+                max-height: 80vh;
+                min-height: 600px;
+            }
+            
+            .chat-members {
+                max-height: 300px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .member-item {
+                padding: 12px 15px;
+            }
+            
+            /* منطقة المحادثة */
+            .chat-area {
+                min-height: 400px;
+            }
+            
+            .chat-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .chat-messages {
+                padding: 15px;
+                min-height: 300px;
+            }
+            
+            .message {
+                max-width: 85%;
+                padding: 12px 15px;
+            }
+            
+            .message-header {
+                gap: 8px;
+                margin-bottom: 6px;
+            }
+            
+            .message-avatar {
+                width: 25px;
+                height: 25px;
+            }
+            
+            /* منطقة الكتابة */
+            .chat-input-area {
+                padding: 15px;
+            }
+            
+            .message-inputs {
+                gap: 10px;
+            }
+            
+            #messageInput {
+                padding: 12px 18px;
+                font-size: 15px;
+                min-height: 48px;
+            }
+            
+            .send-btn, .upload-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 1.1rem;
+            }
+            
+            /* الإحصائيات */
+            .stats-bar {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            .stat-item {
+                padding: 12px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            /* إشعارات */
+            .notification {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                padding: 15px;
+                font-size: 14px;
+            }
+            
+            /* الملف الشخصي */
+            .profile-modal {
+                padding: 15px;
+            }
+            
+            .profile-content {
+                padding: 25px 20px;
+            }
+        }
+        
+        /* للهواتف الصغيرة جداً */
+        @media (max-width: 480px) {
+            header {
+                padding: 8px 12px;
+                min-height: 55px;
+            }
+            
+            .mobile-menu-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+                padding: 10px;
+            }
+            
+            nav {
+                top: 55px;
+                padding: 15px;
+            }
+            
+            nav ul li a {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            
+            .user-avatar {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .login-btn {
+                padding: 10px 16px;
+                font-size: 14px;
+                min-width: 100px;
+                min-height: 42px;
+            }
+            
+            .logout-btn {
+                font-size: 1.1rem;
+                padding: 6px;
+            }
+            
+            main {
+                padding: 0 10px;
+                margin: 1rem auto;
+            }
+            
+            .expert-card {
+                padding: 18px 15px;
+            }
+            
+            .expert-avatar {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .chat-container {
+                border-radius: 12px;
+            }
+            
+            .chat-members {
+                padding: 15px;
+            }
+            
+            .member-avatar {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .member-name {
+                font-size: 0.95rem;
+            }
+            
+            .member-status {
+                font-size: 0.8rem;
+            }
+            
+            .user-badge {
+                font-size: 0.7rem;
+                padding: 2px 8px;
+            }
+            
+            .chat-header {
+                padding: 12px 15px;
+            }
+            
+            .chat-messages {
+                padding: 12px;
+            }
+            
+            .message {
+                max-width: 90%;
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            .chat-input-area {
+                padding: 12px 15px;
+            }
+            
+            #messageInput {
+                padding: 10px 15px;
+                font-size: 14px;
+                min-height: 45px;
+            }
+            
+            .send-btn, .upload-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            .uploaded-image {
+                max-width: 180px;
+                max-height: 180px;
+            }
+            
+            .stats-bar {
+                padding: 12px;
+            }
+            
+            .stat-number {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الطويلة */
+        @media (max-height: 700px) and (orientation: landscape) {
+            header {
+                min-height: 50px;
+                padding: 8px 15px;
+            }
+            
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .chat-container {
+                height: 500px;
+            }
+            
+            .chat-members {
+                max-height: 250px;
+            }
+            
+            .chat-messages {
+                max-height: 300px;
+            }
+            
+            .send-btn, .upload-btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الكبيرة جداً */
+        @media (min-width: 1600px) {
+            header, main {
+                max-width: 1600px;
+            }
+            
+            .chat-container {
+                height: 700px;
+            }
+            
+            .chat-members {
+                width: 350px;
+            }
+            
+            .expert-card {
+                padding: 30px;
+            }
+            
+            .expert-avatar {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        /* دعم اللمس */
+        @media (hover: none) and (pointer: coarse) {
+            .expert-card:hover,
+            .member-item:hover,
+            .send-btn:hover,
+            .upload-btn:hover,
+            .logout-btn:hover,
+            .mute-btn:hover,
+            .kick-btn:hover {
+                transform: none;
+            }
+            
+            .expert-card:active,
+            .member-item:active,
+            .send-btn:active,
+            .upload-btn:active,
+            nav ul li a:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+            
+            input, textarea, button, select {
+                font-size: 16px; /* منع التكبير التلقائي في iOS */
+            }
+            
+            .send-btn, .upload-btn, .logout-btn {
+                min-height: 48px;
+                min-width: 48px;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 2px solid var(--primary-color);
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .copyright {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .copyright a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <header class="glass">
+        <!-- زر القائمة للهواتف -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
         <div class="auth-status">
             <span id="userInfo" style="display: none;">
                 <div class="user-profile">
@@ -488,7 +1241,7 @@
             </button>
         </div>
 
-        <nav>
+        <nav id="mainNav">
             <ul>
                 <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
                 <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
@@ -504,31 +1257,37 @@
     <main>
         <!-- قسم عرض الخبراء -->
         <section class="experts-section">
-            <div class="expert-card">
+            <div class="expert-card glass">
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CoachAli&backgroundColor=00be9f" 
                      alt="الكوتش علي" class="expert-avatar">
                 <h3>الكوتش علي</h3>
                 <span class="expert-badge coach-badge"><i class="fas fa-dumbbell"></i> مدرب رياضي محترف</span>
                 <p>خبير في التمارين الرياضية وشد الجولاين</p>
-                <button class="send-btn" onclick="selectExpert('coach')"><i class="fas fa-comment"></i> دردشة</button>
+                <button class="send-btn" onclick="selectExpert('coach')" style="margin-top: 15px;">
+                    <i class="fas fa-comment"></i> دردشة
+                </button>
             </div>
             
-            <div class="expert-card">
+            <div class="expert-card glass">
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=DrSara&backgroundColor=ff416c" 
                      alt="الدكتورة سارة" class="expert-avatar">
                 <h3>الدكتورة سارة</h3>
                 <span class="expert-badge doctor-badge"><i class="fas fa-stethoscope"></i> طبيبة تجميل</span>
                 <p>مختصة في جمال البشرة وشباب الوجه</p>
-                <button class="send-btn" onclick="selectExpert('doctor')"><i class="fas fa-comment"></i> دردشة</button>
+                <button class="send-btn" onclick="selectExpert('doctor')" style="margin-top: 15px;">
+                    <i class="fas fa-comment"></i> دردشة
+                </button>
             </div>
             
-            <div class="expert-card">
+            <div class="expert-card glass">
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=TrainerMike&backgroundColor=4CAF50" 
                      alt="المدرب مايك" class="expert-avatar">
                 <h3>المدرب مايك</h3>
                 <span class="expert-badge trainer-badge"><i class="fas fa-running"></i> مدرب لياقة بدنية</span>
                 <p>متخصص في تمارين الوجه والرقبة</p>
-                <button class="send-btn" onclick="selectExpert('trainer')"><i class="fas fa-comment"></i> دردشة</button>
+                <button class="send-btn" onclick="selectExpert('trainer')" style="margin-top: 15px;">
+                    <i class="fas fa-comment"></i> دردشة
+                </button>
             </div>
         </section>
 
@@ -536,14 +1295,14 @@
         <div class="chat-container glass">
             <!-- أعضاء الدردشة -->
             <div class="chat-members">
-                <h3><i class="fas fa-users"></i> المتصلون الآن (5)</h3>
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-users"></i> المتصلون الآن (<span id="onlineCount">5</span>)</h3>
                 <div id="membersList">
                     <!-- سيتم ملؤها بالجافاسكريبت -->
                 </div>
                 
                 <div class="stats-bar">
                     <div class="stat-item">
-                        <div class="stat-number" id="onlineCount">5</div>
+                        <div class="stat-number" id="onlineCountNum">5</div>
                         <div class="stat-label">مستخدمين أونلاين</div>
                     </div>
                     <div class="stat-item">
@@ -557,10 +1316,10 @@
             <div class="chat-area">
                 <div class="chat-header">
                     <div>
-                        <h3><i class="fas fa-comment-dots"></i> دردشة عامة</h3>
-                        <p id="expertStatus" class="status-online"><i class="fas fa-circle"></i> الخبراء متصلون</p>
+                        <h3 style="margin: 0;"><i class="fas fa-comment-dots"></i> <span id="chatTitle">دردشة عامة</span></h3>
+                        <p id="expertStatus" class="status-online"><i class="fas fa-circle"></i> <span id="statusText">الخبراء متصلون</span></p>
                     </div>
-                    <button class="upload-btn" onclick="toggleAdminControls()" title="أدوات الإدارة">
+                    <button class="upload-btn" onclick="toggleAdminControls()" title="أدوات الإدارة" id="adminToolsBtn">
                         <i class="fas fa-user-shield"></i>
                     </button>
                 </div>
@@ -572,20 +1331,20 @@
                 <div class="chat-input-area">
                     <!-- أدوات الإدارة (تظهر للإداريين فقط) -->
                     <div class="admin-controls" id="adminControls">
+                        <input type="text" id="targetUser" placeholder="اسم المستخدم" style="flex:1; padding:10px; border-radius:8px; background:rgba(255,255,255,0.1); color:white; border:1px solid var(--border-color);">
                         <button class="mute-btn" onclick="muteUser()"><i class="fas fa-volume-mute"></i> كتم</button>
                         <button class="kick-btn" onclick="kickUser()"><i class="fas fa-user-slash"></i> طرد</button>
-                        <input type="text" id="targetUser" placeholder="اسم المستخدم" style="flex:1; padding:5px; border-radius:5px;">
                     </div>
                     
                     <div class="message-inputs">
-                        <button class="upload-btn" onclick="uploadImage()" title="ارسال صورة">
+                        <button class="upload-btn" onclick="uploadImage()" title="ارسال صورة" id="uploadImageBtn">
                             <i class="fas fa-image"></i>
                         </button>
                         <input type="file" id="imageUpload" accept="image/*" style="display:none;">
                         
                         <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." onkeypress="handleKeyPress(event)">
                         
-                        <button class="send-btn" onclick="sendMessage()" title="ارسال">
+                        <button class="send-btn" onclick="sendMessage()" title="ارسال" id="sendMessageBtn">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -593,6 +1352,13 @@
             </div>
         </div>
     </main>
+
+    <footer>
+        <div class="copyright">
+            جميع الحقوق محفوظة &copy; 2026
+            <a href="https://www.instagram.com/talel_chebbi4?igsh=YzI5ZmEzbnpua2F5" target="_blank" rel="noopener noreferrer">By Daniel Ai</a>
+        </div>
+    </footer>
 
     <!-- نافذة الملف الشخصي -->
     <div class="profile-modal" id="profileModal">
@@ -603,9 +1369,6 @@
             </div>
         </div>
     </div>
-
-
-    </footer>
 
     <script>
         // ============ نظام الدردشة مع الخبراء ============
@@ -658,11 +1421,51 @@
         // التهيئة
         document.addEventListener('DOMContentLoaded', () => {
             initializeChat();
+            initializeMobileMenu();
             initializeBot();
             updateStats();
         });
         
-        // تهيئة الدردشة
+        // ============ إدارة القائمة للجوال ============
+        function initializeMobileMenu() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+            
+            // إغلاق القائمة عند تغيير حجم النافذة
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        }
+        
+        function toggleMobileMenu() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+        
+        // ============ تهيئة الدردشة ============
         function initializeChat() {
             const loggedUser = JSON.parse(localStorage.getItem('loggedInUser'));
             
@@ -690,12 +1493,18 @@
                 
                 // إضافة رسالة ترحيبية
                 addMessage('system', 'مرحباً ' + loggedUser.username + '! يمكنك الآن الدردشة مع الخبراء.');
+                
+                // إظهار أدوات الإدارة إذا كان له صلاحيات
+                if (userRole === 'owner' || userRole === 'admin' || userRole === 'moderator') {
+                    document.getElementById('adminToolsBtn').style.display = 'flex';
+                }
             } else {
                 // الدردشة للجميع ولكن مع مميزات محدودة
                 currentUser = { username: 'زائر', avatar: 'default-avatar.png' };
                 showNotification('يمكنك التحدث مع الخبراء، ولكن للتسجيل في المحادثة قم بتسجيل الدخول.', 'info');
                 
                 addMessage('system', 'زائر جديد انضم إلى المحادثة.');
+                document.getElementById('adminToolsBtn').style.display = 'none';
             }
             
             // إضافة بعض الأعضاء الوهميين
@@ -762,6 +1571,8 @@
             const membersList = document.getElementById('membersList');
             membersList.innerHTML = '';
             
+            let onlineCount = 0;
+            
             // إضافة الخبراء أولاً
             Object.keys(experts).forEach(key => {
                 const expert = experts[key];
@@ -781,23 +1592,20 @@
                     </div>
                 `;
                 membersList.innerHTML += memberHTML;
+                if (expert.status === 'online') onlineCount++;
             });
             
             // إضافة المستخدمين
             members.forEach(member => {
                 if (!member.role || member.role !== 'expert') {
                     let badge = '';
-                    let badgeClass = '';
                     
                     if (member.role === 'owner') {
                         badge = '<span class="user-badge owner-badge">المالك</span>';
-                        badgeClass = 'owner-badge';
                     } else if (member.role === 'admin') {
                         badge = '<span class="user-badge admin-badge">إدارة</span>';
-                        badgeClass = 'admin-badge';
                     } else if (member.role === 'moderator') {
                         badge = '<span class="user-badge mod-badge">مشرف</span>';
-                        badgeClass = 'mod-badge';
                     }
                     
                     const memberHTML = `
@@ -814,11 +1622,13 @@
                         </div>
                     `;
                     membersList.innerHTML += memberHTML;
+                    if (member.status === 'online') onlineCount++;
                 }
             });
             
             // تحديث العداد
-            document.getElementById('onlineCount').textContent = members.filter(m => m.status === 'online').length;
+            document.getElementById('onlineCount').textContent = onlineCount;
+            document.getElementById('onlineCountNum').textContent = onlineCount;
         }
         
         // اختيار خبير
@@ -826,10 +1636,8 @@
             selectedExpert = expertId;
             const expert = experts[expertId];
             
-            document.querySelector('.chat-header h3').innerHTML = 
-                `<i class="fas fa-comment-dots"></i> دردشة مع ${expert.name}`;
-            document.getElementById('expertStatus').innerHTML = 
-                `<i class="fas fa-circle"></i> ${expert.specialty}`;
+            document.getElementById('chatTitle').textContent = `دردشة مع ${expert.name}`;
+            document.getElementById('statusText').textContent = expert.specialty;
             
             // تحديث القائمة النشطة
             updateMembersList();
@@ -861,6 +1669,9 @@
             // إضافة رسالة المستخدم
             addMessage('user', message, true);
             messageInput.value = '';
+            
+            // إعادة التركيز على حقل الإدخال
+            messageInput.focus();
             
             // زيادة عداد الرسائل
             messageCounter++;
@@ -911,6 +1722,7 @@
                 senderName = 'النظام';
                 senderAvatar = 'https://api.dicebear.com/7.x/bottts/svg?seed=System&backgroundColor=3498db';
                 messageClass = 'received';
+                badge = '<span class="user-badge" style="background:#666;">نظام</span>';
             } else {
                 // رسالة عضو آخر
                 const member = members.find(m => m.id === sender);
@@ -933,7 +1745,8 @@
                 <div class="message ${messageClass}" id="msg-${messageId}">
                     <div class="message-header">
                         <img src="${senderAvatar}" alt="${senderName}" class="message-avatar">
-                        <strong>${senderName} ${badge}</strong>
+                        <strong>${senderName}</strong>
+                        ${badge}
                     </div>
                     <div class="message-text">${text}</div>
                     <div class="message-time">${time}</div>
@@ -1044,10 +1857,17 @@
         document.getElementById('imageUpload').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
+                // التحقق من حجم الصورة (5MB كحد أقصى)
+                if (file.size > 5 * 1024 * 1024) {
+                    showNotification('حجم الصورة كبير جداً! الحد الأقصى 5MB.', 'error');
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     // إضافة الصورة كرسالة
                     const chatMessages = document.getElementById('chatMessages');
+                    const time = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
                     const messageHTML = `
                         <div class="message sent">
                             <div class="message-header">
@@ -1055,7 +1875,7 @@
                                 <strong>أنت</strong>
                             </div>
                             <img src="${event.target.result}" alt="صورة مرسلة" class="uploaded-image" onclick="viewImage('${event.target.result}')">
-                            <div class="message-time">${new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}</div>
+                            <div class="message-time">${time}</div>
                         </div>
                     `;
                     chatMessages.innerHTML += messageHTML;
@@ -1063,6 +1883,9 @@
                     
                     messageCounter++;
                     updateStats();
+                    
+                    // مسح حقل الإدخال
+                    document.getElementById('imageUpload').value = '';
                 };
                 reader.readAsDataURL(file);
             }
@@ -1070,7 +1893,35 @@
         
         // عرض صورة كاملة
         function viewImage(src) {
-            window.open(src, '_blank');
+            const imgWindow = window.open('', '_blank');
+            imgWindow.document.write(`
+                <html>
+                    <head>
+                        <title>صورة من الدردشة</title>
+                        <style>
+                            body { 
+                                margin: 0; 
+                                padding: 20px; 
+                                background: #000; 
+                                display: flex; 
+                                justify-content: center; 
+                                align-items: center; 
+                                min-height: 100vh;
+                            }
+                            img { 
+                                max-width: 95vw; 
+                                max-height: 95vh; 
+                                border-radius: 10px; 
+                                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <img src="${src}" alt="صورة مكبرة">
+                    </body>
+                </html>
+            `);
+            imgWindow.document.close();
         }
         
         // إدارة البوت
@@ -1095,7 +1946,12 @@
         function toggleAdminControls() {
             if (userRole === 'owner' || userRole === 'admin' || userRole === 'moderator') {
                 const controls = document.getElementById('adminControls');
-                controls.style.display = controls.style.display === 'flex' ? 'none' : 'flex';
+                const currentDisplay = controls.style.display;
+                controls.style.display = currentDisplay === 'flex' ? 'none' : 'flex';
+                
+                if (controls.style.display === 'flex') {
+                    document.getElementById('targetUser').focus();
+                }
             } else {
                 showNotification('لا تملك صلاحيات الإدارة!', 'error');
             }
@@ -1104,11 +1960,14 @@
         // كتم مستخدم
         function muteUser() {
             if (userRole === 'owner' || userRole === 'admin' || userRole === 'moderator') {
-                const target = document.getElementById('targetUser').value;
+                const target = document.getElementById('targetUser').value.trim();
                 if (target) {
                     showNotification(`تم كتم المستخدم ${target} لمدة 10 دقائق`, 'success');
                     addMessage('system', `تم كتم ${target} لمدة 10 دقائق بواسطة الإدارة.`);
                     document.getElementById('targetUser').value = '';
+                    document.getElementById('adminControls').style.display = 'none';
+                } else {
+                    showNotification('يرجى إدخال اسم المستخدم أولاً', 'warning');
                 }
             }
         }
@@ -1116,11 +1975,14 @@
         // طرد مستخدم
         function kickUser() {
             if (userRole === 'owner' || userRole === 'admin') {
-                const target = document.getElementById('targetUser').value;
+                const target = document.getElementById('targetUser').value.trim();
                 if (target) {
                     showNotification(`تم طرد المستخدم ${target}`, 'success');
                     addMessage('system', `تم طرد ${target} من المحادثة بواسطة الإدارة.`);
                     document.getElementById('targetUser').value = '';
+                    document.getElementById('adminControls').style.display = 'none';
+                } else {
+                    showNotification('يرجى إدخال اسم المستخدم أولاً', 'warning');
                 }
             } else {
                 showNotification('تحتاج صلاحيات مدير لطرد المستخدمين!', 'error');
@@ -1149,22 +2011,23 @@
                 <div style="text-align: center;">
                     <img src="${member.avatar}" alt="${member.name}" 
                          style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid #00be9f; margin-bottom: 20px;">
-                    <h2>${member.name}</h2>
-                    <div style="margin: 10px 0;">
+                    <h2 style="margin-bottom: 10px;">${member.name}</h2>
+                    <div style="margin: 15px 0;">
                         ${member.role === 'owner' ? '<span class="user-badge owner-badge">المالك</span>' : 
                           member.role === 'admin' ? '<span class="user-badge admin-badge">إدارة</span>' : 
                           member.role === 'moderator' ? '<span class="user-badge mod-badge">مشرف</span>' : 
                           member.role === 'expert' ? '<span class="user-badge coach-badge">خبير</span>' : ''}
                     </div>
-                    <p><strong>الدور:</strong> ${roleText}</p>
-                    <p><strong>الحالة:</strong> ${member.status === 'online' ? '🟢 متصل' : '⚫ غير متصل'}</p>
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px;">
-                        <h4>معلومات الاتصال:</h4>
-                        <button class="send-btn" style="margin: 10px;" onclick="startPrivateChat('${userId}')">
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <p><strong>الدور:</strong> ${roleText}</p>
+                        <p><strong>الحالة:</strong> ${member.status === 'online' ? '🟢 متصل' : '⚫ غير متصل'}</p>
+                    </div>
+                    <div style="margin-top: 25px;">
+                        <button class="send-btn" style="margin: 10px; padding: 12px 25px;" onclick="startPrivateChat('${userId}')">
                             <i class="fas fa-comment"></i> مراسلة خاصة
                         </button>
                         ${(userRole === 'owner' || userRole === 'admin') ? `
-                            <button class="mute-btn" onclick="muteUserProfile('${userId}')">
+                            <button class="mute-btn" onclick="muteUserProfile('${userId}')" style="padding: 12px 25px;">
                                 <i class="fas fa-volume-mute"></i> كتم
                             </button>
                         ` : ''}
@@ -1186,10 +2049,8 @@
             const member = members.find(m => m.id === userId);
             if (member) {
                 selectedExpert = null;
-                document.querySelector('.chat-header h3').innerHTML = 
-                    `<i class="fas fa-lock"></i> محادثة خاصة مع ${member.name}`;
-                document.getElementById('expertStatus').innerHTML = 
-                    `<i class="fas fa-user-friends"></i> محادثة مباشرة`;
+                document.getElementById('chatTitle').textContent = `محادثة خاصة مع ${member.name}`;
+                document.getElementById('statusText').textContent = 'محادثة مباشرة';
                 
                 closeProfile();
                 showNotification(`بدأت محادثة خاصة مع ${member.name}`, 'info');
@@ -1212,22 +2073,37 @@
                 info: '#3498db'
             };
             
+            const icons = {
+                success: 'check-circle',
+                error: 'times-circle',
+                warning: 'exclamation-triangle',
+                info: 'info-circle'
+            };
+            
+            // إزالة الإشعارات القديمة
+            const oldNotifications = document.querySelectorAll('.notification');
+            oldNotifications.forEach(notification => notification.remove());
+            
+            // إنشاء إشعار جديد
             const notification = document.createElement('div');
             notification.className = 'notification';
             notification.style.background = colors[type] || '#333';
             notification.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : 
-                                  type === 'error' ? 'times-circle' : 
-                                  type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
+                <i class="fas fa-${icons[type]}" style="margin-left: 10px;"></i>
                 ${message}
             `;
             
             document.body.appendChild(notification);
             
+            // إزالة الإشعار بعد 4 ثواني
             setTimeout(() => {
                 notification.style.animation = 'slideIn 0.5s ease reverse';
-                setTimeout(() => notification.remove(), 500);
-            }, 3000);
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }, 4000);
         }
         
         // ============ نظام تسجيل الدخول ============
@@ -1242,12 +2118,13 @@
             window.location.href = 'login.html';
         }
         
-        // ربط الزر الخاص بالأونر
+        // تهيئة خاصة للمالك
         document.addEventListener('DOMContentLoaded', () => {
-            // إذا كان اسم المستخدم يحتوي على daniel
             const loggedUser = JSON.parse(localStorage.getItem('loggedInUser'));
             if (loggedUser && loggedUser.username.toLowerCase().includes('daniel')) {
-                showNotification('مرحباً سيادة المالك دانيال!', 'success');
+                setTimeout(() => {
+                    showNotification('مرحباً سيادة المالك دانيال!', 'success');
+                }, 1000);
             }
         });
     </script>
