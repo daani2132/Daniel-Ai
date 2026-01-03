@@ -2,93 +2,905 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <title>تسجيل حساب جديد - مقاطعة الرمال</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <style>
-        /* إضافة بعض التنسيق للform فقط */
-        .glass-card {
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 30px;
+        /* ========== تنسيقات رئيسية مع خلفية back ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        form label {
-            display: block;
-            margin: 15px 0 5px;
-            font-weight: bold;
+        
+        body {
+            background: url('back.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        form input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
+        
+        /* طبقة شفافة فوق الخلفية لتسهيل القراءة */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 20, 0.85);
+            z-index: -1;
         }
-        form button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
-            background-color: #2ecc71;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            border-radius: 8px;
+        
+        /* ========== الهيدر الجديد مع همبرجر ========== */
+        header.glass {
+            background: rgba(15, 15, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(0, 190, 159, 0.3);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        /* زر القائمة للهواتف */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(0, 190, 159, 0.2);
+            border: 1px solid rgba(0, 190, 159, 0.4);
+            color: #fff;
+            font-size: 24px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            padding: 12px;
+            border-radius: 8px;
+            z-index: 1002;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
-        form button:hover {
-            background-color: #27ae60;
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(0, 190, 159, 0.3);
+            transform: scale(1.05);
         }
-        .login-link {
-            margin-top: 15px;
+        
+        .mobile-menu-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* القائمة المركزية */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 110px;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: rgba(0, 190, 159, 0.3);
+            color: #00be9f;
+            border: 1px solid rgba(0, 190, 159, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.2);
+        }
+        
+        /* ========== الحاوية الرئيسية للتسجيل ========== */
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+        }
+        
+        /* ========== بطاقة التسجيل ========== */
+        .glass-card {
+            background: rgba(25, 25, 35, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(0, 190, 159, 0.3);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 190, 159, 0.1);
+            border-color: #00be9f;
+        }
+        
+        .glass-card h1 {
+            color: #00be9f;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        /* ========== نموذج التسجيل ========== */
+        #signupForm {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            color: #00be9f;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 190, 159, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #00be9f;
+            box-shadow: 0 0 25px rgba(0, 190, 159, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            padding: 5px;
+        }
+        
+        .toggle-password:hover {
+            color: #00be9f;
+        }
+        
+        .password-strength {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .password-strength-text {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 5px;
+            text-align: left;
+        }
+        
+        .password-requirements {
+            background: rgba(0, 190, 159, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid rgba(0, 190, 159, 0.2);
+        }
+        
+        .password-requirements ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .password-requirements li {
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .password-requirements li i {
+            font-size: 0.8rem;
+            width: 20px;
             text-align: center;
         }
-        .login-link a {
-            color: #3498db;
+        
+        .password-requirements li.valid {
+            color: #2ecc71;
+        }
+        
+        .password-requirements li.invalid {
+            color: #e74c3c;
+        }
+        
+        .terms-container {
+            margin: 25px 0;
+            padding: 15px;
+            background: rgba(0, 190, 159, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 190, 159, 0.1);
+        }
+        
+        .terms-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #aaa;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .terms-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #00be9f;
+        }
+        
+        .terms-label a {
+            color: #00be9f;
             text-decoration: none;
         }
-        .login-link a:hover {
+        
+        .terms-label a:hover {
             text-decoration: underline;
+        }
+        
+        /* ========== أزرار التسجيل ========== */
+        .submit-btn {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+            min-height: 55px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
+            background: linear-gradient(45deg, #27ae60, #219653);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* ========== روابط إضافية ========== */
+        .form-links {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .login-link {
+            color: #aaa;
+            font-size: 1rem;
+        }
+        
+        .login-link a {
+            color: #00be9f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .login-link a:hover {
+            color: #00a98c;
+            text-decoration: underline;
+        }
+        
+        .social-signup {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .social-signup p {
+            color: #aaa;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .social-signup p::before,
+        .social-signup p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-signup p::before {
+            right: 0;
+        }
+        
+        .social-signup p::after {
+            left: 0;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 12px 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            min-width: 130px;
+            justify-content: center;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-btn.google {
+            border-color: #DB4437;
+            color: #DB4437;
+        }
+        
+        .social-btn.facebook {
+            border-color: #4267B2;
+            color: #4267B2;
+        }
+        
+        /* ========== الفوتر ========== */
+        footer.glass {
+            text-align: center;
+            padding: 20px;
+            background: rgba(15, 15, 20, 0.95);
+            border-top: 2px solid rgba(0, 190, 159, 0.3);
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer-content {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .footer-content a {
+            color: #00be9f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ========== رسائل التنبيه ========== */
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .message.success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            display: block;
+        }
+        
+        .message.error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            display: block;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* ========== MEDIA QUERIES للتجاوب ========== */
+        
+        /* للأجهزة اللوحية */
+        @media (max-width: 1024px) {
+            header.glass {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                min-width: 100px;
+            }
+            
+            .glass-card {
+                padding: 35px;
+                max-width: 450px;
+            }
+        }
+        
+        /* للهواتف (شاشات صغيرة) */
+        @media (max-width: 768px) {
+            /* تحسينات عامة */
+            body {
+                font-size: 15px;
+            }
+            
+            header.glass {
+                padding: 10px 15px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            /* زر القائمة للهواتف */
+            .mobile-menu-toggle {
+                display: flex;
+                order: 1;
+            }
+            
+            /* القائمة الأصلية مخفية على الهاتف */
+            nav {
+                display: none;
+                position: fixed;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                background: rgba(15, 15, 20, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+                border-top: 2px solid rgba(0, 190, 159, 0.3);
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+            
+            nav.active {
+                display: block;
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from { transform: translateY(-20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                min-width: auto;
+                padding: 15px 20px;
+                font-size: 16px;
+                justify-content: flex-start;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.08);
+                min-height: 55px;
+            }
+            
+            nav ul li a i {
+                font-size: 18px;
+                width: 25px;
+                text-align: center;
+            }
+            
+            .main-container {
+                padding: 0 15px;
+                margin: 1.5rem auto;
+                min-height: calc(100vh - 150px);
+            }
+            
+            .glass-card {
+                padding: 30px 25px;
+                max-width: 100%;
+                margin: 20px 0;
+            }
+            
+            .glass-card h1 {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-input {
+                padding: 14px 18px;
+                font-size: 0.95rem;
+            }
+            
+            .submit-btn {
+                padding: 16px;
+                font-size: 1rem;
+                min-height: 50px;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .social-btn {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+        
+        /* للهواتف الصغيرة جداً */
+        @media (max-width: 480px) {
+            header.glass {
+                padding: 8px 12px;
+            }
+            
+            .mobile-menu-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+                padding: 10px;
+            }
+            
+            nav {
+                top: 60px;
+                padding: 15px;
+            }
+            
+            nav ul li a {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            
+            .main-container {
+                padding: 0 10px;
+                margin: 1rem auto;
+            }
+            
+            .glass-card {
+                padding: 25px 20px;
+                border-radius: 20px;
+            }
+            
+            .glass-card h1 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+            
+            .form-input {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .form-label {
+                font-size: 1rem;
+            }
+            
+            .submit-btn {
+                padding: 14px;
+                font-size: 0.95rem;
+                min-height: 48px;
+            }
+            
+            .login-link {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الطويلة */
+        @media (max-height: 700px) and (orientation: landscape) {
+            header.glass {
+                min-height: 60px;
+                padding: 8px 15px;
+            }
+            
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                min-height: 45px;
+            }
+            
+            .main-container {
+                min-height: calc(100vh - 120px);
+                padding: 10px 20px;
+            }
+            
+            .glass-card {
+                padding: 25px 30px;
+                max-width: 400px;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الكبيرة جداً */
+        @media (min-width: 1600px) {
+            .main-container {
+                max-width: 1500px;
+            }
+            
+            .glass-card {
+                max-width: 550px;
+                padding: 50px;
+            }
+            
+            .glass-card h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-input {
+                padding: 18px 22px;
+                font-size: 1.1rem;
+            }
+            
+            .submit-btn {
+                padding: 20px;
+                font-size: 1.2rem;
+                min-height: 60px;
+            }
+        }
+        
+        /* دعم اللمس */
+        @media (hover: none) and (pointer: coarse) {
+            .submit-btn:hover,
+            .social-btn:hover,
+            nav ul li a:hover {
+                transform: none;
+            }
+            
+            .submit-btn:active,
+            .social-btn:active,
+            nav ul li a:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+            
+            .submit-btn, .social-btn, nav ul li a {
+                min-height: 48px;
+            }
+            
+            input, textarea, button, select {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- الهيدر الجديد مع همبرجر -->
     <header class="glass">
-        <nav>
+        <!-- زر القائمة للهواتف -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="mainNav">
             <ul>
                 <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
                 <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
                 <li><a href='rules.html'><i class="fas fa-gavel"></i> شد الجولاين</a></li>
-                <li><a class='active' href='download.html'><i class="fas fa-download"></i> qr code </a></li>
-                <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني </a></li>
+                <li><a href='download.html'><i class="fas fa-download"></i> QR Code</a></li>
+                <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني</a></li>
                 <li><a href='faq.html'><i class="fas fa-question-circle"></i> دردشة الخبراء</a></li>
-                <li><a href='shop.html'><i class="fas fa-store"></i> العبقري الذكي </a></li>
+                <li><a href='smart-ai.html'><i class="fas fa-robot"></i> العبقري الذكي</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
         <section class="glass-card">
-            <h1>تسجيل حساب جديد</h1>
+            <h1><i class="fas fa-user-plus"></i> تسجيل حساب جديد</h1>
+            
+            <!-- رسائل التنبيه -->
+            <div id="message" class="message"></div>
+            
             <form id="signupForm" onsubmit="return handleSignup(event)">
-                <label for="username">اسم المستخدم</label>
-                <input type="text" id="username" name="username" required minlength="3" maxlength="20" placeholder="أدخل اسم المستخدم" />
-
-                <label for="email">البريد الإلكتروني</label>
-                <input type="email" id="email" name="email" required placeholder="example@email.com" />
-
-                <label for="password">كلمة المرور</label>
-                <input type="password" id="password" name="password" required minlength="6" placeholder="أدخل كلمة المرور" />
-
-                <label for="confirmPassword">تأكيد كلمة المرور</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="أعد كتابة كلمة المرور" />
-
-                <button type="submit">إنشاء الحساب</button>
+                <div class="form-group">
+                    <label class="form-label" for="username">
+                        <i class="fas fa-user"></i> اسم المستخدم
+                    </label>
+                    <input type="text" id="username" class="form-input" 
+                           placeholder="أدخل اسم المستكنبم (3-20 حرف)" 
+                           required minlength="3" maxlength="20" autocomplete="username">
+                    <div class="username-availability" id="usernameStatus"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">
+                        <i class="fas fa-envelope"></i> البريد الإلكتروني
+                    </label>
+                    <input type="email" id="email" class="form-input" 
+                           placeholder="example@email.com" required autocomplete="email">
+                    <div class="email-availability" id="emailStatus"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">
+                        <i class="fas fa-lock"></i> كلمة المرور
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="password" class="form-input" 
+                               placeholder="أدخل كلمة المرور" required minlength="6" 
+                               autocomplete="new-password">
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- مؤشر قوة كلمة المرور -->
+                    <div class="password-strength">
+                        <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                    </div>
+                    <div class="password-strength-text" id="passwordStrengthText"></div>
+                    
+                    <!-- متطلبات كلمة المرور -->
+                    <div class="password-requirements">
+                        <ul>
+                            <li id="reqLength"><i class="fas fa-circle"></i> 6 أحرف على الأقل</li>
+                            <li id="reqUppercase"><i class="fas fa-circle"></i> حرف كبير واحد على الأقل</li>
+                            <li id="reqLowercase"><i class="fas fa-circle"></i> حرف صغير واحد على الأقل</li>
+                            <li id="reqNumber"><i class="fas fa-circle"></i> رقم واحد على الأقل</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">
+                        <i class="fas fa-lock"></i> تأكيد كلمة المرور
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="confirmPassword" class="form-input" 
+                               placeholder="أعد كتابة كلمة المرور" required minlength="6" 
+                               autocomplete="new-password">
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-match" id="passwordMatch"></div>
+                </div>
+                
+                <div class="terms-container">
+                    <label class="terms-label">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                        <span>أوافق على <a href="terms.html" target="_blank">شروط الاستخدام</a> و <a href="privacy.html" target="_blank">سياسة الخصوصية</a></span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-user-plus"></i> إنشاء الحساب
+                </button>
             </form>
 
-            <div class="login-link">
-                <p>هل لديك حساب؟ <a href='login.html'>تسجيل دخول</a></p>
+            <div class="social-signup">
+                <p>أو سجل باستخدام</p>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google" onclick="signupWithGoogle()">
+                        <i class="fab fa-google"></i> جوجل
+                    </button>
+                    <button type="button" class="social-btn facebook" onclick="signupWithFacebook()">
+                        <i class="fab fa-facebook-f"></i> فيسبوك
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-links">
+                <p class="login-link">
+                    هل لديك حساب؟ <a href='login.html'>تسجيل دخول</a>
+                </p>
             </div>
         </section>
     </main>
@@ -99,31 +911,432 @@
         </div>
     </footer>
 
+    <!-- إضافة Toastify.js للإشعارات -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
+        // ==================== إدارة القائمة للجوال ====================
+        function initializeMobileMenu() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            // إدارة النقر على زر الهمبرجر
+            if (menuToggle) {
+                menuToggle.addEventListener('click', toggleMobileMenu);
+            }
+            
+            // إغلاق القائمة عند النقر على رابط
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        // إعادة الأيقونة
+                        menuToggle.querySelector('i').className = 'fas fa-bars';
+                    }
+                });
+            });
+            
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+            
+            // إغلاق القائمة عند تغيير حجم النافذة
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+        }
+        
+        function toggleMobileMenu() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const icon = menuToggle.querySelector('i');
+            
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            
+            // تغيير الأيقونة
+            if (mainNav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        }
+        
+        // ==================== إظهار/إخفاء كلمة المرور ====================
+        function togglePasswordVisibility(inputId, buttonId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleButton = document.getElementById(buttonId);
+            const icon = toggleButton.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+                toggleButton.title = 'إخفاء كلمة المرور';
+            } else {
+                passwordInput.type = 'password';
+                icon.className = 'fas fa-eye';
+                toggleButton.title = 'إظهار كلمة المرور';
+            }
+        }
+        
+        // ==================== التحقق من اسم المستخدم ====================
+        function checkUsernameAvailability() {
+            const username = document.getElementById('username').value.trim();
+            const usernameStatus = document.getElementById('usernameStatus');
+            
+            if (username.length < 3) {
+                usernameStatus.innerHTML = '<span style="color:#e74c3c">اسم المستخدم قصير جداً</span>';
+                return false;
+            }
+            
+            if (username.length > 20) {
+                usernameStatus.innerHTML = '<span style="color:#e74c3c">اسم المستخدم طويل جداً</span>';
+                return false;
+            }
+            
+            // التحقق من المستخدمين المخزنين
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const existingUser = users.find(user => user.username === username);
+            
+            if (existingUser) {
+                usernameStatus.innerHTML = '<span style="color:#e74c3c">اسم المستخدم موجود مسبقاً</span>';
+                return false;
+            } else {
+                usernameStatus.innerHTML = '<span style="color:#2ecc71">اسم المستخدم متاح</span>';
+                return true;
+            }
+        }
+        
+        // ==================== التحقق من البريد الإلكتروني ====================
+        function checkEmailAvailability() {
+            const email = document.getElementById('email').value.trim();
+            const emailStatus = document.getElementById('emailStatus');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                emailStatus.innerHTML = '<span style="color:#e74c3c">البريد الإلكتروني غير صالح</span>';
+                return false;
+            }
+            
+            // التحقق من البريد الإلكتروني المخزن
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const existingEmail = users.find(user => user.email === email);
+            
+            if (existingEmail) {
+                emailStatus.innerHTML = '<span style="color:#e74c3c">البريد الإلكتروني مسجل مسبقاً</span>';
+                return false;
+            } else {
+                emailStatus.innerHTML = '<span style="color:#2ecc71">البريد الإلكتروني متاح</span>';
+                return true;
+            }
+        }
+        
+        // ==================== قوة كلمة المرور ====================
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('passwordStrengthBar');
+            const strengthText = document.getElementById('passwordStrengthText');
+            
+            // متطلبات كلمة المرور
+            const requirements = {
+                length: password.length >= 6,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password)
+            };
+            
+            // تحديث أيقونات المتطلبات
+            document.getElementById('reqLength').className = requirements.length ? 'valid' : 'invalid';
+            document.getElementById('reqUppercase').className = requirements.uppercase ? 'valid' : 'invalid';
+            document.getElementById('reqLowercase').className = requirements.lowercase ? 'valid' : 'invalid';
+            document.getElementById('reqNumber').className = requirements.number ? 'valid' : 'invalid';
+            
+            // حساب القوة
+            let strength = 0;
+            let text = '';
+            let color = '';
+            
+            if (requirements.length) strength += 25;
+            if (requirements.uppercase) strength += 25;
+            if (requirements.lowercase) strength += 25;
+            if (requirements.number) strength += 25;
+            
+            // تحديد مستوى القوة
+            if (strength === 0) {
+                text = 'ضعيفة جداً';
+                color = '#e74c3c';
+            } else if (strength <= 50) {
+                text = 'ضعيفة';
+                color = '#e67e22';
+            } else if (strength <= 75) {
+                text = 'جيدة';
+                color = '#f39c12';
+            } else {
+                text = 'قوية';
+                color = '#2ecc71';
+            }
+            
+            // تحديث العرض
+            strengthBar.style.width = strength + '%';
+            strengthBar.style.backgroundColor = color;
+            strengthText.textContent = 'قوة كلمة المرور: ' + text;
+            strengthText.style.color = color;
+            
+            return strength >= 50; // على الأقل قوة متوسطة
+        }
+        
+        // ==================== التحقق من تطابق كلمة المرور ====================
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const matchDiv = document.getElementById('passwordMatch');
+            
+            if (confirmPassword === '') {
+                matchDiv.innerHTML = '';
+                return false;
+            }
+            
+            if (password === confirmPassword) {
+                matchDiv.innerHTML = '<span style="color:#2ecc71">كلمة المرور متطابقة</span>';
+                return true;
+            } else {
+                matchDiv.innerHTML = '<span style="color:#e74c3c">كلمة المرور غير متطابقة</span>';
+                return false;
+            }
+        }
+        
+        // ==================== معالجة تسجيل الحساب الجديد ====================
         function handleSignup(event) {
             event.preventDefault();
+            
             const username = document.getElementById('username').value.trim();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert('كلمة المرور وتأكيدها غير متطابقين');
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // إيقاف الزر مؤقتاً
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري إنشاء الحساب...';
+            
+            // التحقق من جميع الحقول
+            const usernameValid = checkUsernameAvailability();
+            const emailValid = checkEmailAvailability();
+            const passwordStrong = checkPasswordStrength();
+            const passwordsMatch = checkPasswordMatch();
+            
+            if (!usernameValid) {
+                showMessage('اسم المستخدم غير صالح أو موجود مسبقاً', 'error');
+                resetSubmitButton();
                 return false;
             }
-
-            // هنا ممكن تضيف عملية إرسال البيانات للسيرفر عبر fetch/ajax
-            // أو تخزن البيانات في localStorage للتجربة (غير آمن!)
-
-            // مثال تخزين مؤقت (غير آمن، فقط للتجربة)
-            const user = { username, email, password };
-            localStorage.setItem('user', JSON.stringify(user));
-            alert('تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول.');
-
-            // بعد التسجيل توجه لصفحة تسجيل الدخول
-            window.location.href = 'login.html';
+            
+            if (!emailValid) {
+                showMessage('البريد الإلكتروني غير صالح أو مسجل مسبقاً', 'error');
+                resetSubmitButton();
+                return false;
+            }
+            
+            if (!passwordStrong) {
+                showMessage('كلمة المرور ضعيفة. الرجاء استخدام كلمة مرور أقوى', 'error');
+                resetSubmitButton();
+                return false;
+            }
+            
+            if (!passwordsMatch) {
+                showMessage('كلمة المرور غير متطابقة', 'error');
+                resetSubmitButton();
+                return false;
+            }
+            
+            if (!agreeTerms) {
+                showMessage('يجب الموافقة على الشروط والأحكام', 'error');
+                resetSubmitButton();
+                return false;
+            }
+            
+            // محاكاة وقت المعالجة
+            setTimeout(() => {
+                // إنشاء كائن المستخدم
+                const user = {
+                    id: Date.now().toString(),
+                    username: username,
+                    email: email,
+                    password: password,
+                    avatar: 'default-avatar.png',
+                    fullName: username,
+                    createdAt: new Date().toISOString(),
+                    isActive: true
+                };
+                
+                // استرجاع المستخدمين الحاليين
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // التحقق من عدم وجود تكرار
+                const existingUser = users.find(u => u.username === username || u.email === email);
+                if (existingUser) {
+                    showMessage('اسم المستخدم أو البريد الإلكتروني موجود مسبقاً', 'error');
+                    resetSubmitButton();
+                    return false;
+                }
+                
+                // إضافة المستخدم الجديد
+                users.push(user);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // حفظ المستخدم المسجل حالياً
+                localStorage.setItem('loggedInUser', JSON.stringify({
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                    avatar: user.avatar,
+                    fullName: user.fullName,
+                    loginTime: new Date().toISOString()
+                }));
+                
+                // إظهار رسالة النجاح
+                showToast('🎉 تم إنشاء حسابك بنجاح!', 'success');
+                
+                // توجيه إلى الصفحة الرئيسية بعد تأخير بسيط
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+                
+            }, 1500);
+            
             return false;
         }
+        
+        function resetSubmitButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> إنشاء الحساب';
+        }
+        
+        // ==================== التسجيل بالشبكات الاجتماعية ====================
+        function signupWithGoogle() {
+            showToast('🚧 خاصية التسجيل بجوجل قيد التطوير', 'info');
+            // يمكنك إضافة تنفيذ OAuth هنا
+        }
+        
+        function signupWithFacebook() {
+            showToast('🚧 خاصية التسجيل بفيسبوك قيد التطوير', 'info');
+            // يمكنك إضافة تنفيذ OAuth هنا
+        }
+        
+        // ==================== وظائف مساعدة ====================
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+            messageDiv.style.display = 'block';
+            
+            // إخفاء الرسالة بعد 5 ثواني
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function showToast(message, type = 'info') {
+            const colors = {
+                'success': '#27ae60',
+                'error': '#e74c3c',
+                'warning': '#f39c12',
+                'info': '#3498db'
+            };
+            
+            const Toastify = window.Toastify || function() {
+                return {
+                    showToast: function() {
+                        alert(message);
+                    }
+                };
+            };
+            
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: "top",
+                position: "left",
+                backgroundColor: colors[type] || '#3498db',
+                stopOnFocus: true
+            }).showToast();
+        }
+        
+        // ==================== تهيئة الصفحة ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 صفحة تسجيل الحساب الجديد المحسنة');
+            
+            // تهيئة القائمة للجوال
+            initializeMobileMenu();
+            
+            // إعداد أحداث إظهار/إخفاء كلمة المرور
+            document.getElementById('togglePassword').addEventListener('click', function() {
+                togglePasswordVisibility('password', 'togglePassword');
+            });
+            
+            document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+                togglePasswordVisibility('confirmPassword', 'toggleConfirmPassword');
+            });
+            
+            // إعداد أحداث التحقق في الوقت الحقيقي
+            document.getElementById('username').addEventListener('input', checkUsernameAvailability);
+            document.getElementById('email').addEventListener('input', checkEmailAvailability);
+            document.getElementById('password').addEventListener('input', checkPasswordStrength);
+            document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+            
+            // إضافة تأثيرات CSS للهز
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+                
+                .valid i {
+                    color: #2ecc71;
+                }
+                
+                .invalid i {
+                    color: #e74c3c;
+                }
+                
+                .valid i::before {
+                    content: "\\f00c";
+                }
+                
+                .invalid i::before {
+                    content: "\\f00d";
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // السماح بإرسال النموذج بالضغط على Enter
+            document.getElementById('confirmPassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('signupForm').dispatchEvent(new Event('submit'));
+                }
+            });
+            
+            // التحقق الأولي للحقول
+            checkUsernameAvailability();
+            checkEmailAvailability();
+            checkPasswordStrength();
+            checkPasswordMatch();
+        });
     </script>
 </body>
 </html>

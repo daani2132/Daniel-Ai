@@ -2,80 +2,234 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>تمارين شد الجولاين - الفك واللغلوغ</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        /* الحفاظ على نفس أنماط القوائم */
-        .rule-item ul {
-            list-style: none;
-            padding-right: 0;
-            margin-top: 10px;
+        /* =========== تحسينات أساسية للمقاييس على الهواتف =========== */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
-        .rule-item ul li {
-            margin-bottom: 8px;
+
+        body {
+            font-size: 16px;
             line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 10px;
         }
-        .rule-section-title {
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #aaa;
-            padding-bottom: 5px;
+
+        /* ========== الهيدر والقائمة بنفس تصميم السكريبت السابق ========== */
+        .glass {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00be9f;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
-        .highlight {
-            font-weight: bold;
-            color: #cc0000;
+        
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 70px;
+            box-sizing: border-box;
         }
-        /* تنسيق بسيطة للبروفايل داخل الهيدر */
+        
+        /* زر القائمة للهواتف */
+        .mobile-menu-toggle {
+            display: none;
+            background: rgba(0, 190, 159, 0.2);
+            border: 1px solid rgba(0, 190, 159, 0.4);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 8px;
+            z-index: 1002;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(0, 190, 159, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* زر الموسيقى بعيد عن زر تسجيل الدخول */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            order: 1;
+        }
+        
+        .music-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 190, 159, 0.2);
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid rgba(0, 190, 159, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .music-btn:hover {
+            background: rgba(0, 190, 159, 0.3);
+            transform: scale(1.05);
+        }
+        
+        /* القوائم في المنتصف ومكبرة */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            transition: all 0.3s ease;
+            order: 2;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 110px;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(0, 190, 159, 0.3);
+            border-color: #00be9f;
+            color: #00be9f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.2);
+        }
+        
+        nav ul li a.active {
+            background: #00be9f;
+            color: white;
+            border-color: #00be9f;
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
+        }
+        
+        /* أنماط المستخدم */
+        .auth-status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            order: 3;
+        }
+        
         .user-profile {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
+        
         .user-avatar {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #00be9f;
+            flex-shrink: 0;
         }
-        .user-details span {
-            display: block;
-            font-weight: bold;
-            color: #fff;
-        }
+        
         .logout-btn {
             background: transparent;
             border: none;
             color: #fff;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            padding: 8px;
+            border-radius: 4px;
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        
+        .logout-btn:hover {
+            color: #00be9f;
+            background: rgba(0, 190, 159, 0.2);
+            transform: scale(1.1);
+        }
+        
         .login-btn {
-            background-color: #00be9f;
-            border: none;
+            background: #00be9f;
             color: white;
-            padding: 6px 12px;
+            border: none;
+            padding: 12px 24px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
-        }
-        .login-btn i {
-            font-size: 1.2rem;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            border: 1px solid #00be9f;
+            min-height: 44px;
+            min-width: 120px;
+            justify-content: center;
         }
         
-        /* الأنماط الجديدة لتمارين شد الجولاين */
+        .login-btn:hover {
+            background: #00a98c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 190, 159, 0.3);
+        }
+        
+        /* ========== الأنماط الجديدة لتمارين شد الجولاين ========== */
         .goolain-container {
             max-width: 1400px;
             margin: 2rem auto;
             padding: 0 1rem;
+            width: 100%;
         }
         
         .goolain-card {
@@ -89,13 +243,14 @@
         
         .goolain-title {
             color: #00be9f;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
         
         .main-grid {
@@ -103,12 +258,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-top: 20px;
-        }
-        
-        @media (max-width: 1024px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
         }
         
         /* قسم الكاميرا والكوتش */
@@ -129,7 +278,7 @@
         
         #videoElement {
             width: 100%;
-            height: 350px;
+            height: 300px;
             background: #000;
             object-fit: cover;
         }
@@ -145,8 +294,8 @@
         
         .face-guide {
             position: absolute;
-            width: 200px;
-            height: 250px;
+            width: 180px;
+            height: 220px;
             border: 3px solid #00be9f;
             border-radius: 50% 50% 40% 40%;
             top: 50%;
@@ -160,7 +309,7 @@
             bottom: 30%;
             left: 50%;
             transform: translateX(-50%);
-            width: 180px;
+            width: 160px;
             height: 2px;
             background: #ff416c;
             opacity: 0.6;
@@ -171,7 +320,7 @@
             bottom: 20%;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 90px;
             height: 2px;
             background: #4CAF50;
             opacity: 0.6;
@@ -189,7 +338,7 @@
             background: linear-gradient(45deg, #00be9f, #009688);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 14px 24px;
             border-radius: 10px;
             cursor: pointer;
             font-weight: bold;
@@ -198,6 +347,9 @@
             gap: 10px;
             transition: all 0.3s ease;
             font-size: 1rem;
+            min-height: 48px;
+            min-width: 140px;
+            justify-content: center;
         }
         
         .goolain-btn:hover {
@@ -238,8 +390,8 @@
         }
         
         .coach-img {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #00be9f;
@@ -248,6 +400,7 @@
         .coach-info h3 {
             color: #00be9f;
             margin-bottom: 5px;
+            font-size: 1.2rem;
         }
         
         .coach-info p {
@@ -282,16 +435,22 @@
             gap: 10px;
             margin-bottom: 20px;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
         .category-btn {
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid transparent;
             color: #ccc;
-            padding: 8px 16px;
+            padding: 12px 20px;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .category-btn.active {
@@ -302,7 +461,7 @@
         
         .gif-container {
             width: 100%;
-            height: 300px;
+            height: 250px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             overflow: hidden;
@@ -327,7 +486,7 @@
         
         .exercise-name {
             color: #00be9f;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 10px;
         }
         
@@ -335,6 +494,7 @@
             color: #ccc;
             line-height: 1.6;
             margin-bottom: 15px;
+            font-size: 0.95rem;
         }
         
         .instructions-list {
@@ -346,7 +506,7 @@
         
         .instructions-list li {
             margin-bottom: 8px;
-            padding-right: 10px;
+            padding-right: 15px;
             position: relative;
         }
         
@@ -355,7 +515,7 @@
             color: #00be9f;
             font-size: 1.2rem;
             position: absolute;
-            right: -5px;
+            right: 0;
         }
         
         /* قسم المؤقت والتقييم */
@@ -368,7 +528,7 @@
         }
         
         #timer {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: #00be9f;
             font-weight: bold;
             font-family: monospace;
@@ -376,7 +536,7 @@
         }
         
         .timer-label {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #ccc;
             margin-top: 10px;
         }
@@ -384,20 +544,20 @@
         /* قسم التقييم الذكي */
         .evaluation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
             margin-top: 20px;
         }
         
         .eval-card {
             background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             text-align: center;
         }
         
         .eval-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             color: #00be9f;
             margin-bottom: 10px;
@@ -405,12 +565,12 @@
         
         .eval-label {
             color: #ccc;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         .progress-circle {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto 15px;
             position: relative;
         }
@@ -436,7 +596,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: white;
         }
@@ -445,7 +605,7 @@
         .results-section {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             margin-top: 30px;
         }
         
@@ -455,7 +615,7 @@
         }
         
         .final-score {
-            font-size: 5rem;
+            font-size: 3.5rem;
             font-weight: bold;
             background: linear-gradient(45deg, #00be9f, #4CAF50);
             -webkit-background-clip: text;
@@ -464,20 +624,20 @@
         }
         
         .score-label {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #ccc;
         }
         
         .feedback-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
             margin-top: 30px;
         }
         
         .feedback-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             border-top: 5px solid;
         }
@@ -500,11 +660,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.1rem;
         }
         
         .feedback-card p {
             color: #ccc;
             line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         /* الإشعارات */
@@ -524,6 +686,7 @@
             align-items: center;
             gap: 15px;
             max-width: 90%;
+            font-size: 0.95rem;
         }
         
         @keyframes slideIn {
@@ -540,8 +703,8 @@
         /* أدوات الوجه */
         .face-tools {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             display: flex;
             gap: 10px;
             z-index: 10;
@@ -571,7 +734,7 @@
         .journey-section {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             margin-top: 30px;
         }
         
@@ -598,12 +761,12 @@
         
         .milestone {
             text-align: center;
-            width: 100px;
+            width: 80px;
         }
         
         .milestone-dot {
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             background: #666;
             border-radius: 50%;
             margin: 0 auto 10px;
@@ -624,18 +787,510 @@
         
         .milestone-label {
             color: #ccc;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+        
+        /* فوتر */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 2px solid #00be9f;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .copyright {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .copyright a {
+            color: #00be9f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* =========== Media Queries شاملة للأحجام المختلفة =========== */
+        
+        /* للأجهزة اللوحية */
+        @media (max-width: 1024px) {
+            header {
+                padding: 15px 20px;
+                min-height: 65px;
+            }
+            
+            nav ul {
+                gap: 6px;
+            }
+            
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+                min-width: 100px;
+                gap: 8px;
+            }
+            
+            .header-left {
+                gap: 15px;
+            }
+            
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .goolain-title {
+                font-size: 1.6rem;
+            }
+            
+            #videoElement {
+                height: 280px;
+            }
+        }
+        
+        /* للهواتف (شاشات صغيرة) */
+        @media (max-width: 768px) {
+            /* تحسينات عامة */
+            body {
+                font-size: 15px;
+                padding-top: 0;
+            }
+            
+            header {
+                padding: 10px 15px;
+                min-height: 60px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            /* زر القائمة للهواتف */
+            .mobile-menu-toggle {
+                display: flex;
+                order: 1;
+            }
+            
+            /* زر الموسيقى على اليسار */
+            .header-left {
+                order: 2;
+                margin-left: auto;
+                margin-right: 10px;
+            }
+            
+            /* زر تسجيل الدخول على اليمين */
+            .auth-status {
+                order: 3;
+                margin-left: 0;
+            }
+            
+            /* القائمة الأصلية مخفية على الهاتف */
+            nav {
+                display: none;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                border-radius: 0 0 15px 15px;
+                border-top: 2px solid #00be9f;
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                order: 4;
+                width: 100%;
+                flex: 0 0 100%;
+                margin-top: 10px;
+            }
+            
+            nav.active {
+                display: block;
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from { transform: translateY(-20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                min-width: auto;
+                padding: 16px 20px;
+                font-size: 16px;
+                justify-content: flex-start;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.08);
+                min-height: 50px;
+            }
+            
+            nav ul li a i {
+                font-size: 18px;
+                width: 25px;
+                text-align: center;
+            }
+            
+            /* تحسين ترتيب العناصر على الهواتف */
+            .music-btn {
+                font-size: 1.3rem;
+                min-width: 40px;
+                min-height: 40px;
+                padding: 8px;
+            }
+            
+            .goolain-container {
+                padding: 0 15px;
+                margin: 1rem auto;
+            }
+            
+            .goolain-card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .goolain-title {
+                font-size: 1.4rem;
+                gap: 10px;
+            }
+            
+            #videoElement {
+                height: 250px;
+            }
+            
+            .goolain-btn {
+                min-width: 120px;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .controls-section {
+                gap: 8px;
+            }
+            
+            .coach-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .coach-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .gif-container {
+                height: 220px;
+            }
+            
+            .exercise-name {
+                font-size: 1.2rem;
+            }
+            
+            #timer {
+                font-size: 2.2rem;
+            }
+            
+            .evaluation-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .progress-circle {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .final-score {
+                font-size: 2.8rem;
+            }
+            
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .journey-milestones {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .milestone {
+                width: 70px;
+            }
+            
+            .login-btn {
+                padding: 10px 16px;
+                font-size: 14px;
+                min-width: 100px;
+                min-height: 42px;
+            }
+            
+            .logout-btn {
+                font-size: 1.1rem;
+                padding: 6px;
+            }
+        }
+        
+        /* للهواتف الصغيرة جداً */
+        @media (max-width: 480px) {
+            header {
+                padding: 8px 12px;
+                min-height: 55px;
+            }
+            
+            .mobile-menu-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+                padding: 10px;
+            }
+            
+            nav {
+                top: 55px;
+                padding: 15px;
+            }
+            
+            nav ul li a {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            
+            .header-left {
+                gap: 8px;
+            }
+            
+            .music-btn {
+                font-size: 1.2rem;
+                min-width: 36px;
+                min-height: 36px;
+                padding: 6px;
+            }
+            
+            .goolain-container {
+                padding: 0 12px;
+                margin: 0.5rem auto;
+            }
+            
+            .goolain-card {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+            
+            .goolain-title {
+                font-size: 1.3rem;
+                gap: 8px;
+            }
+            
+            #videoElement {
+                height: 200px;
+            }
+            
+            .face-guide {
+                width: 150px;
+                height: 180px;
+            }
+            
+            .jaw-line {
+                width: 130px;
+            }
+            
+            .neck-line {
+                width: 70px;
+            }
+            
+            .goolain-btn {
+                min-width: 110px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+                min-height: 44px;
+            }
+            
+            .controls-section {
+                gap: 6px;
+            }
+            
+            .category-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                min-height: 38px;
+            }
+            
+            .gif-container {
+                height: 180px;
+            }
+            
+            .exercise-details {
+                padding: 15px;
+            }
+            
+            .exercise-name {
+                font-size: 1.1rem;
+            }
+            
+            #timer {
+                font-size: 1.8rem;
+            }
+            
+            .timer-label {
+                font-size: 1rem;
+            }
+            
+            .evaluation-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .progress-circle {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .circle-text {
+                font-size: 1.3rem;
+            }
+            
+            .final-score {
+                font-size: 2.5rem;
+            }
+            
+            .score-label {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الطويلة */
+        @media (max-height: 700px) and (orientation: landscape) {
+            header {
+                min-height: 50px;
+                padding: 8px 15px;
+            }
+            
+            nav ul li a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            #videoElement {
+                height: 180px;
+            }
+            
+            .gif-container {
+                height: 150px;
+            }
+            
+            .goolain-btn {
+                padding: 10px 15px;
+                min-height: 42px;
+            }
+        }
+        
+        /* للأجهزة ذات الشاشات الكبيرة جداً */
+        @media (min-width: 1600px) {
+            header, .goolain-container {
+                max-width: 1600px;
+            }
+            
+            .goolain-card {
+                padding: 3rem;
+            }
+            
+            #videoElement {
+                height: 350px;
+            }
+            
+            .gif-container {
+                height: 300px;
+            }
+        }
+        
+        /* دعم اللمس */
+        @media (hover: none) and (pointer: coarse) {
+            .goolain-btn:hover,
+            .login-btn:hover,
+            .logout-btn:hover,
+            nav ul li a:hover,
+            .music-btn:hover,
+            .face-tool:hover,
+            .category-btn:hover {
+                transform: none;
+            }
+            
+            .goolain-btn:active,
+            .login-btn:active,
+            nav ul li a:active,
+            .music-btn:active,
+            .face-tool:active,
+            .category-btn:active {
+                transform: scale(0.98);
+                opacity: 0.9;
+            }
+            
+            .goolain-btn, .login-btn, .logout-btn, .music-btn, .category-btn {
+                min-height: 48px;
+            }
+            
+            input, textarea, button, select {
+                font-size: 16px;
+            }
+        }
+        
+        /* تحسينات للمسافة بين العناصر على الهواتف */
+        @media (max-width: 768px) {
+            .goolain-container > *:not(:last-child) {
+                margin-bottom: 20px;
+            }
+            
+            .camera-coach-section,
+            .exercises-section,
+            .timer-section,
+            .journey-section,
+            .results-section {
+                margin-bottom: 20px;
+            }
+            
+            .goolain-btn:not(:last-child) {
+                margin-bottom: 8px;
+            }
         }
     </style>
 </head>
 <body>
 <header class="glass">
-    <div class="auth-status">
-        <!-- زر الموسيقى -->
+    <!-- زر القائمة للهواتف -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- زر الموسيقى في مكان منفصل بعيد عن تسجيل الدخول -->
+    <div class="header-left">
         <button onclick="openMusicPlayer()" class="music-btn" title="مشغل الموسيقى">
             <i class="fas fa-music"></i>
         </button>
-        
+    </div>
+
+    <nav id="mainNav">
+        <!-- قائمة التنقل - الهمبرجر سيحدد الصفحة الحالية فقط -->
+        <ul>
+            <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
+            <li><a class='active' href='rules.html'><i class="fas fa-gavel"></i> شد الجولاين</a></li>
+            <li><a href='download.html'><i class="fas fa-download"></i> QR Code</a></li>
+            <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني</a></li>
+            <li><a href='faq.html'><i class="fas fa-question-circle"></i> دردشة الخبراء</a></li>
+            <li><a href='shop.html'><i class="fas fa-store"></i> العبقري الذكي</a></li>
+        </ul>
+    </nav>
+
+    <div class="auth-status">
         <!-- حالة المستخدم -->
         <span id="userInfo" style="display: none;">
             <div class="user-profile">
@@ -654,19 +1309,6 @@
             <i class="fas fa-sign-in-alt"></i> تسجيل دخول
         </button>
     </div>
-
-    <nav>
-        <!-- قائمة التنقل -->
-        <ul>
-            <li><a href='index.html'><i class="fas fa-home"></i> الرئيسية</a></li>
-            <li><a href='features.html'><i class="fas fa-star"></i> مدرب رياضي</a></li>
-            <li><a href='rules.html'><i class="fas fa-gavel"></i> شد الجولاين</a></li>
-            <li><a class='active' href='download.html'><i class="fas fa-download"></i> qr code </a></li>
-            <li><a href='apply.html'><i class="fas fa-user-shield"></i> طبيب الكتروني </a></li>
-            <li><a href='faq.html'><i class="fas fa-question-circle"></i> دردشة الخبراء</a></li>
-            <li><a href='shop.html'><i class="fas fa-store"></i> العبقري الذكي </a></li>
-        </ul>
-    </nav>
 </header>
 
 <main class="goolain-container">
@@ -903,9 +1545,66 @@
 </footer>
 
 <script>
-
-
-        function openMusicPlayer() {
+    // ============ إدارة القائمة للجوال ============
+    function initializeMobileMenu() {
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        // إغلاق القائمة عند النقر على رابط
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth <= 768) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+        
+        // إغلاق القائمة عند تغيير حجم النافذة
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+        
+        // تحديد الصفحة الحالية تلقائياً
+        highlightCurrentPage();
+    }
+    
+    function toggleMobileMenu() {
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        mainNav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    }
+    
+    // دالة لتحديد الصفحة الحالية بناءً على اسم الملف
+    function highlightCurrentPage() {
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('nav ul li a');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkPage = link.getAttribute('href');
+            
+            if (linkPage === currentPage || 
+                (currentPage === '' && linkPage === 'index.html') ||
+                (currentPage === 'rules.html' && linkPage === 'rules.html')) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    function openMusicPlayer() {
         window.open('music-player.html', 'MusicPlayer', 
             'width=450,height=700,left=100,top=100,resizable=yes,scrollbars=yes');
     }
