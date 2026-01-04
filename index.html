@@ -9,7 +9,176 @@
     <!-- خطوط Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     
+    <!-- ========== PWA CONFIG START ========== -->
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a14">
+    
+    <!-- Apple iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Daniel AI">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Microsoft Windows Meta Tags -->
+    <meta name="msapplication-TileImage" content="icon-192.png">
+    <meta name="msapplication-TileColor" content="#0a0a14">
+    <meta name="msapplication-config" content="none">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- PWA Splash Screen CSS -->
     <style>
+        /* زر التثبيت - واضح وظاهر */
+        #installButton {
+            position: fixed !important;
+            bottom: 120px !important;
+            right: 20px !important;
+            background: linear-gradient(135deg, #00be9f 0%, #00997d 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 16px 32px !important;
+            border-radius: 30px !important;
+            font-family: 'Tajawal', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 18px !important;
+            cursor: pointer !important;
+            z-index: 99999 !important;
+            box-shadow: 0 8px 30px rgba(0, 190, 159, 0.6) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            transition: all 0.3s ease !important;
+            animation: installPulse 2s infinite !important;
+            border: 3px solid rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        #installButton:hover {
+            transform: translateY(-5px) scale(1.1) !important;
+            box-shadow: 0 15px 40px rgba(0, 190, 159, 0.8) !important;
+            background: linear-gradient(135deg, #00997d 0%, #008770 100%) !important;
+        }
+        
+        @keyframes installPulse {
+            0% { transform: scale(1); box-shadow: 0 8px 30px rgba(0, 190, 159, 0.6); }
+            50% { transform: scale(1.08); box-shadow: 0 12px 40px rgba(0, 190, 159, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 8px 30px rgba(0, 190, 159, 0.6); }
+        }
+        
+        /* شاشة التحميل */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 99999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #00be9f;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* تحسينات للتجربة على الشاشات الصغيرة */
+        @media all and (display-mode: standalone) {
+            body {
+                background-color: #0a0a14;
+            }
+            
+            /* إخفاء شريط العناوين في وضع PWA */
+            header {
+                padding-top: env(safe-area-inset-top);
+            }
+            
+            /* تحسين المساحة الآمنة للأجهزة المختلفة */
+            .container {
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+            
+            /* إخفاء زر التثبيت إذا كان التطبيق مثبتاً */
+            #installButton {
+                display: none !important;
+            }
+        }
+        
+        /* إشعارات PWA */
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: rgba(10, 10, 20, 0.95);
+            border: 2px solid #00be9f;
+            border-radius: 10px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100001;
+            animation: slideInRight 0.3s ease;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .notification.success { border-color: #00be9f; }
+        .notification.error { border-color: #ff5555; }
+        .notification.info { border-color: #4f46e5; }
+        
+        .notification i:first-child {
+            font-size: 1.2rem;
+        }
+        
+        .notification.success i:first-child { color: #00be9f; }
+        .notification.error i:first-child { color: #ff5555; }
+        .notification.info i:first-child { color: #4f46e5; }
+        
+        .notification span {
+            flex: 1;
+            color: #f0f8ff;
+            font-size: 14px;
+        }
+        
+        .notification button {
+            background: none;
+            border: none;
+            color: #b0e0ff;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .notification button:hover {
+            color: #00be9f;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
         :root {
             --primary-color: #00be9f;
             --primary-dark: #00997d;
@@ -681,6 +850,12 @@
             .hero-btn {
                 min-height: var(--btn-height-tablet);
             }
+            
+            #installButton {
+                padding: 14px 28px !important;
+                font-size: 16px !important;
+                bottom: 110px !important;
+            }
         }
         
         /* هواتف (481px - 767px) */
@@ -822,6 +997,13 @@
             .tech-buttons {
                 grid-template-columns: 1fr;
             }
+            
+            #installButton {
+                padding: 12px 24px !important;
+                font-size: 14px !important;
+                bottom: 100px !important;
+                right: 15px !important;
+            }
         }
         
         /* هواتف صغيرة جداً (480px فما دون) */
@@ -906,120 +1088,31 @@
             .feature-title {
                 font-size: 1.3rem;
             }
-        }
-        
-        /* وضع أفقي للهواتف (Landscape) */
-        @media (max-height: 700px) and (orientation: landscape) {
-            header.glass {
-                min-height: 60px;
-                padding: 8px 15px;
-            }
             
-            nav ul li a {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-                min-height: 45px;
+            #installButton {
+                padding: 10px 20px !important;
+                font-size: 13px !important;
+                bottom: 90px !important;
+                right: 10px !important;
             }
-            
-            .ad-video-container {
-                height: 80vh;
-            }
-            
-            .hero-section {
-                min-height: 60vh;
-                padding: 30px 20px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-                margin-bottom: 20px;
-            }
-            
-            nav.active {
-                max-height: 60vh;
-            }
-        }
-        
-        /* تحسينات للأجهزة اللوحية في الوضع الأفقي */
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-            .hero-buttons {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        /* دعم اللمس وتجربة المحمول */
-        @media (hover: none) and (pointer: coarse) {
-            /* تحسينات اللمس للهواتف */
-            .hero-btn,
-            .tech-buttons a,
-            .login-btn,
-            nav ul li a,
-            .skip-ad,
-            .feature-card {
-                min-height: 48px;
-                cursor: pointer;
-            }
-            
-            /* تجنب التأثيرات المكلفة */
-            .hero-btn:hover,
-            .tech-buttons a:hover,
-            .login-btn:hover,
-            nav ul li a:hover,
-            .feature-card:hover {
-                transform: none;
-            }
-            
-            .hero-btn:active,
-            .tech-buttons a:active,
-            .login-btn:active,
-            nav ul li a:active,
-            .feature-card:active,
-            .skip-ad:active {
-                transform: scale(0.98);
-                opacity: 0.9;
-            }
-            
-            /* تحسين حجم الخط للمدخلات */
-            input, textarea, button, select {
-                font-size: 16px !important;
-            }
-            
-            /* تحسين المسافات لللمس */
-            .hero-buttons,
-            .tech-buttons {
-                gap: 15px;
-            }
-            
-            /* تحسين الأزرار للشاشات الصغيرة */
-            .hero-btn,
-            .tech-buttons a {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-        }
-        
-        /* تحسينات للأجهزة القديمة */
-        @supports not (backdrop-filter: blur(10px)) {
-            header.glass,
-            nav,
-            .ad-content {
-                background: rgba(15, 15, 20, 0.98);
-            }
-        }
-        
-        /* منع التكبير التلقائي على حقول الإدخال في iOS */
-        input, textarea, select {
-            font-size: 16px;
-            transform: scale(1);
         }
     </style>
 </head>
 <body>
+    <!-- شاشة التحميل -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p style="color: white; margin-top: 20px; font-family: 'Tajawal', sans-serif;">
+            جاري تحميل Daniel AI...
+        </p>
+    </div>
+
+    <!-- زر تثبيت التطبيق - واضح وظاهر -->
+    <button id="installButton">
+        <i class="fas fa-download"></i>
+        <span>📱 تثبيت التطبيق</span>
+    </button>
+
     <!-- إعلان الفيديو الكبير -->
     <div class="ad-video-container">
         <video class="ad-video" autoplay muted playsinline>
@@ -1213,7 +1306,153 @@
     </footer>
 
     <script>
-        // ============ نظام تسجيل الدخول (يتكامل مع سكربتك) ============
+        // ============ تهيئة الصفحة ============
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Daniel AI - تحميل الصفحة');
+            
+            // إخفاء شاشة التحميل
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 1000);
+            
+            // التحقق من حالة تسجيل الدخول
+            checkLoginStatus();
+            
+            // التحقق من تثبيت التطبيق
+            checkIfAppIsInstalled();
+            
+            // تهيئة القائمة للهواتف
+            initializeMobileMenu();
+            
+            // تحسينات الأداء
+            optimizePerformance();
+            
+            // إخفاء الإعلان بعد 10 ثواني
+            setTimeout(() => {
+                const skipBtn = document.querySelector('.skip-ad');
+                if (skipBtn && document.querySelector('.ad-video-container').style.display !== 'none') {
+                    skipBtn.click();
+                }
+            }, 10000);
+            
+            // تأثير الهيدر عند التمرير
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header.glass');
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                
+                lastScroll = currentScroll;
+            });
+            
+            // التحقق من زر التثبيت
+            setTimeout(() => {
+                const installButton = document.getElementById('installButton');
+                console.log('🔍 زر التثبيت موجود؟', !!installButton);
+                
+                if (installButton) {
+                    console.log('✅ زر التثبيت ظاهر وجاهز للاستخدام');
+                    showNotification('📱 اضغط على زر التثبيت لإضافة التطبيق إلى شاشتك الرئيسية', 'info', 8000);
+                }
+            }, 2000);
+        });
+        
+        // ============ نظام PWA والتثبيت ============
+        let deferredPrompt;
+        const installButton = document.getElementById('installButton');
+        
+        // عرض زر التثبيت عند توفر الإمكانية
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('✅ PWA install prompt available');
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // تأكيد ظهور الزر
+            if (installButton) {
+                installButton.style.display = 'flex';
+            }
+        });
+        
+        // عند النقر على زر التثبيت
+        if (installButton) {
+            installButton.addEventListener('click', async () => {
+                console.log('🖱️ زر التثبيت تم النقر');
+                
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    
+                    console.log(`📊 اختيار المستخدم: ${outcome}`);
+                    
+                    if (outcome === 'accepted') {
+                        showNotification('🎉 تم تثبيت التطبيق بنجاح!', 'success');
+                        installButton.style.display = 'none';
+                    } else {
+                        showNotification('تم إلغاء التثبيت، يمكنك المحاولة لاحقاً', 'info');
+                    }
+                    deferredPrompt = null;
+                } else {
+                    showNotification('ℹ️ لإضافة التطبيق: اضغط على ⋮ ثم "تثبيت التطبيق"', 'info', 10000);
+                }
+            });
+        }
+        
+        // تسجيل Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function(registration) {
+                        console.log('✅ Service Worker مسجل:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('❌ فشل تسجيل Service Worker:', error);
+                    });
+            });
+        }
+        
+        // التحقق مما إذا كان التطبيق مثبتاً بالفعل
+        function checkIfAppIsInstalled() {
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('📱 التطبيق مثبت بالفعل');
+                if (installButton) {
+                    installButton.style.display = 'none';
+                }
+                return true;
+            }
+            return false;
+        }
+        
+        // دالة مساعدة لعرض الإشعارات
+        function showNotification(message, type = 'info', duration = 5000) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, duration);
+        }
+        
+        // ============ نظام تسجيل الدخول ============
         function checkLoginStatus() {
             const loggedInUser = localStorage.getItem('loggedInUser');
             
@@ -1246,7 +1485,6 @@
             }
         }
         
-        // دالة تسجيل الخروج (مطابقة لنظامك)
         function logout() {
             if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
                 localStorage.removeItem('loggedInUser');
@@ -1254,7 +1492,6 @@
             }
         }
         
-        // دالة إعادة التوجيه لصفحة تسجيل الدخول الحقيقية
         function redirectToLogin() {
             window.location.href = 'login.html';
         }
@@ -1266,7 +1503,6 @@
             
             if (!menuToggle || !mainNav) return;
             
-            // إدارة النقر على زر الهمبرجر
             menuToggle.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const isActive = mainNav.classList.contains('active');
@@ -1280,7 +1516,6 @@
                 }
             });
             
-            // إغلاق القائمة عند النقر على رابط
             const navLinks = mainNav.querySelectorAll('a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -1291,7 +1526,6 @@
                 });
             });
             
-            // إغلاق القائمة عند النقر خارجها
             document.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768 && 
                     !mainNav.contains(e.target) && 
@@ -1302,7 +1536,6 @@
                 }
             });
             
-            // إغلاق القائمة عند تغيير حجم النافذة
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
@@ -1340,73 +1573,6 @@
             }
         }
         
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                <span>${message}</span>
-                <button onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
-            `;
-            
-            if (!document.getElementById('notification-styles')) {
-                const style = document.createElement('style');
-                style.id = 'notification-styles';
-                style.textContent = `
-                    .notification {
-                        position: fixed;
-                        top: 20px;
-                        right: 20px;
-                        background: rgba(15, 15, 20, 0.95);
-                        border: 2px solid var(--border-color);
-                        border-radius: 10px;
-                        padding: 15px 20px;
-                        display: flex;
-                        align-items: center;
-                        gap: 15px;
-                        z-index: 9999;
-                        animation: slideInRight 0.3s ease;
-                        max-width: 400px;
-                        backdrop-filter: blur(10px);
-                    }
-                    .notification.success { border-color: #00be9f; }
-                    .notification.error { border-color: #ff5555; }
-                    .notification.info { border-color: #5555ff; }
-                    .notification i:first-child {
-                        font-size: 1.2rem;
-                    }
-                    .notification.success i:first-child { color: #00be9f; }
-                    .notification.error i:first-child { color: #ff5555; }
-                    .notification.info i:first-child { color: #5555ff; }
-                    .notification span {
-                        flex: 1;
-                        color: var(--text-light);
-                    }
-                    .notification button {
-                        background: none;
-                        border: none;
-                        color: var(--text-gray);
-                        cursor: pointer;
-                        padding: 5px;
-                        font-size: 0.9rem;
-                    }
-                    @keyframes slideInRight {
-                        from { transform: translateX(100%); opacity: 0; }
-                        to { transform: translateX(0); opacity: 1; }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.remove();
-                }
-            }, 5000);
-        }
-        
         function optimizePerformance() {
             if ('ontouchstart' in window || navigator.maxTouchPoints) {
                 document.documentElement.classList.add('touch-device');
@@ -1420,81 +1586,23 @@
                     lastTouchEnd = now;
                 }, false);
             }
-            
-            const techImage = document.querySelector('.tech-image');
-            if (techImage && window.innerWidth < 768) {
-                techImage.src = techImage.src.replace('w=1350', 'w=768');
-            }
         }
-        
-        // ============ تهيئة الصفحة ============
-        document.addEventListener('DOMContentLoaded', function() {
-            // التحقق من حالة تسجيل الدخول
-            checkLoginStatus();
-            
-            // تهيئة القائمة للجوال
-            initializeMobileMenu();
-            
-            // تحسينات الأداء
-            optimizePerformance();
-            
-            // إخفاء الإعلان بعد 10 ثواني
-            setTimeout(() => {
-                const skipBtn = document.querySelector('.skip-ad');
-                if (skipBtn && document.querySelector('.ad-video-container').style.display !== 'none') {
-                    skipBtn.click();
-                }
-            }, 10000);
-            
-            // تأثير الهيدر عند التمرير
-            let lastScroll = 0;
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('header.glass');
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll > lastScroll && currentScroll > 100) {
-                    header.style.transform = 'translateY(-100%)';
-                } else {
-                    header.style.transform = 'translateY(0)';
-                }
-                
-                lastScroll = currentScroll;
-            });
-            
-            // إذا كان هناك رابط تسجيل دخول في URL، أعد التوجيه
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('login') === 'true' && !localStorage.getItem('loggedInUser')) {
-                redirectToLogin();
-            }
-            
-            // التحقق من تسجيل الدخول بعد العودة من صفحة أخرى
-            function checkLoginAfterRedirect() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const loginSuccess = urlParams.get('login_success');
-                
-                if (loginSuccess === 'true') {
-                    const userData = localStorage.getItem('loggedInUser');
-                    if (userData) {
-                        try {
-                            const user = JSON.parse(userData);
-                            showUserInfo(user);
-                            showNotification('تم تسجيل الدخول بنجاح!', 'success');
-                            window.history.replaceState({}, document.title, window.location.pathname);
-                        } catch (e) {
-                            console.error('Error parsing user data:', e);
-                        }
-                    }
-                }
-            }
-            
-            checkLoginAfterRedirect();
-        });
         
         window.addEventListener('orientationchange', function() {
             setTimeout(() => {
                 window.scrollTo(0, 0);
             }, 100);
         });
+        
+        // اختبار سريع - لتفعيل الزر يدوياً إذا كان مخفياً
+        setTimeout(() => {
+            const btn = document.getElementById('installButton');
+            if (btn && btn.style.display === 'none') {
+                console.log('🔧 تفعيل زر التثبيت يدوياً');
+                btn.style.display = 'flex';
+                showNotification('📱 زر تثبيت التطبيق جاهز الآن!', 'success');
+            }
+        }, 5000);
     </script>
 </body>
 </html>
