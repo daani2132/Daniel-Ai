@@ -2,658 +2,1612 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>جهاز اللاسلكي المتطور | اتصال فوري بالـ IP</title>
-    <!-- مانيفست لتثبيت التطبيق -->
-    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D9%84%D8%A7%D8%B3%D9%84%D9%83%D9%8A%20%D9%85%D8%AA%D8%B7%D9%88%D8%B1%22%2C%22short_name%22%3A%22%D9%84%D8%A7%D8%B3%D9%84%D9%83%D9%8A%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%220b1729%22%2C%22theme_color%22%3A%2200e0ff%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data:image/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAPBSURBVGiB7ZpdaFNnGMf/7zk5+UjapGma5pqm1Vq1Tpd2dbqKIhNkoFbYh6A4vRgIgheC%2BCl2N0H2IbKLXQxiLxS2URBkF1LoTGvXzVltbRfXfqBdP6Y1pkmb5iM5yUlycs7hRdPGJs1JmjYH98f1cHjO%2Bz7v%2F%2F88z3lO3gNEJCURCSml%2FF9Bp9Px%2Bmhra2MwGIQQQpZl5XI5k8lEIpFgamqKyclJotEo%2F6WysjJOnDhBfX09jY2NOJ1OfD4fHo8Hl8uFxWJ59tbW1hgaGmJgYIDh4WGSySRzc3Pk83n0ej1WqxWr1YrVasVisVBdXU19fT1NTU20t7dz8OBBXC4Xm5mZmWF4eJhIJEIsFmNhYQEhBAaDAYvFgtFoxGg0YjAYsNlsuN1uGhsbaWtro7Ozk/r6ep4lMzMzDAwMkEgkyGaz6HQ69Ho9RqMRnU6HXq9Hp9NhsViw2Ww0NzfT2dlJfX09m5ment7aAOVyGYvFgtlsRqfTodPpEEIgyzJCCEqlEoVCgWKxiE6nw2KxoNfrsVqtb3QdYHp6GlmW0el0yLKMTqejUqkgSRKlUolly5QoFosYDAZMJhOVSgVJknjjEzg/P4/BYECn0yGEoFwuUy6XqVQqlEolyuUylUqFcrmMXq9HlmUqlQqSJPEmJzCXyyHLMoI1gDf1WqFQIJvNUigUqFQqvMkJzOfzSJKETqfj0aNHpFIpFhYWyGQypNNpMpkMmUyGdDpNJpNhenqabDZLPp/nTU7g2toakiSxurrKyMgIkUiESCSCEAKNRkMgEKCtrY1gMEhrayuBQACNRkMkEiEej7O2tsabmsA7d+6Qy+W4e/cuV69e5dq1a8iyzNraGnfv3uXSpUtcunSJa9eukcvlKBQKvMkJLJVKTE5OMj4+zq1bt7h9+zaSJLG2tsbk5CS3bt3i9u3b3Lp1i8nJSUqlEm9yArPZLPfu3ePu3bvcv3+fQqFAMpnk3r173L9/n0KhQCKR4N69eySTSTabNzmB5XKZfD7P/Pw8CwsLFAoFMpkM8/PzzM/Ps7i4iCRJLCwskE6n2Wze5AQCZLNZ5ubmSKVSL5R8Pk82m2WzeZMTCJDP58lms8iyzD8hhECSJPL5PG9yAv+WYrFIOp0ml8ux2bzJCVwvnU6TzWYpFos8L4QQZDIZcrmc2gQWCoV1UwB1CSyXy6yuriKEeCECgQCZTEZtAru7u0kkEgghkCQJrVaLTqfDZDLR1tZGKpVSm8CZmRmGhoYIhUKEw2Gmp6dZWFhAp9Oh1WpxuVwMDw8Tj8fVJnBmZobBwUEikQixWIxMJkOhUMDhcNDb28v8/LzaBAIkEgnC4TB+v59AIIAQAq1Wi8FgQKvVvpaJq7Gxkb6+PgKBAG63G61Wq/7yDwQC+Hw+mpqa0Gq1r9+fnp4eGhsb8Xg86g8eQEdHBy6Xi4aGBtUnDwYB/H4/LpeL+vp63G43tbW1uN1u6uvrcblc6g8eQGVlJU6nE6fTidPppLKyEpfLhcvlUv3gAXg8HpxOJy6Xi6qqKpxOJ1VVVTidTpxOp/oPHkBDQwMOhwOn04nD4aChoeH1nzyA9vZ2/H4/drud9vZ2/H4/7e3t+P1+2tvfDBAOh2lvb8dut9Pe3k44HFafwPf3z4FwOEw4HFYhIYSQEEJCSCGEEFJIIYSUQgghpZRSSimllP8D+gss8iScObZtHQAAAABJRU5ErkJggg%3D%3D%22%2C%22sizes%22%3A%2248x48%22%2C%22type%22%3A%22image/png%22%7D%2C%7B%22src%22%3A%22data:image/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAA6nSURBVHic7Z17cFP1%2Bcc/%20k1zaZqmaZq2SUvTQqG00EJb7gMFhFmGwBzcJhM3N5noMLf9BX%2BwBx0DzJ3MLej8QZwOo6gggm6K4w8UoohcRC4iCii3Qm/03rZpmrZp0iRNc87vD4qy0rY5OTlpkp7XzB%2By2XzPec55v9/v%2BX7Pc74PQESWKEiSJN3dYhRF0e12Y7PZsFgsMBqN0Ol06gWz2YzCwkKUlpaiqKgIhYWFKCgoQH5%2BPnJzc5GdnY3MzEykp6cjNTUViYmJiI%2BPR2xsLKxWK6KiohAREYHQ0FAEBwcjMDAQfn5%2B8Pb2hpeXF1xcXODi4gJHR0eIoojIyEg0NDSgpqYG9fX1uHHjBpqbm3Hnzh20tbWhvb0d7e3t6OjogN1uh8PhgCRJfepAIiMjYbfb0d3dDa1WC0mSoNVqoVar0dXVhY6ODnR0dKCjowPt7e1obW1Fa2srmpub0dTUhMbGRjQ0NKC%2Bvh719fWora1FTU0NqqurUVVVhcrKSlRUVKC8vBxlZWUoLS1FSUkJiouLUVBQgPz8fOTm5iI7OxuZmZlIT09HSkoKkpKSYLFYEBcXh5iYGERHR8NqteLq1au4desW7t69i7a2NnR2dqK7uxu9vb3o6emBp6cn3N3d4ebmBldXV7i4uMDFxQWCIECj0UAURUiS1KdeZWRkwGKxoKurC1arFTqdDhaLBRaLBTqdDhaLBYIgwNfXF/7+/ggICEBgYCACAgLg5+cHHx8feHt7w8vLC56ennB3d4ebmxucnZ3h5OQER0dHODg4QKPRQBAEdHV1oa2tDS0tLWhubkZTUxMaGhpQX1%2BPmpoaVFdXo7KyEhUVFSgvL0dpaSmKi4tRVFSEwsJC5OfnIy8vDzk5OcjOzkZmZiYyMjKQmpqKlJQUJCUlITExEbGxsbBarYiKioLZbEZ4eDgCAgLg6%2BsLT09PuLm5wdnZGU5OTnBwcIAgCJBlGY2NjbDZbLh58yZaW1vR0dGBrq4u9PT0wNvbGx4eHnB3d4erqyucnZ0hiiKcnJx6XVKfesU8pKWlBf7%2B/tBoNJAkCZIkwW63w263w2azwWazwW63Q5IkSJIEWZYhiiKcnZ0hiiIEQYCLiws8PT3h5eUFb29veHl5wdvbGx4eHvDw8IC7uztcXFwgiiI0Gg00Gg1kWUZnZydaWlpw584dNDU1obGxEfX19bh58yZqa2tRXV2NyspKVFRUoKysDCUlJSguLkZRUREKCgqQl5eH3Nxc5OTkIDs7G5mZmUhLS0NKSgoSExMRHx%2BP2NhYWCwWREZGwmQyITQ0FEFBQfDz84O3tzfc3d3h4uICR0dHaLVaaDQaaDQaaDQaKIoCu90Om82G1tZWNjc38%2BzZs2xqamJzczNbWlp469Yttra2sq2tje3t7ezs7GRXVxcVRaFGo6FWq6VGo6FGo6FWq6VGo6FWq6VGo6G7uzvd3d3p5uZGURQpiiJFUaRGo6FGo6GiKFKj0VAURTqKIl1cXOjo6EhRFNnR0cGWlhY2NTWxoaGBdXV1rK2tZXV1Nauqqnjt2jVWVlayvLycZWVlLC0tZUlJCYuLi1lUVMTCwkIWFBSwoKCA%2Bfn5zM3NZXZ2NjMzM5ment5n%2B/v7Iz4%2BHhaLBVarFZGRkYiIiEBoaChCQkIQFBQEPz8/%2BDj6wsfbG17eXvD09ISHhweEQhEuLi5wdHSERqOBo6MjNBoNHBwc0NnZiZaWFty%2BfRuNjY2oq6tDbW0tampqUF1djZs3b6KyshLl5eUoKSlBcXExioqKUFRUhIKCAuTn5yMvLw%2B5ubnIzs5GVlYWMjIykJqa2md7eHj0qVfMIfn5%2BdBoNNBoNNBoNBBFEW5ubnB3d4eHhwc8PT3h5eUFT09PeHh4wN3dHa6urhAEAU5OTnB0dIQkSWhtbcWtW7fQ2NiIuro61NTUoLq6GlVVVaisrERFRQXKy8tRWlqKkpISFBcXo6ioCIWFhcjPz0deXh5yc3ORnZ2NzMzMPhsATp48CQD44osvUFdXh9bWVnR2dkJRFAiCAEEQIIoiBEGAg4MD7t27B0mSIEkS7t27h66uLiiKAkEQ4ODgAEEQoNFo0N3djaamJjQ0NKC2tha1tbWorq5GZWUlKioqUF5ejtLSUhQXF6OoqAiFhYUoKChAfn4%2B8vLykJubi5ycHGRnZyMrKwuZmZlIT0/vVQ8ZG0J6e3vR09MDRVEgSRJkWR5xYblz5w5qampw8%2BZN3LhxA9XV1bhx4waqqqpQWVmJiooKlJeXo6ysDCUlJSguLkZRURGKi4tRVFSEwsJCFBQUID8/v8/29PTsU6%2BYQwoKCiBJEiRJgqIo6OrqQmdnJzo7O9HZ2Ymuri50dXWhq6sLnZ2d6OzsRGdnJzo6OtDe3o7W1la0tLSgubkZTU1NaGxsxM2bN3Hjxg3U1NSguroaVVVVqKioQHl5OcrKylBaWoqSkhIUFRWhoKAA%2Bfn5yMvLQ25uLrKzs5GZmTmgFxcX8%2BzZs2xqamJzczNbWlp469Yttra2sq2tje3t7ezs7GRXVxcVRaFGo6FWq6VGo6FGoyF3i4qiUFEU3qseYg7x8fGBp6cnPDw84O7uDhcXF4iiaB%2BKoqC3txc9PT3o7u5GV1cX7t27hzt37qCpqQmNjY2oq6tDbW0tampqUF1djZs3b6KiogJlZWUoLS1FSUkJiouLUVhYiIKCAuTn5yMvLw%2B5ubnIzs5GZmYm0tPTkZqaivj4%2BCHLZrMhOjoaVqsVkZGRiIiIQGhoKEJCQhAUFAQ/Pz94e3vDy8sLnp6e8PDwgLu7O1xdXeHs7AxRFOHk5ARHR0dotVp0dXWhpaUFd%2B7cQWNjI%2Brq6lBbW4uamhpUV1ejqqoKlZWVqKioQHl5OUpLS1FSUoLi4mIUFRWhsLAQ%2Bfn5yMvL65NdXV1HrJdeegl1dXVoa2tDZ2cnFEVBWloaUlJSkJSUhISEBMTFxSEmJgbR0dGwWq2IjIxEeHg4QkNDERwcjMDAQPj5%2BcHHxwfe3t7w8vKCh4cH3N3d4erqCkEQ4OzsDEdHR2g0GgiCgPb2drS0tKC5uRlNTU1obGxEfX09bt68iZqaGlRXV6OyshIVFRUoLy9HaWkpSkpKUFxcjKKiIhQWFqKgoAD5%2BfnIy8tDbm4usrOze%2BS4uDh0d3fj5s2buHv3Ltra2tDZ2QlFUSAIAgRBgCiKEAQBGg0G9%2B7dgyRJkCQJ9%2B7dQ1dXFxRFgSAIcHBwgCAI0Gg06O7uRlNTE27fvo3a2lrU1taipaUFTU1NfXJrayvb2trY3t7Ozs5OdnV1UVEUajQaarVau2RZlofVY8whzc3N8Pf3h0ajgSRJkCQJdrsddrsddrsNdrvNLkmSBEmS4OzsDK1WC1EUIYoizGYzPD094eXlBW9vb3h6esLDwwPu7u4QRRGiKEKj0UCj0UCWZXR2dqKlpQV37txBU1MTbt%2B%2BjYaGBtTX16O2thY3b95EZWUlKioqUF5ejrKyMpSUlKC4uBhFRUUoLCxEQUEB8vPzkZeXh9zcXGRnZ%2B%2BTi4uLYbfb4efnB2dnZwiCYEeSJNjt9j45JycHsiyjt7cXkiRBkiTY7XbY7XbY7XbY7XZ0d3dDlmVIkgRBEODi4gKtVgvR2RnuHh7w9PSEp6c%2BPDw94eHhAXd3d7i6ukIQBDg5OUGr1aKjowN3795FS0sLbt%2B%2BjcbGRtTV1aG2thY1NTWorq5GZWUlKioqUFFRgfLycpSWlqKkpATFxcUoKipCQUEB8vPzkZeXh9zcXGRnZ/fbGzZs4K1bt9jS0sKWlha2trayra2N7e3t7OzsZFdXFxVFoVarHVRyuVweds8h/fn7%2B0MURWi1Wmg0Gmg0GoiiCLPZDDc3N7i7u8PDwwMeHh5wd3eHq6srBEGAIAhwdnaGoihobW3FrVu30NjYiLq6OtTU1KC6uhpVVVWoqKhAeXk5SktLUVJSguLiYhQVFfXZ%2BXl9ckFBAW7dugUAuH79Ompra9Ha2orOzk4oigJBEHrFcQYxGAzQ6XTo7u5GU1MTbt%2B%2BjdraWtTW1qK6uho3b95EZWWlXU5JSUFycjISEhIQFxcHq9WKyMhIhIeHw2q1Ijo6GjabDXl5ecjLy0NBQQGKi4tRXFyM0tJSlJWVoby8HBUVFaioqEBlZSVu3ryJ6upq1NTU4NatW2hqasLdu3fR0dGB7u5uKIoCLy8vuLu7w93dHS4uLhAcHOyiKApRUVF2ybIsD6uHmEMiIyMhiiI0Gg00Gg1EUURERARiY2MRFxcHq9WK6OhoWK1WREZGwmw2IywszN4SBAcHw8/PDz4+PvD29oaXlxc8PT3h4eEBd3d3uLq6QhAEO6IoQpIktLS0oKmpCY2Njairq7N3GdXV1aisrERFRQXKy8tRWlqK4uJiFBUVobCwEAUFBcjPz0deXl6f/MEHH2BwcwjAYQ%2BhKIrdYyRJQm9vL3p7e9Hb2wvA7iGKokCWZWi1WoiiaIcoihBFEa6urvDw8ICnpyc8PDzg7u4OV1dXu3x9fZGUlITk5GQkJiYiPj4eNpsN0dHRiIqKgtlshr+/P3x9feHj4wNvb%2B8eecKECUhMTIQgCGhra0NLSwtOnTqFU6dO4fTp0zh//jzKyspQVVWF6upq3Lp1C3fu3MG9e/fQ1dUFnU4HHx8f%2BPj4wNvbG56envDw8IC7u7u9VRjqMiw2NhaSJKG1tRXNzc04f/48zp8/j6qqKpSUlKC4uBhFRUUoKChAfn4%2B8vLykJubi5ycHGRnZyMrKwuZmZlIT09HSkoKEhMT7XJcXBxiYmJgsVgQGRkJk8mE0NBQBAUFwc/PD97e3vDy8oKnp%2Bewh9i2bRuuXr2K5uZm3Lp1C62trWhvb0dHRwc6OzvR1dWF7u5u9PT0QFEUaLVaaLVaaLVaaDQaaLVaaDQaaLVaaLVaaLVaaDQaaDQaaDQaaLVaaLVaaDQaaLVaaDQaaLVa%2Bvj40MfHh6IojrhjY2PZ2trK5uZmNjU1saGhgXV1daytraW6/uu//ot1dXWsq6tjXV0d6%2Bvr2dDQwMbGRt68eZPNzc1saWlha2sr29ra2N7eTnV0dFBdXV28dOkS8/LyqK5HHnmE58%2BfZ1NTE5ubm9nS0sJbt26xtbWVbW1tbG9vZ2dnJ7u6uqgoCrVaLbVaLbVaLSVJoiRJ1Gq1lCSJkiRRo9FQo9FQo9FQFEWqS1EUKopCdXV3d/P8%2BfNsamriH3/8QUmSKEkSJUmioijUaDRU9xDTQ4qKiiBJEiRJgqIo6OrqQmdnJzo7O9HZ2Ymuri50dXWhq6sLnZ2d6OzsRGdnJzo6OtDe3o7W1la0tLSgubkZTU1NaGxsxM2bN3Hjxg3U1NSguroaVVVVqKioQHl5OcrKylBaWoqSkhIUFRWhoKAA%2Bfn5yMvLQ25uLrKzs5GZmYm0tDSkpKQgOTkZSUlJSEhIQFxcHKKjoxEdHQ2LxYLIyEiEh4cjNDQUwcHBCAwMhJ%2BfH3x8fODt7Q0vLy94enrCw8MD7u7ucHV1hbOzM0RRhJOTEzQaDTQaDTQaDRRFgaIokGUZsiyjp6eHT548YXNzM5ubm9nS0sJbt26xtbWVbW1tbG9vZ2dnJ7u6uqgoCrVaLbVaLZ2dnanRaKjVau0a6j5IY2Mj/P39odFoeuWuri7cvXsXf/zxB5qamnDnzh00Njaivr4etbW1qKmpQXV1NapGPURFRQUsFgtMJhPMZjNMJhMiIiJgNpsRFRUFs9kMs9mMsLAwhISEIDg4GIGBgfDz84OPjw+8vb3h5eUFT09PeHh4wN3dHa6urhAEwS5ZliHLMmRZhqIosNvt6OrqQldXF7q7u9HT04Oenh4oigKtVgutVgutVguNRgONRgN1L126lGfPnuWNGzdYX1/Pmzdvsrm5mS0tLWxtbWVbWxvb29vZ2dnJrq4uKopCrVZLZ2dnamO02Ww4cuQITp06hQsXLuDKlSu4du0abty4gZs3b6K2thZ1dXW4efMmbt++jaamJty9exft7e3o7OwcdT3E9BBZltHZ2YmWlhbcvn0bdXV1qK2tRVNTE1pbW9He3o7Ozs5R10OMRiO6urrQ3t6O1tZW3LlzB83NzWhpaUFrays6OjrQ2dmJ7u5uKIqCXq1HmB6iKAp6e3vR09MDRVEgSRJkWYaiKFBXb28vFEWBJEno6ekZcz2EfzwpSZJd6lIUBbIsj7keQjzE9BDiIaaHEA8xPYR4iOkhxENMDyEeYnoI8RDTQ4iHmB5CPMT0EOIhpocQD/l/B/g/AZ80q%2B23yOIAAAAASUVORK5CYII%3D%22%2C%22sizes%22%3A%2296x96%22%2C%22type%22%3A%22image/png%22%7D%5D%7D">
-    <!-- أيقونة للشاشة الرئيسية (ios) -->
-    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAPpSURBVGiB7ZtvaFNnGMaf572np2mT5l/TNqaxTdPG/mkLQx0yJ/MPMoYKY18I+nUz8Mt8sYh92ReLgzHYFz8Mxh6EMR0MApuwOT+4udnN6NzqUreiS7RJS5u0adI2OT05J70vm2jq0pPkJPX5yZO8J8/ze5/f8z7vew4hIiIi8j8hiiLFcRySJKHf70c4HMaTJ0+Qk5ODrVu3Yt26dSgvL0dZWRnWrFmDVatWoaioCAUFBcjPz0deXh5yc3ORnZ2N7OxsZGZm4sWLF2hoaMCdO3dw//59PH78GC9evEAkEkEsFkMymUQ6nUY6nYZhGDAYDAgEAnj+/DlOnTqFjz/+GB988AHee+89VFdXo6KiAuXl5SgtLcXq1atRVFSEwsJC5OfnY968ecjJyUF2djYyMzNhNpsxY8YMmEwmTJ8+HVOmTMHkyZPx6tUrdHR04OHDh2hqakJrayva29sxMDCAYDBYcMEkEglEo1EMDw9jYGAA/f396O3tRXd3N9ra2tDS0oKmpiY0NDSgtrYW169fx5UrV3DhwgWcPn0ax44dw6FDh7B//37s2bMHu3btQnV1NSorK7F9+3Zs2bIFW7ZswcaNG1FZWYmKigqUl5ejrKwMpaWlWLVqFVauXImSkhIUFxdjxYoVKC4uRnFxMZqbm/H48WO0trbi2bNn6O7uRl9fHwYGBhAKhRAKhRAOhxGJRBAbG8P4+DgmJiYwOTmJqakpSJIEQRDw4sULdHZ2oqWlBffv30djYyPq6+vx008/4dKlSzhz5gyOHz+Ozz//HB999BF27NiB7du3Y+vWrdi8eTMqKytRUVGBsrIyrFmzBqWlpVi9ejVWrlyJkpISrFixAsXFxSguLkZzczMePHiApqYmtLe3o7u7G319fRgcHMTo6CgikQhGR0cRjUYRj8eRTCYhyzIUReFmTZZlpFIpRKNRDA8Po7+/H93d3Whra0NLSwvu3buHmzdv4sqVKzhz5gyOHz+Ozz77DMeOHcOhQ4dw4MAB7N27F7t27UJ1dTUqKiqwZcsWbNq0CRs3bkRFRQXKy8tRVlaGN998E+vWrcPatWtRWlqKoqIirFy5EitWrEBxcTGampoKrp6hoSEMDAxgaGgI4XAYkUgEkUgEo6OjiEajGBsbQzweRyKRQDqd5hZfJpNBOp1GKpVCKpXC2NgYo9EoIpEIBgYG0Nvbi+7ubrS1teHBgwdoampCY2Mjbt68iZ9//hmXL1/GuXPncPr0aRw/fhyff/45jh49ioMHD2Lfvn3Ys2cPdu7cifLyclRUVGDz5s3YuHEjKioqsG7dOqxduxa3b99GQ0MDGhsb0dTUhNbWVnR2dqK3txfBYBDDw8OIxWJIJBLcD4zJZBKJRAKxWAwjIyMIh8MYGBhAb28vurq60NLSgqamJjQ2NuLGjRv49ttvUVdXh6tXr+LixYs4c+YMvvrqK3z++ef4+OOPsXfvXuzatQvV1dWorKzElStXUFFRgXXr1mHdunVYt24d3n77bZSVlWHt2rV4++23sXbtWpSWlqKkpATFxcUoKirC0NAQ7t27h4cPH6KpqQnNzc1obW1FV1cX+vr6EAwGEQ6HEY1GEY/HkUqlIEkSZFmGqqpQFIX5YbIsI5VKIR6PY3R0FJFIBMPDwxgaGsK9e/dw69YtXLp0CXV1dfj++++h6zpkWRaGYUCj0Yy5jmKxGGKxGJLJpPA6EgQBgiBAURQIggBBEGAYBlKpFBRFgSzL0Gg0sNlsEEURFosFVqsVJpMJmUwGqqpCURQIgiC8jkwmE0RRhGEYkGUZkiQhmUxC0zSIogij0QhBEGCxWPD6/7dYLLBYLBAEAWazGaIoQpIkpNNpZmdngyiKEEURmUwG6XQaiUQC8Xgc0WgUY2NjGBkZQX9/P4LBIHp6evDkyRPcu3cP9+/fR0dHB4aHhxGNRpFIJJBKpSArirJcXk9RFGQyGUiShFgshkgkguHhYQwODqK/vx99fX3o6enB48ePcfv2bVy9ehU//vgjvvvuO1y6dAlff/01Tp48iRMnTuDYsWM4cuQIDh06hIMHD2L//v3Yu3cvampqsGvXLuzYsQPV1dWoqqpCZWUl3n33XVy7dg2NjY1obm5Ga2srOjs70dfXh8HBQYRCIUQikT97ewWj0Sji8TgURYEsy0in00gmk0gkEkin05BlGaqqQpIkJBIJjI+PY3R0FCMjIwgGg+jv70dPTw+6urrQ3t6O1tZWNLeoc+PGL6iurhZSR0REI0RE%2BkNERPpDRET6Q0RE%2BkNERPpDRET6Q0RE%2BkNERPpDRET6Q0RE%2BkNERPpDRET6Q0RE%2BkNERPpDRET6Q0SkP94BSPxVdHVb/nsAAAAASUVORK5CYII=">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>West Games - منصة الألعاب العربية</title>
+    
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="shortcut icon" href="icon.ico">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Swiper for sliders -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
-        /* reset and base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
         }
 
         body {
-            background: radial-gradient(circle at 20% 30%, #1a2f4a, #0b1424);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
+            background: #0a0c14;
+            color: #fff;
+            overflow-x: hidden;
+            padding-top: 60px;
         }
 
-        /* التطبيق الرئيسي بشكل جهاز لاسلكي مستقبلي */
-        .walkie-app {
-            max-width: 440px;
-            width: 100%;
-            background: rgba(10, 20, 30, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid rgba(0, 255, 255, 0.25);
-            border-radius: 56px;
-            box-shadow: 0 30px 40px -10px black, 0 0 0 2px rgba(0, 255, 200, 0.3) inset, 0 0 30px #00a6ff70;
-            overflow: hidden;
-            padding: 20px 18px 28px;
+        /* ========== شريط العنوان العلوي ========== */
+        .title-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #1e1b4b, #0f172a);
+            padding: 8px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #4f46e5;
+            z-index: 10000;
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .title-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .title-bar-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            animation: glowPulse 2s infinite;
+        }
+
+        .title-bar-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+            background: linear-gradient(145deg, #ffd966, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-bar-badge {
+            background: #1e293b;
+            color: #818cf8;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            border: 1px solid #4f46e5;
+        }
+
+        .title-bar-btn {
+            background: linear-gradient(145deg, #2563eb, #4f46e5);
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #818cf8;
             transition: 0.3s;
         }
 
-        /* الهوية الشخصية بتأثير عصري */
-        .identity-module {
-            background: linear-gradient(145deg, #0f2637, #031016);
-            border-radius: 40px;
-            padding: 18px 16px;
-            margin-bottom: 20px;
-            border: 1px solid #00ffd0;
-            box-shadow: 0 10px 0 #02212e, 0 15px 25px black;
+        .title-bar-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #4f46e5;
         }
 
-        .ip-container {
+        /* ========== تأثيرات حركية ========== */
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px #4f46e5, 0 0 10px #4f46e5; }
+            50% { box-shadow: 0 0 20px #4f46e5, 0 0 30px #2563eb; }
+            100% { box-shadow: 0 0 5px #4f46e5, 0 0 10px #4f46e5; }
+        }
+
+        @keyframes float3d {
+            0% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-15px) rotateX(2deg); }
+            100% { transform: translateY(0px) rotateX(0deg); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* ========== Welcome Screen ========== */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0c14;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            background: #0b1f2d;
-            padding: 8px 12px 8px 18px;
-            border-radius: 60px;
-            border: 1px solid #27ffdf;
+            z-index: 9999;
+            animation: welcomeFadeOut 2s ease forwards;
+            animation-delay: 3s;
+            pointer-events: none;
         }
 
-        .ip-label {
-            color: #b5ffff;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            background: #03212b;
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            border: 1px solid cyan;
+        @keyframes welcomeFadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.5); visibility: hidden; }
         }
 
-        .ip-value {
-            font-family: 'Courier New', monospace;
+        .welcome-content {
+            text-align: center;
+            animation: welcomeZoom 2s ease;
+        }
+
+        @keyframes welcomeZoom {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .welcome-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            animation: welcomeRotate 3s infinite;
+        }
+
+        @keyframes welcomeRotate {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .welcome-text {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(145deg, #ffd966, #818cf8, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: glowPulse 2s infinite;
+        }
+
+        .welcome-sub {
+            color: #cbd5e1;
             font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 15px cyan, 0 0 30px blue;
-            background: #00121e;
-            padding: 6px 20px;
-            border-radius: 40px;
-            letter-spacing: 3px;
-            direction: ltr;
-            border: 1px solid cyan;
         }
 
-        .status-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 12px;
-        }
-
-        .status-chip {
-            background: #12384a;
-            border-radius: 40px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #00c8ff;
-            box-shadow: 0 0 8px cyan;
-            color: #e0f5ff;
-            font-weight: 500;
-        }
-
-        .pulse-led {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #00ffb3;
-            box-shadow: 0 0 15px #0eff00;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; box-shadow: 0 0 5px #0ff; }
-            50% { opacity: 1; box-shadow: 0 0 20px #0ff, 0 0 30px #0ff; }
-            100% { opacity: 0.6; box-shadow: 0 0 5px #0ff; }
-        }
-
-        /* قسم الاتصال */
-        .com-panel {
-            background: #0d212f;
-            border-radius: 48px;
-            padding: 18px 14px;
-            border: 1px solid #2fd9ff;
-            box-shadow: 0 8px 0 #07212e, inset 0 0 20px #00a3ff40;
-        }
-
-        .dialer {
-            display: flex;
-            background: #1e3849;
-            border-radius: 50px;
-            border: 2px solid #12e0ff;
-            padding: 4px;
-            margin-bottom: 20px;
-        }
-
-        .dialer input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 14px 18px;
-            color: white;
-            font-size: 1.2rem;
-            font-family: monospace;
-            outline: none;
-            direction: ltr;
-        }
-
-        .dialer input::placeholder {
-            color: #6eb0c0;
-            font-size: 0.95rem;
-        }
-
-        .dialer button {
-            background: #1c5068;
-            border: none;
-            color: white;
-            padding: 0 22px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            border: 1px solid cyan;
-            box-shadow: 0 0 15px cyan;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-
-        .dialer button:active {
-            background: #2f7a9e;
-            transform: scale(0.96);
-        }
-
-        /* زر PTT الاحترافي */
-        .ptt-zone {
+        /* ========== القائمة الجانبية ========== */
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 900;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin: 15px 0 20px;
+            gap: 15px;
         }
 
-        .ptt-master {
-            background: radial-gradient(circle at 35% 30%, #ff5f5f, #b10000);
-            width: 140px;
-            height: 140px;
-            border-radius: 140px;
+        .sidebar-item {
+            width: 60px;
+            height: 60px;
+            background: #0f172a;
+            border: 2px solid #4f46e5;
+            border-radius: 30px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 5px solid #ffbb33;
-            box-shadow: 0 12px 0 #630000, 0 15px 25px black, 0 0 40px red;
-            transition: 0.1s ease;
+            color: #818cf8;
+            font-size: 1.5rem;
             cursor: pointer;
-            user-select: none;
+            transition: 0.3s;
+            position: relative;
+            animation: slideInLeft 0.5s ease;
+            animation-fill-mode: both;
         }
 
-        .ptt-master.active {
-            transform: translateY(8px);
-            box-shadow: 0 4px 0 #630000, 0 20px 30px black;
-            background: radial-gradient(circle at 30% 30%, #ff8a8a, #cf0000);
-        }
+        .sidebar-item:nth-child(1) { animation-delay: 0.1s; }
+        .sidebar-item:nth-child(2) { animation-delay: 0.2s; }
+        .sidebar-item:nth-child(3) { animation-delay: 0.3s; }
+        .sidebar-item:nth-child(4) { animation-delay: 0.4s; }
+        .sidebar-item:nth-child(5) { animation-delay: 0.5s; }
 
-        .ptt-master span {
-            font-size: 2.4rem;
-            font-weight: 800;
+        .sidebar-item:hover {
+            width: 200px;
+            padding: 0 20px;
+            justify-content: flex-start;
+            gap: 15px;
+            background: #4f46e5;
             color: white;
-            text-shadow: 0 3px 0 black, 0 0 30px yellow;
-            line-height: 1;
+            box-shadow: 0 0 30px #4f46e5;
         }
 
-        .ptt-master small {
-            color: white;
-            font-weight: 600;
-            background: #00000060;
-            padding: 3px 12px;
+        .sidebar-item span {
+            display: none;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .sidebar-item:hover span {
+            display: inline;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ========== الهيدر ========== */
+        .main-header {
+            background: linear-gradient(135deg, #1e1b4b80, #0f172a80);
+            backdrop-filter: blur(10px);
             border-radius: 30px;
-            backdrop-filter: blur(5px);
+            padding: 30px 40px;
+            margin: 25px 0 35px;
+            border: 2px solid #4f46e5;
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            animation: float3d 4s infinite;
         }
 
-        .live-badge {
-            margin-top: 10px;
-            background: #ff6600;
-            color: white;
-            padding: 5px 22px;
-            border-radius: 30px;
-            font-weight: 600;
-            box-shadow: 0 0 15px orange;
-            animation: pulse 2s infinite;
+        .logo h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(145deg, #ffd966, #818cf8, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px #4f46e5;
         }
 
-        /* بطاقة الصوت الوارد الفوري */
-        .incoming-live {
-            background: #022b36;
-            border-radius: 36px;
-            padding: 16px;
-            margin: 18px 0;
-            border: 2px solid #0ff;
-            box-shadow: 0 0 25px cyan;
+        .logo p {
+            color: #cbd5e1;
+            font-size: 1.3rem;
+        }
+
+        .stats {
+            background: #1e293b;
+            padding: 15px 35px;
+            border-radius: 60px;
+            border: 2px solid #4f46e5;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fcd34d;
+            box-shadow: 0 0 20px #4f46e5;
+        }
+
+        /* ========== سلايدر الإعلانات ========== */
+        .ad-slider {
+            background: #0f172a;
+            border-radius: 40px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #4f46e5;
             position: relative;
             overflow: hidden;
         }
 
-        .incoming-live::before {
+        .ad-slider::before {
             content: '';
             position: absolute;
-            top: -10px; left: -10px;
-            width: 60px; height: 60px;
-            background: radial-gradient(circle, cyan, transparent);
-            opacity: 0.4;
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #4f46e5, #818cf8, #4f46e5, transparent);
+            animation: glowPulse 2s infinite;
         }
 
-        .live-title {
+        .slider-title {
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: #b8ffff;
-            font-size: 1.2rem;
-        }
-
-        .caller-ip-display {
-            background: #011016;
-            padding: 16px;
-            border-radius: 34px;
+            gap: 15px;
+            margin-bottom: 25px;
             font-size: 1.8rem;
-            font-family: monospace;
-            color: #ffffff;
-            text-align: center;
-            border: 1px solid cyan;
-            direction: ltr;
-            margin-top: 8px;
-            word-break: break-all;
-            text-shadow: 0 0 10px cyan;
+            color: #fcd34d;
         }
 
-        .offline-hint {
-            font-size: 0.9rem;
-            color: #9ef0b0;
-            text-align: center;
-            margin-top: 5px;
-            background: #0c2e3f;
-            padding: 5px;
+        .swiper {
+            width: 100%;
+            padding: 15px 5px;
+        }
+
+        .swiper-slide {
+            width: 300px;
+        }
+
+        .ad-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
             border-radius: 30px;
-        }
-
-        /* ميزات أسطورية */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin: 20px 0 10px;
-        }
-
-        .feature-item {
-            background: #133e52;
-            border: 1px solid #2ad0b5;
-            border-radius: 30px;
-            padding: 12px 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            color: white;
-            font-weight: 600;
-            box-shadow: 0 5px 0 #0a2832;
-            transition: 0.1s;
+            padding: 20px;
+            border: 2px solid #4f46e5;
+            transition: 0.3s;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, #4f46e540, transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .ad-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 40px #4f46e5;
+            border-color: #818cf8;
+        }
+
+        .ad-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            border: 2px solid #4f46e5;
+        }
+
+        .ad-card h3 {
+            font-size: 1.3rem;
+            color: #fcd34d;
+        }
+
+        .ad-card .badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: #ef4444;
+            padding: 5px 15px;
+            border-radius: 30px;
             font-size: 0.9rem;
+            font-weight: bold;
+            animation: glowPulse 1.5s infinite;
         }
 
-        .feature-item:active {
-            transform: translateY(4px);
-            box-shadow: 0 1px 0 #0a2832;
+        /* ========== لوحة التحكم ========== */
+        .control-panel {
+            background: #0f172a;
+            border-radius: 50px;
+            padding: 20px 30px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border: 2px solid #4f46e5;
+            box-shadow: 0 0 30px #4f46e520;
         }
 
-        .feature-item.active {
-            background: #2b708b;
-            border-color: #ffd966;
-            box-shadow: 0 0 25px cyan;
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #1e293b;
+            border-radius: 60px;
+            padding: 5px 20px;
+            width: 100%;
+            max-width: 450px;
+            border: 2px solid #4f46e5;
+            transition: 0.3s;
         }
 
-        .feature-item span { font-size: 1.6rem; }
-
-        /* سجل الأحداث مع تأثير */
-        .event-log {
-            background: #03212b;
-            border-radius: 36px;
-            padding: 16px;
-            border: 1px solid cyan;
-            margin-top: 15px;
+        .search-box:focus-within {
+            box-shadow: 0 0 30px #4f46e5;
         }
 
-        .log-header {
+        .search-box i {
+            color: #818cf8;
+            font-size: 1.3rem;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 15px 12px;
+            width: 100%;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .filter-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-btn {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 2px solid #4f46e5;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px #4f46e5;
+        }
+
+        /* ========== شبكة الألعاب ========== */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .game-card {
+            background: #0f172a;
+            border-radius: 35px;
+            overflow: hidden;
+            border: 2px solid #4f46e5;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px -10px #000000;
+            cursor: pointer;
+            position: relative;
+            animation: scaleIn 0.5s ease;
+            animation-fill-mode: both;
+        }
+
+        .game-card:nth-child(odd) { animation-delay: 0.1s; }
+        .game-card:nth-child(even) { animation-delay: 0.2s; }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #818cf8;
+            box-shadow: 0 0 50px #4f46e5;
+        }
+
+        .game-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid #4f46e5;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .game-image::after {
+            content: '▶ شاهد الإعلان';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: #4f46e5;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .game-card:hover .game-image::after {
+            opacity: 1;
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .game-category {
+            display: inline-block;
+            background: #1e293b;
+            padding: 5px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #818cf8;
+            margin-bottom: 12px;
+            border: 2px solid #4f46e5;
+        }
+
+        .game-desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .game-meta {
             display: flex;
             justify-content: space-between;
-            color: #89f3ff;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .log-entries {
-            background: #02131e;
-            border-radius: 30px;
-            padding: 12px;
-            max-height: 140px;
-            overflow-y: auto;
-            list-style: none;
-        }
-
-        .log-entries li {
-            color: #c4f5ff;
-            font-family: monospace;
-            padding: 5px 0;
-            border-bottom: 1px solid #1b5068;
+            color: #64748b;
             font-size: 0.85rem;
         }
 
-        .clear-log-btn {
-            background: transparent;
-            border: 1px solid cyan;
-            color: cyan;
-            border-radius: 30px;
-            padding: 2px 18px;
+        /* ========== مودال التفاصيل المتقدم ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.98);
+            backdrop-filter: blur(15px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            max-width: 1300px;
+            width: 100%;
+            border-radius: 60px;
+            padding: 50px;
+            position: relative;
+            border: 3px solid #4f46e5;
+            box-shadow: 0 0 100px #4f46e5;
+            animation: scaleIn 0.3s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 2rem;
+            color: #fcd34d;
             cursor: pointer;
-            font-weight: 600;
+            background: #1e293b;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #4f46e5;
+            transition: 0.3s;
+            z-index: 10;
         }
 
-        .footer-note {
-            color: #3d7382;
+        .close-modal:hover {
+            background: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        .game-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .detail-media {
+            width: 100%;
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 3px solid #4f46e5;
+            box-shadow: 0 0 40px #4f46e5;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            border: 3px solid #4f46e5;
+            box-shadow: 0 0 40px #4f46e5;
+            margin-top: 20px;
+        }
+
+        .detail-info h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #fcd34d;
+        }
+
+        .game-rating {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        .download-count {
+            background: #1e293b;
+            padding: 8px 20px;
+            border-radius: 40px;
+            border: 2px solid #4f46e5;
+            color: #4ade80;
+        }
+
+        .game-description-full {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 30px;
+            margin: 20px 0;
+            border: 2px solid #4f46e5;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .spec-item {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid #4f46e5;
             text-align: center;
-            margin-top: 15px;
-            font-size: 0.75rem;
         }
 
-        /* تحسين للمس */
-        .feature-item, .dialer button, .ptt-master, .clear-log-btn {
-            -webkit-tap-highlight-color: transparent;
+        .spec-item i {
+            color: #4f46e5;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .spec-item h4 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .spec-item p {
+            color: #fcd34d;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .system-req {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 30px;
+            margin: 20px 0;
+            border: 2px solid #4f46e5;
+        }
+
+        .system-req h3 {
+            color: #818cf8;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .system-req ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .system-req li {
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .system-req i {
+            color: #4ade80;
+        }
+
+        .download-section {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            background: linear-gradient(145deg, #2563eb, #4f46e5);
+            padding: 18px 45px;
+            border-radius: 60px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 3px solid #818cf8;
+            transition: 0.3s;
+            cursor: pointer;
+            animation: glowPulse 2s infinite;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px #4f46e5;
+        }
+
+        /* ========== صفحة الإحصائيات ========== */
+        .stats-page {
+            background: #0f172a;
+            border-radius: 40px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid #4f46e5;
+            display: none;
+        }
+
+        .stats-page.active {
+            display: block;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 30px;
+            border: 2px solid #4f46e5;
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            color: #fcd34d;
+            font-weight: bold;
+        }
+
+        /* ========== صفحة الدعم ========== */
+        .support-page {
+            background: #0f172a;
+            border-radius: 40px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid #4f46e5;
+            display: none;
+        }
+
+        .support-page.active {
+            display: block;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            background: #1e293b;
+            border: 2px solid #4f46e5;
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(145deg, #2563eb, #4f46e5);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid #818cf8;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #4f46e5;
+        }
+
+        /* ========== رسالة التحميل ========== */
+        .download-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0f172a;
+            border: 3px solid #4ade80;
+            padding: 15px 25px;
+            border-radius: 50px;
+            color: white;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 3000;
+            box-shadow: 0 0 30px #4ade80;
+            animation: float3d 2s infinite;
+        }
+
+        .footer {
+            background: #0f172a;
+            border-radius: 60px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+            border: 3px solid #4f46e5;
+            box-shadow: 0 0 40px #4f46e5;
+        }
+
+        @media (max-width: 768px) {
+            .game-detail-layout {
+                grid-template-columns: 1fr;
+            }
+            .system-req ul {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sidebar {
+                display: none;
+            }
+            .title-bar {
+                padding: 8px 15px;
+            }
+            .title-bar-badge {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="walkie-app" id="app">
-        <!-- قسم الهوية الشخصية -->
-        <div class="identity-module">
-            <div class="ip-container">
-                <span class="ip-label">🆔 IP شخصي</span>
-                <span class="ip-value" id="myIpDisplay">10.0.0.12</span>
-            </div>
-            <div class="status-row">
-                <div class="status-chip"><span class="pulse-led"></span> دائم الاستماع</div>
-                <div class="status-chip">🔔 الإشعارات نشطة</div>
-            </div>
+    <!-- شريط العنوان العلوي -->
+    <div class="title-bar">
+        <div class="title-bar-left">
+            <img src="icon.ico" alt="West Games" class="title-bar-icon">
+            <span class="title-bar-text">West Games</span>
+            <span class="title-bar-badge">منصة الألعاب العربية</span>
+            <!-- زر ربط الديسكورد -->
+            <button onclick="showDiscordPopup()" style="background: #5865F2; color: white; border: none; padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: bold; cursor: pointer; margin-right: 10px; display: flex; align-items: center; gap: 8px;">
+                <i class="fab fa-discord"></i> ربط
+            </button>
         </div>
+        <button class="title-bar-btn" id="installBtn">
+            <i class="fab fa-windows"></i>
+            تحميل للويندوز
+        </button>
+    </div>
 
-        <!-- لوحة الاتصال -->
-        <div class="com-panel">
-            <div class="dialer">
-                <input type="text" id="targetIpInput" placeholder="أدخل IP الطرف الآخر" value="192.168.1.77">
-                <button id="connectBtn">📡 اتصل</button>
-            </div>
-
-            <!-- زر الضغط والتحدث PTT الأيقوني -->
-            <div class="ptt-zone">
-                <div class="ptt-master" id="pttButton">
-                    <span>🔴</span>
-                    <small>اضغط للتحدث</small>
-                </div>
-                <div class="live-badge">⚡ LIVE ⚡</div>
-            </div>
-
-            <!-- قسم المستلم الفوري (حتى خارج التطبيق) -->
-            <div class="incoming-live">
-                <div class="live-title">
-                    <span>📡 وصول صوت فوري من:</span>
-                    <span style="background:#ff4d4d; padding:2px 12px; border-radius:30px;">مباشر</span>
-                </div>
-                <div class="caller-ip-display" id="incomingCallerIp">—</div>
-                <div class="offline-hint">
-                    💡 يصل الصوت حتى لو المستقبل خارج التطبيق
-                </div>
-            </div>
-
-            <!-- شبكة الميزات الأسطورية (6 ميزات) -->
-            <div class="feature-grid">
-                <div class="feature-item" id="voiceFxBtn">
-                    <span>🎤</span> مؤثر صوتي
-                </div>
-                <div class="feature-item" id="notifyBtn">
-                    <span>🔔</span> إشعار فوري
-                </div>
-                <div class="feature-item" id="vibrateBtn">
-                    <span>📳</span> اهتزاز
-                </div>
-                <div class="feature-item" id="encryptBtn">
-                    <span>🔒</span> تشفير
-                </div>
-                <div class="feature-item" id="recordBtn">
-                    <span>⏺</span> تسجيل
-                </div>
-                <div class="feature-item" id="broadcastBtn">
-                    <span>📢</span> بث عام
-                </div>
-            </div>
-
-            <!-- سجل الأحداث المحسّن -->
-            <div class="event-log">
-                <div class="log-header">
-                    <span>📋 سجل الاتصالات</span>
-                    <span class="clear-log-btn" id="clearLogBtn">مسح</span>
-                </div>
-                <ul class="log-entries" id="logList">
-                    <li>✅ النظام جاهز | الوضع اللاسلكي</li>
-                    <li>🟢 في الاستقبال الدائم</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-note">
-            ⚡ تطبيق لاسلكي متطور - اتصال فوري بالـ IP - قابل للتثبيت
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+            <img src="icon.ico" alt="West Games" class="welcome-logo">
+            <div class="welcome-text">WEST GAMES</div>
+            <div class="welcome-sub">منصة الألعاب العربية</div>
         </div>
     </div>
 
+    <!-- نافذة ربط الديسكورد -->
+    <div id="discordPopup" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 10001; justify-content: center; align-items: center;">
+        <div style="background: #0f172a; padding: 40px; border-radius: 30px; border: 3px solid #4f46e5; max-width: 400px; text-align: center;">
+            <i class="fab fa-discord" style="font-size: 80px; color: #5865F2; margin-bottom: 20px;"></i>
+            <h2 style="color: white; margin-bottom: 10px;">ربط حساب الديسكورد</h2>
+            <p style="color: #cbd5e1; margin-bottom: 20px;">اربط حسابك واحصل على <span style="color: #fcd34d; font-size: 1.5rem;">1000 كوينز</span> هدية!</p>
+            <div style="background: #1e293b; padding: 15px; border-radius: 15px; margin-bottom: 20px;">
+                <p style="color: #818cf8; margin-bottom: 5px;">🔑 كود الربط الخاص بك:</p>
+                <p id="userCode" style="font-size: 2rem; font-weight: bold; color: #4ade80; letter-spacing: 5px;">WEST-1234</p>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">انسخ هذا الكود وأرسله لبوت West Mod في الديسكورد</p>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">الأمر: <code style="background: #2563eb; padding: 5px 10px; border-radius: 10px;">!ربط WEST-1234</code></p>
+            <button onclick="closePopup()" style="background: #2563eb; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;">تم الإرسال</button>
+        </div>
+    </div>
+
+    <!-- رسالة التحميل -->
+    <div id="downloadMessage" class="download-message">
+        <i class="fas fa-check-circle" style="color: #4ade80; font-size: 1.5rem;"></i>
+        <span id="messageText">جاري التحميل...</span>
+    </div>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar">
+        <div class="sidebar-item" onclick="showPage('home')">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </div>
+        <div class="sidebar-item" onclick="showPage('stats')">
+            <i class="fas fa-chart-bar"></i>
+            <span>الإحصائيات</span>
+        </div>
+        <div class="sidebar-item" onclick="showPage('top')">
+            <i class="fas fa-crown"></i>
+            <span>الأفضل</span>
+        </div>
+        <div class="sidebar-item" onclick="showPage('support')">
+            <i class="fas fa-headset"></i>
+            <span>الدعم</span>
+        </div>
+        <div class="sidebar-item" onclick="showPage('about')">
+            <i class="fas fa-info-circle"></i>
+            <span>حول</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- الهيدر -->
+        <div class="main-header">
+            <div class="logo">
+                <h1>WEST GAMES</h1>
+                <p><i class="fas fa-crown" style="color: #fbbf24;"></i> أكثر من 43 لعبة أصلية للتحميل المباشر</p>
+            </div>
+            <div class="stats" id="globalStats">
+                <i class="fas fa-fire" style="color: #ef4444;"></i> 43 لعبة
+            </div>
+        </div>
+
+        <!-- الصفحة الرئيسية -->
+        <div id="homePage">
+            <!-- سلايدر الإعلانات -->
+            <div class="ad-slider">
+                <div class="slider-title">
+                    <i class="fas fa-star"></i>
+                    <h2>الأكثر تحميلاً هذا الأسبوع</h2>
+                    <i class="fas fa-fire" style="color: #ef4444;"></i>
+                </div>
+                <div class="swiper" id="adsSwiper">
+                    <div class="swiper-wrapper" id="adsContainer"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <!-- لوحة التحكم -->
+            <div class="control-panel">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="ابحث عن لعبة...">
+                </div>
+                <div class="filter-btns" id="filterContainer">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="action">أكشن</button>
+                    <button class="filter-btn" data-filter="fps">تصويب</button>
+                    <button class="filter-btn" data-filter="rpg">RPG</button>
+                    <button class="filter-btn" data-filter="sim">محاكاة</button>
+                    <button class="filter-btn" data-filter="horror">رعب</button>
+                </div>
+            </div>
+
+            <!-- شبكة الألعاب -->
+            <div id="gamesGrid" class="games-grid"></div>
+        </div>
+
+        <!-- صفحة الإحصائيات -->
+        <div id="statsPage" class="stats-page">
+            <h2 style="color: #fcd34d; font-size: 2.5rem; margin-bottom: 30px;"><i class="fas fa-chart-bar"></i> إحصائيات الموقع</h2>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+
+        <!-- صفحة الدعم -->
+        <div id="supportPage" class="support-page">
+            <h2 style="color: #fcd34d; font-size: 2.5rem; margin-bottom: 30px;"><i class="fas fa-headset"></i> تواصل مع الدعم الفني</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="الاسم الكامل" id="supportName">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="البريد الإلكتروني" id="supportEmail">
+                </div>
+                <div class="form-group">
+                    <select id="supportType">
+                        <option value="problem">مشكلة في التحميل</option>
+                        <option value="game">طلب إضافة لعبة</option>
+                        <option value="bug">خطأ في الموقع</option>
+                        <option value="other">استفسار آخر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="اكتب رسالتك هنا..." id="supportMessage"></textarea>
+                </div>
+                <button class="submit-btn" onclick="sendSupport()"><i class="fas fa-paper-plane"></i> إرسال</button>
+            </div>
+        </div>
+
+        <!-- صفحة حول -->
+        <div id="aboutPage" class="stats-page">
+            <h2 style="color: #fcd34d; font-size: 2.5rem; margin-bottom: 30px;"><i class="fas fa-info-circle"></i> حول West Games</h2>
+            <div style="background: #1e293b; padding: 30px; border-radius: 40px; border: 2px solid #4f46e5;">
+                <p style="font-size: 1.2rem; line-height: 2; color: #cbd5e1; margin-bottom: 20px;">
+                    West Games هي منصة عربية متخصصة في توفير أحدث الألعاب للتحميل المباشر. تأسست عام 2025 بهدف تسهيل الوصول إلى الألعاب للمستخدم العربي.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 2; color: #cbd5e1;">
+                    <i class="fas fa-check-circle" style="color: #4ade80;"></i> أكثر من 43 لعبة متاحة<br>
+                    <i class="fas fa-check-circle" style="color: #4ade80;"></i> تحميل مباشر وسريع<br>
+                    <i class="fas fa-check-circle" style="color: #4ade80;"></i> دعم فني على مدار الساعة<br>
+                    <i class="fas fa-check-circle" style="color: #4ade80;"></i> تحديثات أسبوعية
+                </p>
+            </div>
+        </div>
+
+        <!-- الفوتر -->
+        <div class="footer">
+            <p><i class="fas fa-check-circle" style="color: #34d399;"></i> جميع ملفات الألعاب جاهزة للتحميل المباشر</p>
+            <p style="margin-top: 20px; color: #818cf8;">West Games © 2025 - جميع الحقوق محفوظة</p>
+        </div>
+    </div>
+
+    <!-- مودال التفاصيل -->
+    <div id="gameModal" class="modal-overlay">
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
     <script>
-        (function() {
-            // ========== تهيئة المتغيرات والعناصر ==========
-            const myIpDisplay = document.getElementById('myIpDisplay');
-            const targetIpInput = document.getElementById('targetIpInput');
-            const connectBtn = document.getElementById('connectBtn');
-            const pttButton = document.getElementById('pttButton');
-            const incomingCallerIp = document.getElementById('incomingCallerIp');
-            const logList = document.getElementById('logList');
-            const clearLogBtn = document.getElementById('clearLogBtn');
+        // إخفاء شاشة الترحيب بعد انتهاء الأنيميشن
+        setTimeout(() => {
+            document.getElementById('welcomeScreen').style.display = 'none';
+        }, 5000);
 
-            // أزرار الميزات
-            const voiceFxBtn = document.getElementById('voiceFxBtn');
-            const notifyBtn = document.getElementById('notifyBtn');
-            const vibrateBtn = document.getElementById('vibrateBtn');
-            const encryptBtn = document.getElementById('encryptBtn');
-            const recordBtn = document.getElementById('recordBtn');
-            const broadcastBtn = document.getElementById('broadcastBtn');
+        // ========== قاعدة البيانات الكاملة - 43 لعبة ==========
+        const games = [
+            { id:1, name:"Arma 3", real:"Arma 3", category:"fps", desc:"لعبة المحاكاة العسكرية الواقعية. عوالم ضخمة وتكتيكات قتالية.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/107410/header.jpg", file:"files/7l_arma3_setup.exe", downloads:15420, rating:4.5, year:2023, developer:"Bohemia Interactive", videoId:"SvZoyp3jCzo" },
+            { id:2, name:"Cities Skylines 2", real:"Cities: Skylines II", category:"sim", desc:"ابنِ مدينة الأحلام مع نظام إدارة متطور ورسوم محسنة.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/949230/header.jpg", file:"files/7l_cities2_setup.exe", downloads:8900, rating:4.3, year:2024, developer:"Colossal Order", videoId:"SvZoyp3jCzo" },
+            { id:3, name:"ELDEN RING NIGHTREIGN", real:"ELDEN RING NIGHTREIGN", category:"rpg", desc:"عالم مظلم من فروم سوفتوير، قتال صعب وقصة غامضة.", img:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg", file:"files/7l_elden-ring-nightreign_setup.exe", downloads:23500, rating:4.9, year:2024, developer:"FromSoftware", videoId:"SvZoyp3jCzo" },
+            { id:4, name:"GTA IV", real:"Grand Theft Auto IV", category:"action", desc:"ليبرتي سيتي تنبض بالحياة. قصة نيكو بيلك الخالدة.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/9010/header.jpg", file:"files/7l_gtaiv_setup.exe", downloads:18750, rating:4.6, year:2008, developer:"Rockstar Games", videoId:"SvZoyp3jCzo" },
+            { id:5, name:"Hogwarts Legacy", real:"Hogwarts Legacy", category:"rpg", desc:"عش حياة الساحر في هوجوورتس، اكتشف أسرار السحر.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg", file:"files/7l_hogwarts-legacy_setup.exe", downloads:32100, rating:4.8, year:2023, developer:"Avalanche Software", videoId:"SvZoyp3jCzo" },
+            { id:6, name:"Palworld", real:"Palworld", category:"action", desc:"عالم مليء بمخلوقات غريبة، بناء وقتال ومغامرات.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1623730/header.jpg", file:"files/7l_palworld_setup.exe", downloads:28900, rating:4.4, year:2024, developer:"Pocketpair", videoId:"SvZoyp3jCzo" },
+            { id:7, name:"RDR 2", real:"Red Dead Redemption 2", category:"action", desc:"الغرب الأمريكي الأسطوري، قصة آرثر مورجان المؤثرة.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg", file:"files/7l_rdr2_setup.exe", downloads:45200, rating:5.0, year:2019, developer:"Rockstar Games", videoId:"SvZoyp3jCzo" },
+            { id:8, name:"Satisfactory", real:"Satisfactory", category:"sim", desc:"أتمتة المصانع في عالم مفتوح، هندسة وإنتاج.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/526870/header.jpg", file:"files/7l_satisfactory_setup.exe", downloads:6700, rating:4.7, year:2024, developer:"Coffee Stain Studios", videoId:"SvZoyp3jCzo" },
+            { id:9, name:"Starfield", real:"Starfield", category:"rpg", desc:"مغامرة فضائية من Bethesda، استكشف الكواكب.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/header.jpg", file:"files/7l_starfield_setup.exe", downloads:15600, rating:4.2, year:2023, developer:"Bethesda", videoId:"SvZoyp3jCzo" },
+            { id:10, name:"American Truck Simulator", real:"American Truck Simulator", category:"sim", desc:"قد شاحنتك عبر أمريكا، مناظر طبيعية.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/270880/header.jpg", file:"files/7l_ats_setup.exe", downloads:4300, rating:4.5, year:2024, developer:"SCS Software", videoId:"SvZoyp3jCzo" },
+            { id:11, name:"Counter-Strike 2", real:"Counter-Strike 2", category:"fps", desc:"التصويب التنافسي الأكثر شهرة، رسوم محدثة.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg", file:"files/7l_cs2_setup.exe", downloads:67800, rating:4.6, year:2023, developer:"Valve", videoId:"SvZoyp3jCzo" },
+            { id:12, name:"Euro Truck Simulator 2", real:"Euro Truck Simulator 2", category:"sim", desc:"سافر عبر طرق أوروبا، نقل بضائع.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/227300/header.jpg", file:"files/7l_ets2_setup.exe", downloads:5600, rating:4.7, year:2024, developer:"SCS Software", videoId:"SvZoyp3jCzo" },
+            { id:13, name:"GTA 5", real:"Grand Theft Auto V", category:"action", desc:"لوس سانتوس، ثلاثة أبطال، عالم لا ينسى.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg", file:"files/7l_gtav_setup.exe", downloads:89200, rating:4.9, year:2015, developer:"Rockstar Games", videoId:"SvZoyp3jCzo" },
+            { id:14, name:"Left 4 Dead 2", real:"Left 4 Dead 2", category:"fps", desc:"البقاء معاً ضد جحافل الزومبي.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/550/header.jpg", file:"files/7l_left4dead2_setup.exe", downloads:12400, rating:4.8, year:2009, developer:"Valve", videoId:"SvZoyp3jCzo" },
+            { id:15, name:"Portal", real:"Portal", category:"action", desc:"ألغاز بمسدس البوابات وذكاء صناعي ساخر.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/400/header.jpg", file:"files/7l_portal_setup.exe", downloads:8300, rating:4.9, year:2007, developer:"Valve", videoId:"SvZoyp3jCzo" },
+            { id:16, name:"Ready or Not", real:"Ready or Not", category:"fps", desc:"تكتيكي SWAT واقعي، اقتحام الغرف.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1144200/header.jpg", file:"files/7l_ready-or-not_setup.exe", downloads:11200, rating:4.5, year:2023, developer:"Void Interactive", videoId:"SvZoyp3jCzo" },
+            { id:17, name:"S&Box", real:"S&Box", category:"action", desc:"منصة تعديلات وألعاب، خليفة جاري مود.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/590830/header.jpg", file:"files/7l_sbox_setup.exe", downloads:3400, rating:4.2, year:2024, developer:"Facepunch Studios", videoId:"SvZoyp3jCzo" },
+            { id:18, name:"Supermarket Simulator", real:"Supermarket Simulator", category:"sim", desc:"أدر متجرك، نظف الأرفف، تعامل مع الزبائن.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2670630/header.jpg", file:"files/7l_supermarket-simulator_setup.exe", downloads:5600, rating:4.3, year:2024, developer:"Nokta Games", videoId:"SvZoyp3jCzo" },
+            { id:19, name:"Baldur's Gate 3", real:"Baldur's Gate 3", category:"rpg", desc:"ألعاب تقمص أدوار ملحمية مستوحاة من D&D.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg", file:"files/7l_baldursgate3_setup.exe", downloads:45600, rating:5.0, year:2023, developer:"Larian Studios", videoId:"SvZoyp3jCzo" },
+            { id:20, name:"CSGO Legacy", real:"CS:GO Legacy", category:"fps", desc:"النسخة الكلاسيكية من CS:GO قبل التحديث.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg", file:"files/7l_csgo_setup.exe", downloads:8900, rating:4.7, year:2012, developer:"Valve", videoId:"SvZoyp3jCzo" },
+            { id:21, name:"Expedition 33", real:"Clair Obscur: Expedition 33", category:"rpg", desc:"مغامرة خيالية مظلمة، معارك تكتيكية.", img:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2641300/header.jpg", file:"files/7l_expedition-33_setup.exe", downloads:2300, rating:4.1, year:2025, developer:"Sandfall Interactive", videoId:"SvZoyp3jCzo" },
+            { id:22, name:"Hades II", real:"Hades II", category:"action", desc:"أكشن زنزانات مبنية على الأساطير اليونانية.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1145350/header.jpg", file:"files/7l_hades-2_setup.exe", downloads:7800, rating:4.8, year:2024, developer:"Supergiant Games", videoId:"SvZoyp3jCzo" },
+            { id:23, name:"Miside", real:"Miside", category:"horror", desc:"لعبة رعب نفسي بقصص عميقة.", img:"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2479850/header.jpg", file:"files/7l_miside_setup.exe", downloads:4500, rating:4.2, year:2024, developer:"AIHASTO", videoId:"SvZoyp3jCzo" },
+            { id:24, name:"Portal 2", real:"Portal 2", category:"action", desc:"بوابات أكثر، ألغاز تعاونية وفكاهة.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/620/header.jpg", file:"files/7l_portal2_setup.exe", downloads:12100, rating:4.9, year:2011, developer:"Valve", videoId:"SvZoyp3jCzo" },
+            { id:25, name:"Resident Evil 4", real:"Resident Evil 4", category:"horror", desc:"كلاسيكية الرعب مع ليون كينيدي.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg", file:"files/7l_resident-evil-4_setup.exe", downloads:18900, rating:4.9, year:2023, developer:"Capcom", videoId:"SvZoyp3jCzo" },
+            { id:26, name:"Sons Of The Forest", real:"Sons of the Forest", category:"horror", desc:"البقاء في جزيرة مرعبة، بناء ومتوحشون.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/header.jpg", file:"files/7l_sons-of-the-forest_setup.exe", downloads:26700, rating:4.6, year:2024, developer:"Endnight Games", videoId:"SvZoyp3jCzo" },
+            { id:27, name:"The Witcher 3", real:"The Witcher 3: Wild Hunt", category:"rpg", desc:"تحفة سي دي بروجكت، وحوش وقصص آسرة.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg", file:"files/7l_witcher3_setup.exe", downloads:54300, rating:5.0, year:2015, developer:"CD Projekt Red", videoId:"SvZoyp3jCzo" },
+            { id:28, name:"Battlefield 6", real:"Battlefield 6", category:"fps", desc:"معارك ضخمة بأسلحة حديثة ودمار شامل.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1517290/header.jpg", file:"files/7l_battlefield-6_setup.exe", downloads:8900, rating:4.0, year:2025, developer:"EA DICE", videoId:"SvZoyp3jCzo" },
+            { id:29, name:"Cyberpunk 2077", real:"Cyberpunk 2077", category:"rpg", desc:"نايت سيتي، قرصنة وأكشن مستقبلي.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg", file:"files/7l_cyberpunk2077_setup.exe", downloads:67800, rating:4.7, year:2020, developer:"CD Projekt Red", videoId:"SvZoyp3jCzo" },
+            { id:30, name:"Factorio", real:"Factorio", category:"sim", desc:"أتمتة كل شيء، واجه غرباء وطور المصنع.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/427520/header.jpg", file:"files/7l_factorio_setup.exe", downloads:4300, rating:4.9, year:2020, developer:"Wube Software", videoId:"SvZoyp3jCzo" },
+            { id:31, name:"Hearts of Iron IV", real:"Hearts of Iron IV", category:"sim", desc:"استراتيجية الحرب العالمية الكبرى.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/394360/header.jpg", file:"files/7l_hearts-of-iron-4_setup.exe", downloads:5600, rating:4.7, year:2016, developer:"Paradox", videoId:"SvZoyp3jCzo" },
+            { id:32, name:"No Man's Sky", real:"No Man's Sky", category:"action", desc:"استكشف كوناً لا نهائياً، كواكب ومخلوقات.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/275850/header.jpg", file:"files/7l_nomanssky_setup.exe", downloads:8900, rating:4.4, year:2016, developer:"Hello Games", videoId:"SvZoyp3jCzo" },
+            { id:33, name:"Rainbow Six Siege", real:"Rainbow Six Siege", category:"fps", desc:"قوات خاصة، تدمير واشتباكات تكتيكية.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/359550/header.jpg", file:"files/7l_r6siege_setup.exe", downloads:23400, rating:4.6, year:2015, developer:"Ubisoft", videoId:"SvZoyp3jCzo" },
+            { id:34, name:"RoboCop: Rogue City", real:"RoboCop: Rogue City", category:"fps", desc:"أنت رجل الآلي الشرطي، تصويب متحمس.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1681430/header.jpg", file:"files/7l_robocop_setup.exe", downloads:5600, rating:4.3, year:2023, developer:"Teyon", videoId:"SvZoyp3jCzo" },
+            { id:35, name:"Space Marine 2", real:"Warhammer 40k: Space Marine 2", category:"action", desc:"حرب مستقبلية ضد Tyranids، أكشن لا يتوقف.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg", file:"files/7l_space-marine-2_setup.exe", downloads:12300, rating:4.5, year:2024, developer:"Saber Interactive", videoId:"SvZoyp3jCzo" },
+            { id:36, name:"Black Mesa", real:"Black Mesa", category:"fps", desc:"إعادة إتقان لعبة Half-Life الكلاسيكية.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/362890/header.jpg", file:"files/7l_blackmesa_setup.exe", downloads:6700, rating:4.8, year:2020, developer:"Crowbar Collective", videoId:"SvZoyp3jCzo" },
+            { id:37, name:"Elden Ring", real:"Elden Ring", category:"rpg", desc:"لعبة تقمص الأدوار الضخمة من فروم سوفتوير.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg", file:"files/7l_elden-ring_setup.exe", downloads:45600, rating:5.0, year:2022, developer:"FromSoftware", videoId:"SvZoyp3jCzo" },
+            { id:38, name:"Forza Horizon 5", real:"Forza Horizon 5", category:"sim", desc:"سباقات سيارات في عالم مفتوح بالمكسيك.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg", file:"files/7l_forza5_setup.exe", downloads:18900, rating:4.8, year:2021, developer:"Playground Games", videoId:"SvZoyp3jCzo" },
+            { id:39, name:"Half-Life 2", real:"Half-Life 2", category:"fps", desc:"اللعبة الأسطورية التي غيرت عالم الألعاب.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/220/header.jpg", file:"files/7l_hl2_setup.exe", downloads:15600, rating:5.0, year:2004, developer:"Valve", videoId:"SvZoyp3jCzo" },
+            { id:40, name:"Oblivion Remastered", real:"The Elder Scrolls IV: Oblivion Remastered", category:"rpg", desc:"النسخة المحسنة من لعبة الخيال الكلاسيكية.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/22330/header.jpg", file:"files/7l_oblivion-remastered_setup.exe", downloads:3400, rating:4.5, year:2025, developer:"Bethesda", videoId:"jSvZoyp3jCzo" },
+            { id:41, name:"Red Dead Redemption", real:"Red Dead Redemption", category:"action", desc:"الغرب الأمريكي على الكمبيوتر أخيراً.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/2668510/header.jpg", file:"files/7l_rdr_setup.exe", downloads:27800, rating:4.9, year:2024, developer:"Rockstar Games", videoId:"SvZoyp3jCzo" },
+            { id:42, name:"RoboCop: Unfinished Business", real:"RoboCop: Unfinished Business", category:"action", desc:"مغامرة جديدة لرجل الآلي الشرطي.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1681430/header.jpg", file:"files/7l_robocop-unfinished-business_setup.exe", downloads:2300, rating:4.0, year:2025, developer:"Teyon", videoId:"SvZoyp3jCzo" },
+            { id:43, name:"S.T.A.L.K.E.R. 2", real:"S.T.A.L.K.E.R. 2: Heart of Chornobyl", category:"fps", desc:"منطقة تشيرنوبيل الخطرة، بقاء ورعب.", img:"https://cdn.cloudflare.steamstatic.com/steam/apps/1643320/header.jpg", file:"files/7l_stalker-2_setup.exe", downloads:8900, rating:4.6, year:2024, developer:"GSC Game World", videoId:"SvZoyp3jCzo" }
+        ];
 
-            // توليد IP عشوائي خاص بالمستخدم (يُحفظ في localStorage)
-            let storedIp = localStorage.getItem('myDeviceIp');
-            if (!storedIp) {
-                storedIp = `10.0.0.${Math.floor(Math.random() * 255)}`;
-                localStorage.setItem('myDeviceIp', storedIp);
+        // عناصر الصفحة
+        const gridEl = document.getElementById('gamesGrid');
+        const adsContainer = document.getElementById('adsContainer');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('gameModal');
+        const modalContent = document.getElementById('modalContent');
+        const downloadMessage = document.getElementById('downloadMessage');
+        const messageText = document.getElementById('messageText');
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+        let swiper = null;
+
+        // عرض الإعلانات
+        function renderAds() {
+            const topGames = [...games].sort((a, b) => b.downloads - a.downloads).slice(0, 10);
+            
+            let html = '';
+            topGames.forEach(game => {
+                html += `
+                    <div class="swiper-slide">
+                        <div class="ad-card" onclick="showGameDetails(${game.id})">
+                            <div class="badge"><i class="fas fa-fire"></i> ${(game.downloads/1000).toFixed(1)}k</div>
+                            <img src="${game.img}" alt="${game.real}" onerror="this.src='https://via.placeholder.com/280x150?text=${game.real}'">
+                            <h3>${game.real}</h3>
+                            <p style="color: #818cf8; margin-top: 5px;">${game.downloads.toLocaleString()} تحميل</p>
+                        </div>
+                    </div>
+                `;
+            });
+            adsContainer.innerHTML = html;
+
+            if (swiper) swiper.destroy();
+            swiper = new Swiper('#adsSwiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+
+        // عرض الإحصائيات
+        function renderStats() {
+            const totalDownloads = games.reduce((acc, game) => acc + game.downloads, 0);
+            const avgRating = (games.reduce((acc, game) => acc + game.rating, 0) / games.length).toFixed(1);
+            
+            const statsHtml = `
+                <div class="stat-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>إجمالي الألعاب</h3>
+                    <div class="number">${games.length}</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-download"></i>
+                    <h3>إجمالي التحميلات</h3>
+                    <div class="number">${(totalDownloads/1000).toFixed(1)}k</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <h3>متوسط التقييم</h3>
+                    <div class="number">${avgRating}</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar"></i>
+                    <h3>أحدث لعبة</h3>
+                    <div class="number">2025</div>
+                </div>
+            `;
+            document.getElementById('statsGrid').innerHTML = statsHtml;
+        }
+
+        // إظهار الصفحات
+        window.showPage = function(page) {
+            document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
+            document.getElementById('statsPage').style.display = page === 'stats' ? 'block' : 'none';
+            document.getElementById('supportPage').style.display = page === 'support' ? 'block' : 'none';
+            document.getElementById('aboutPage').style.display = page === 'about' ? 'block' : 'none';
+            
+            if (page === 'stats') renderStats();
+        };
+
+        // دالة عرض رسالة التحميل
+        function showDownloadMessage(text) {
+            messageText.textContent = text;
+            downloadMessage.style.display = 'flex';
+            setTimeout(() => {
+                downloadMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // ========== دالة التحميل المعدلة مع خصم الكوينز ==========
+        function downloadGame(file, gameName) {
+            // التحقق من الربط
+            if(localStorage.getItem('discordLinked') !== 'true') {
+                alert('❌ يجب ربط حساب الديسكورد أولاً!');
+                showDiscordPopup();
+                return false;
             }
-            myIpDisplay.innerText = storedIp;
+            
+            // التحقق من الكوينز
+            let coins = parseInt(localStorage.getItem('coins')) || 0;
+            if(coins < 350) {
+                alert(`❌ رصيدك غير كافي!\nالمطلوب: 350 كوينز\nرصيدك: ${coins} كوينز`);
+                return false;
+            }
+            
+            // خصم الكوينز
+            coins -= 350;
+            localStorage.setItem('coins', coins.toString());
+            
+            // إرسال إشعار للويب هوك
+            sendToDiscord({
+                content: `📥 **${gameName}** تم تحميلها!\n👤 المستخدم رصيده المتبقي: ${coins} كوينز`,
+                username: 'West Games'
+            });
+            
+            // تحميل الملف
+            try {
+                const link = document.createElement('a');
+                link.href = file;
+                link.download = file.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // رسالة تأكيد
+                alert(`✅ تم التحميل بنجاح!\n💰 تم خصم 350 كوينز\n💎 رصيدك المتبقي: ${coins} كوينز`);
+            } catch (error) {
+                console.error('خطأ في التحميل:', error);
+                alert('عذراً، حدث خطأ في تحميل الملف');
+            }
+            return false;
+        }
 
-            // متغيرات الحالة
-            let targetIp = targetIpInput.value.trim() || '192.168.1.77';
-            let isPttActive = false;
-            let voiceFxActive = false;
-            let encryptionActive = false;
-            let recordingActive = false;
-            let broadcastActive = false;
-            let notificationCount = 0;
+        // دالة عرض الألعاب
+        function renderGames() {
+            const filtered = games.filter(game => {
+                const matchesFilter = currentFilter === 'all' || game.category === currentFilter;
+                const searchTerm = currentSearch.trim().toLowerCase();
+                const matchesSearch = searchTerm === '' || 
+                    game.name.toLowerCase().includes(searchTerm) || 
+                    game.real.toLowerCase().includes(searchTerm);
+                return matchesFilter && matchesSearch;
+            });
 
-            // دالة إضافة سجل مع تحديث واجهة
-            function addLog(message, isImportant = true) {
-                const li = document.createElement('li');
-                const now = new Date();
-                const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-                li.textContent = `[${timeStr}] ${message}`;
-                logList.prepend(li);
-                // الاحتفاظ بآخر 8 رسائل
-                while (logList.children.length > 8) {
-                    logList.removeChild(logList.lastElementChild);
+            if (filtered.length === 0) {
+                gridEl.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:80px; background:#0f172a; border-radius:60px; font-size:2rem; color:#9bb0e6;"><i class="fas fa-search"></i> لا توجد ألعاب مطابقة</div>`;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(game => {
+                const categoryName = {
+                    'action': 'أكشن',
+                    'fps': 'تصويب',
+                    'rpg': 'آر بي جي',
+                    'sim': 'محاكاة',
+                    'horror': 'رعب'
+                }[game.category] || game.category;
+
+                html += `
+                    <div class="game-card" onclick="showGameDetails(${game.id})">
+                        <div class="game-image" style="background-image: url('${game.img}');"></div>
+                        <div class="game-info">
+                            <div class="game-title">${game.real}</div>
+                            <div class="game-category">${categoryName}</div>
+                            <div class="game-desc">${game.desc}</div>
+                            <div class="game-meta">
+                                <span><i class="fas fa-star" style="color: #fbbf24;"></i> ${game.rating}</span>
+                                <span><i class="fas fa-download" style="color: #4ade80;"></i> ${game.downloads.toLocaleString()}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            gridEl.innerHTML = html;
+        }
+
+        // دالة عرض التفاصيل المتقدمة
+        window.showGameDetails = function(gameId) {
+            const game = games.find(g => g.id === gameId);
+            if (!game) return;
+
+            const categoryName = {
+                'action': 'أكشن',
+                'fps': 'تصويب',
+                'rpg': 'آر بي جي',
+                'sim': 'محاكاة',
+                'horror': 'رعب'
+            }[game.category] || game.category;
+
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(game.rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - game.rating < 1 && i - game.rating > 0) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
                 }
-                if (isImportant && navigator.vibrate) navigator.vibrate(30);
             }
 
-            // طلب صلاحية الإشعارات
-            if ('Notification' in window && Notification.permission !== 'granted' && Notification.permission !== 'denied') {
-                Notification.requestPermission();
+            modalContent.innerHTML = `
+                <div class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></div>
+                <div class="game-detail-layout">
+                    <div class="detail-media">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/${game.videoId}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="detail-image" style="background-image: url('${game.img}');"></div>
+                    </div>
+                    <div class="detail-info">
+                        <h2>${game.real}</h2>
+                        <div class="game-rating">
+                            <div class="stars">${stars}</div>
+                            <div class="download-count"><i class="fas fa-download"></i> ${game.downloads.toLocaleString()} تحميل</div>
+                        </div>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="fas fa-calendar"></i>
+                                <h4>سنة الإصدار</h4>
+                                <p>${game.year}</p>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-code-branch"></i>
+                                <h4>المطور</h4>
+                                <p>${game.developer}</p>
+                            </div>
+                        </div>
+
+                        <div class="game-description-full">
+                            <i class="fas fa-quote-right" style="color: #4f46e5; font-size: 2rem; margin-bottom: 10px;"></i>
+                            <p>${game.desc}</p>
+                        </div>
+
+                        <div class="system-req">
+                            <h3><i class="fas fa-computer"></i> متطلبات النظام</h3>
+                            <ul>
+                                <li><i class="fas fa-microchip"></i> المعالج: Intel Core i5-8400</li>
+                                <li><i class="fas fa-memory"></i> الذاكرة: 8 جيجابايت RAM</li>
+                                <li><i class="fas fa-tv"></i> كارت الشاشة: NVIDIA GeForce GTX 1060</li>
+                                <li><i class="fas fa-hard-drive"></i> المساحة: 50 جيجابايت</li>
+                                <li><i class="fas fa-windows"></i> نظام التشغيل: Windows 10/11</li>
+                                <li><i class="fas fa-globe"></i> اللغة: دعم كامل للعربية</li>
+                            </ul>
+                        </div>
+
+                        <div class="download-section">
+                            <button onclick="downloadGame('${game.file}', '${game.real}')" class="download-btn">
+                                <i class="fas fa-download"></i> تحميل اللعبة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.style.display = 'flex';
+        };
+
+        // إغلاق المودال
+        window.closeModal = function() {
+            modal.style.display = 'none';
+        };
+
+        // إرسال رسالة الدعم
+        window.sendSupport = function() {
+            const name = document.getElementById('supportName').value;
+            const email = document.getElementById('supportEmail').value;
+            const type = document.getElementById('supportType').value;
+            const message = document.getElementById('supportMessage').value;
+            
+            if (!name || !email || !message) {
+                alert('الرجاء ملء جميع الحقول');
+                return;
             }
 
-            // محاكاة استقبال صوت / مكالمة من IP
-            function simulateIncomingCall(fromIp = null) {
-                const caller = fromIp || `192.168.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
-                incomingCallerIp.innerText = caller;
-                addLog(`🔊 صوت وارد فوري من ${caller} (مباشر)`);
+            alert(`تم إرسال رسالتك بنجاح! سنتواصل معك قريباً على ${email}`);
+            document.getElementById('supportName').value = '';
+            document.getElementById('supportEmail').value = '';
+            document.getElementById('supportMessage').value = '';
+        };
 
-                // إشعار سطح المكتب
-                if (Notification.permission === 'granted') {
-                    new Notification('📡 مكالمة لاسلكية', { body: `من IP: ${caller}`, silent: false });
+        // ========== زر تحميل الاختصار من شريط العنوان ==========
+        document.getElementById('installBtn').addEventListener('click', function() {
+            const siteUrl = window.location.href;
+            const shortcutContent = `[InternetShortcut]
+URL=${siteUrl}
+IconFile=icon.ico
+IconIndex=0
+HotKey=0
+IDList=
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2`;
+            
+            const blob = new Blob([shortcutContent], { type: 'application/internet-shortcut' });
+            const url = window.URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'West Games.url';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            window.URL.revokeObjectURL(url);
+            showDownloadMessage('✅ تم تجهيز اختصار الموقع');
+            
+            setTimeout(() => {
+                alert(
+                    '✅ تم تحميل اختصار West Games!\n\n' +
+                    '📁 الملف "West Games.url" موجود في مجلد التحميلات\n' +
+                    '🖱️ انقله إلى سطح المكتب\n' +
+                    '🚀 افتحه مباشرة واستمتع'
+                );
+            }, 500);
+        });
+
+        // أحداث البحث
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderGames();
+        });
+
+        // أحداث الفلتر
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderGames();
+            });
+        });
+
+        // إغلاق المودال عند الضغط خارج المحتوى
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // تسجيل Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => {
+                    console.log('ServiceWorker registration failed:', err);
+                });
+            });
+        }
+
+        // التحميل الأولي
+        renderAds();
+        renderGames();
+        showPage('home');
+
+        // ========== نظام ربط الديسكورد ==========
+
+        // إظهار نافذة الربط
+        window.showDiscordPopup = function() {
+            // توليد كود عشوائي للمستخدم
+            const randomCode = 'WEST-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('userCode').textContent = randomCode;
+            
+            // حفظ الكود في localStorage
+            localStorage.setItem('discordLinkCode', randomCode);
+            localStorage.setItem('discordLinked', 'false');
+            localStorage.setItem('discordLinkTime', Date.now());
+            
+            // إظهار النافذة
+            document.getElementById('discordPopup').style.display = 'flex';
+        }
+
+        // إغلاق النافذة
+        window.closePopup = function() {
+            document.getElementById('discordPopup').style.display = 'none';
+            // التحقق من الربط بعد 10 ثواني
+            setTimeout(checkDiscordLink, 10000);
+        }
+
+        // التحقق من الربط
+        function checkDiscordLink() {
+            if(localStorage.getItem('discordLinked') === 'true') {
+                let coins = parseInt(localStorage.getItem('coins')) || 0;
+                coins += 1000;
+                localStorage.setItem('coins', coins.toString());
+                
+                alert(`✅ تم الربط بنجاح!\n💰 استلمت 1000 كوينز هدية\n💎 رصيدك الحالي: ${coins} كوينز`);
+                
+                // إرسال إشعار للويب هوك
+                sendToDiscord({
+                    content: `✅ مستخدم جديد ربط حسابه واستلم 1000 كوينز!`,
+                    username: 'West Games'
+                });
+            }
+        }
+
+        // دالة إرسال إشعار للويب هوك
+        async function sendToDiscord(data) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1475087874058879166/gu5hTf0EJbh06Y9_xd4-3fsWhwLYrJ7_VPOZkJiJtyG2ENz4OFDgFKN3J0xAyS-tV5JQ';
+            
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if(response.ok) {
+                    console.log('✅ تم إرسال الإشعار');
                 }
-
-                // محاكاة استمرارية الصوت حتى خارج التطبيق (لا يمكن فعلياً لكن السجل يظهر)
-                setTimeout(() => {
-                    addLog(`🔹 استمرار استقبال الصوت من ${caller} [خارج التطبيق]`, false);
-                }, 800);
+            } catch (error) {
+                console.error('❌ خطأ في إرسال الإشعار:', error);
             }
+        }
 
-            // إرسال صوت (PTT)
-            function startTransmit() {
-                if (!targetIp) {
-                    addLog('❌ لا يوجد IP مستهدف!');
-                    return;
-                }
-                isPttActive = true;
-                pttButton.classList.add('active');
-                let effect = voiceFxActive ? ' (مؤثر روبوت)' : '';
-                addLog(`📤 إرسال صوتي إلى ${targetIp}${effect}`);
-
-                if (navigator.vibrate) navigator.vibrate(70);
-
-                // محاكاة وصول الصوت إلى الهدف (حتى لو خارج التطبيق)
-                setTimeout(() => {
-                    // إذا كان البث العام مفعّلاً، يصل لأكثر من جهة
-                    if (broadcastActive) {
-                        simulateIncomingCall('255.255.255.255 (بث عام)');
-                    } else {
-                        simulateIncomingCall(targetIp);
-                    }
-                }, 1200);
-            }
-
-            function stopTransmit() {
-                isPttActive = false;
-                pttButton.classList.remove('active');
-                addLog('🛑 توقف الإرسال', false);
-                if (navigator.vibrate) navigator.vibrate(20);
-            }
-
-            // ===== أحداث PTT (ماوس + لمس) =====
-            pttButton.addEventListener('mousedown', (e) => { e.preventDefault(); startTransmit(); });
-            pttButton.addEventListener('mouseup', stopTransmit);
-            pttButton.addEventListener('mouseleave', stopTransmit);
-            pttButton.addEventListener('touchstart', (e) => { e.preventDefault(); startTransmit(); }, { passive: false });
-            pttButton.addEventListener('touchend', (e) => { e.preventDefault(); stopTransmit(); });
-            pttButton.addEventListener('touchcancel', stopTransmit);
-
-            // ===== زر الاتصال (تعيين الهدف) =====
-            connectBtn.addEventListener('click', () => {
-                const newTarget = targetIpInput.value.trim();
-                if (newTarget) {
-                    targetIp = newTarget;
-                    addLog(`🔗 تعيين IP المستلم: ${targetIp}`);
-                    setTimeout(() => addLog(`✅ جاهز للإرسال إلى ${targetIp}`), 300);
-                } else addLog('⚠️ أدخل IP صحيح');
-            });
-
-            // ===== تفعيل الميزات =====
-            voiceFxBtn.addEventListener('click', () => {
-                voiceFxActive = !voiceFxActive;
-                voiceFxBtn.classList.toggle('active', voiceFxActive);
-                voiceFxBtn.innerHTML = voiceFxActive ? '<span>🎤🔊</span> مؤثر (روبوت)' : '<span>🎤</span> مؤثر صوتي';
-                addLog(voiceFxActive ? '🤖 تفعيل مؤثر الصوت (مشوه)' : '🔇 إيقاف المؤثر الصوتي');
-            });
-
-            notifyBtn.addEventListener('click', () => {
-                notificationCount++;
-                if (Notification.permission === 'granted') {
-                    new Notification('🔔 إشعار لاسلكي', { body: `رسالة فورية #${notificationCount}` });
-                } else if (Notification.permission !== 'denied') Notification.requestPermission();
-                addLog(`🔔 إرسال إشعار فوري #${notificationCount} لجميع الأجهزة`);
-                if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-                simulateIncomingCall('broadcast@all');
-            });
-
-            vibrateBtn.addEventListener('click', () => {
-                if (navigator.vibrate) {
-                    navigator.vibrate([200, 100, 200, 100, 300]);
-                    addLog('📳 اهتزاز قوي تم تنفيذه');
-                } else addLog('❌ الاهتزاز غير مدعوم');
-                setTimeout(() => addLog('⚡ نبضة استجابة', false), 400);
-            });
-
-            encryptBtn.addEventListener('click', () => {
-                encryptionActive = !encryptionActive;
-                encryptBtn.classList.toggle('active', encryptionActive);
-                encryptBtn.innerHTML = encryptionActive ? '<span>🔒✔</span> التشفير نشط' : '<span>🔒</span> تشفير';
-                addLog(encryptionActive ? '🔐 تفعيل تشفير الصوت (AES-256)' : '🔓 إيقاف التشفير');
-            });
-
-            recordBtn.addEventListener('click', () => {
-                recordingActive = !recordingActive;
-                recordBtn.classList.toggle('active', recordingActive);
-                recordBtn.innerHTML = recordingActive ? '<span>⏺■</span> تسجيل...' : '<span>⏺</span> تسجيل';
-                addLog(recordingActive ? '⏺ بدء تسجيل المحادثة' : '💾 حفظ التسجيل');
-            });
-
-            broadcastBtn.addEventListener('click', () => {
-                broadcastActive = !broadcastActive;
-                broadcastBtn.classList.toggle('active', broadcastActive);
-                broadcastBtn.innerHTML = broadcastActive ? '<span>📢🌍</span> بث عام نشط' : '<span>📢</span> بث عام';
-                addLog(broadcastActive ? '🌍 تفعيل وضع البث العام (يصل للجميع)' : '🔇 إيقاف البث العام');
-            });
-
-            // مسح السجل
-            clearLogBtn.addEventListener('click', () => {
-                logList.innerHTML = '';
-                addLog('✅ تم مسح السجل');
-            });
-
-            // محاكاة وصول مكالمات عشوائية دورية
-            setInterval(() => {
-                if (Math.random() < 0.4) {
-                    simulateIncomingCall();
-                }
-            }, 17000);
-
-            // رسالة بدء
-            addLog(`🔰 جهازك: ${storedIp} - وضع الاستقبال الدائم`);
-            addLog('✨ جميع الميزات الأسطورية مفعلة');
-
-            // محاكاة وصول ترحيب
-            setTimeout(() => simulateIncomingCall('192.168.1.1'), 2000);
-
-            // منع النقر المزدوج للتكبير
-            document.addEventListener('dblclick', (e) => e.preventDefault());
-        })();
+        // التحقق من الربط عند تحميل الصفحة
+        if(localStorage.getItem('discordLinked') === 'true') {
+            console.log('✅ الحساب مربوط مسبقاً');
+        }
     </script>
 </body>
 </html>

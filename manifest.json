@@ -1,14 +1,19 @@
 {
-  "name": "Daniel AI Assistant",
-  "short_name": "Daniel AI",
-  "description": "AI Assistant for smart conversations",
-  "start_url": "/Daniel-Ai/",
-  "scope": "/Daniel-Ai/",
+  "name": "West Games",
+  "short_name": "West Games",
+  "description": "منصة الألعاب العربية - أكثر من 43 لعبة أصلية",
+  "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#0a0c14",
+  "theme_color": "#4f46e5",
   "orientation": "portrait",
+  "scope": "./",
   "icons": [
+    {
+      "src": "icon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
     {
       "src": "icon-192.png",
       "sizes": "192x192",
